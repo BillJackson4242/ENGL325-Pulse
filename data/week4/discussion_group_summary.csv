@@ -1,0 +1,4 @@
+﻿GroupName,WeekNumber,TotalStudents,ActiveStudents,TotalPosts,TotalMainPosts,TotalReplies,AvgPostsPerStudent,AvgRepliesPerStudent,TotalWords,AvgWordsPerPost,AvgWordsPerStudent,TotalQuestions,ThreadCount,AvgThreadDepth,MaxThreadDepth,ParticipationSpread,CrossEngagement,EarlyPostingRate,StudentsWhoPosted,StudentsWhoDidNotPost,GroupAuthenticityScore,GroupAIPatternScore
+Group A,Week 4,6,5,9,9,0,1.5,0.0,1889,209.9,314.8,7,5,0.0,0,1.26,0.0%,83.3%,5,1,3,1
+Group B,Week 4,6,6,42,16,26,7.0,4.33,8764,208.7,1460.7,14,6,1.62,7,4.76,50.0%,100.0%,6,0,49,2
+Group C,Week 4,6,4,6,2,4,1.0,0.67,905,150.8,150.8,0,2,2.0,2,0.82,13.3%,66.7%,4,2,1,6
