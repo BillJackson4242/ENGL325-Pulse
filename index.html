@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENGL 325 · Discussion Pulse</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0e14;
+  --paper: #f4f1eb;
+  --paper-dark: #e8e3d9;
+  --accent: #c45d3e;
+  --accent-glow: #e8734f;
+  --teal: #2a7a6e;
+  --teal-light: #3ba392;
+  --slate: #5a6472;
+  --slate-light: #8892a0;
+  --gold: #c4a052;
+  --danger: #b83a3a;
+  --success: #3a8a5c;
+  --group-a: #6b7fd7;
+  --group-b: #d77a4a;
+  --group-c: #5aab8b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.masthead {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 48px 0 40px;
+  position: relative;
+  overflow: hidden;
+}
+.masthead::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(255,255,255,0.03) 119px, rgba(255,255,255,0.03) 120px),
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.02) 39px, rgba(255,255,255,0.02) 40px);
+}
+.masthead-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+.course-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: block;
+}
+.masthead h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 3.2rem;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.masthead h1 span { color: var(--accent-glow); }
+.masthead-sub {
+  font-weight: 300;
+  font-size: 1.05rem;
+  color: var(--slate-light);
+  max-width: 600px;
+}
+.week-nav {
+  display: flex;
+  gap: 8px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.week-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  padding: 8px 18px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: transparent;
+  color: var(--slate-light);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.25s;
+  letter-spacing: 0.5px;
+}
+.week-btn:hover:not(.disabled) { border-color: var(--accent); color: var(--paper); }
+.week-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper);
+  font-weight: 500;
+}
+.week-btn.disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.instructor-note {
+  max-width: 1200px;
+  margin: -20px auto 0;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+.note-card {
+  background: white;
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--slate);
+}
+.note-card strong { color: var(--ink); }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 40px 80px;
+}
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin: 48px 0 24px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 10px;
+}
+.section-header:first-of-type { margin-top: 36px; }
+.section-header h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.section-header .section-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--slate-light);
+}
+
+/* Pulse strip */
+.pulse-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.pulse-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  border-top: 3px solid var(--teal);
+  transition: transform 0.2s;
+}
+.pulse-card:hover { transform: translateY(-2px); }
+.pulse-card .big-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.8rem;
+  color: var(--ink);
+  line-height: 1;
+}
+.pulse-card .big-num.warn { color: var(--danger); }
+.pulse-card .big-num.good { color: var(--success); }
+.pulse-card .label {
+  font-size: 0.8rem;
+  color: var(--slate-light);
+  margin-top: 6px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.pulse-card .sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--slate-light);
+  margin-top: 4px;
+}
+
+/* Group cards */
+.groups-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 20px;
+}
+.group-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.group-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+.group-card-header {
+  padding: 18px 22px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.group-card-body { padding: 20px 22px; }
+.group-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.g-stat {
+  text-align: center;
+  padding: 8px 4px;
+  background: var(--paper);
+  border-radius: 6px;
+}
+.g-stat .val {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.g-stat .val.red { color: var(--danger); }
+.g-stat .val.green { color: var(--success); }
+.g-stat .lbl {
+  font-size: 0.65rem;
+  color: var(--slate-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+.health-pill {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.25);
+  color: white;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.health-pill.critical { background: rgba(184,58,58,0.85); }
+.health-pill.warning { background: rgba(196,160,82,0.85); }
+.health-pill.healthy { background: rgba(58,138,92,0.85); }
+
+.network-section { margin: 12px 0 16px; }
+.network-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--slate-light);
+  margin-bottom: 8px;
+}
+.network-canvas {
+  width: 100%;
+  height: 180px;
+  background: var(--paper);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* CQI */
+.cqi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.cqi-card {
+  background: white;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  text-align: center;
+}
+.cqi-ring-container {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 16px;
+}
+.cqi-label {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.cqi-breakdown {
+  font-size: 0.78rem;
+  color: var(--slate-light);
+  line-height: 1.5;
+}
+.cqi-breakdown span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  color: var(--slate);
+}
+.cqi-zone {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-top: 8px;
+}
+.cqi-zone.exemplary { background: rgba(58,138,92,0.12); color: var(--success); }
+.cqi-zone.strong { background: rgba(42,122,110,0.12); color: var(--teal); }
+.cqi-zone.building { background: rgba(196,160,82,0.12); color: var(--gold); }
+.cqi-zone.developing { background: rgba(196,93,62,0.12); color: var(--accent); }
+.cqi-zone.starting { background: rgba(184,58,58,0.1); color: var(--danger); }
+
+/* Role zone labels */
+.role-zone {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.5px;
+  width: 64px;
+  text-align: center;
+}
+
+/* Info tooltips */
+.info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--slate-light);
+  color: var(--slate-light);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: all 0.2s;
+  background: transparent;
+  vertical-align: middle;
+}
+.info-btn:hover { border-color: var(--accent); color: var(--accent); }
+.info-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  margin-bottom: 16px;
+  font-size: 0.82rem;
+  color: var(--slate);
+  line-height: 1.7;
+  padding: 0 24px;
+}
+.info-panel.open {
+  max-height: 400px;
+  padding: 20px 24px;
+}
+.info-panel strong { color: var(--ink); }
+.info-panel code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  background: var(--paper-dark);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+/* Velocity */
+.velocity-section {
+  background: white;
+  border-radius: 10px;
+  padding: 28px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+}
+.velocity-canvas { width: 100%; height: 220px; }
+
+/* Role bars */
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.role-card {
+  background: white;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+}
+.role-card h4 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.role-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.role-bar-label {
+  font-size: 0.72rem;
+  width: 100px;
+  text-align: right;
+  color: var(--slate);
+  font-weight: 500;
+}
+.role-bar-track {
+  flex: 1;
+  height: 14px;
+  background: var(--paper-dark);
+  border-radius: 7px;
+  overflow: hidden;
+}
+.role-bar-fill {
+  height: 100%;
+  border-radius: 7px;
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.role-bar-pct {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--slate);
+  width: 36px;
+}
+
+/* Patterns */
+.patterns-section {
+  background: var(--ink);
+  border-radius: 12px;
+  padding: 36px;
+  color: var(--paper);
+}
+.patterns-section h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  color: var(--accent-glow);
+}
+.pattern-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.pattern-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.pattern-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.pattern-icon.insight { background: rgba(42,122,110,0.3); }
+.pattern-icon.warning { background: rgba(196,93,62,0.3); }
+.pattern-icon.question { background: rgba(196,160,82,0.3); }
+.pattern-text {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: rgba(244,241,235,0.85);
+}
+.pattern-text strong { color: var(--paper); }
+
+.dashboard-footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 40px;
+  border-top: 1px solid var(--paper-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-note {
+  font-size: 0.8rem;
+  color: var(--slate-light);
+  max-width: 600px;
+  line-height: 1.5;
+}
+.footer-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--slate-light);
+  letter-spacing: 1px;
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--slate-light);
+  font-style: italic;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+@media (max-width: 900px) {
+  .pulse-grid { grid-template-columns: repeat(3, 1fr); }
+  .groups-row, .cqi-row, .role-grid { grid-template-columns: 1fr; }
+  .masthead h1 { font-size: 2.2rem; }
+  .container, .masthead-inner, .instructor-note { padding-left: 20px; padding-right: 20px; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="course-tag">ENGL 325 · Advanced Business Writing · Spring 2026</span>
+    <h1>Discussion <span>Pulse</span></h1>
+    <p class="masthead-sub">Group-level analytics for weekly discussions. No individual names — just patterns, dynamics, and the shape of your conversations.</p>
+    <nav class="week-nav" id="weekNav"></nav>
+  </div>
+</header>
+
+<div class="instructor-note">
+  <div class="note-card" id="instructorNote">Loading...</div>
+</div>
+
+<div class="container">
+  <div class="section-header">
+    <h2>Class Pulse</h2>
+    <span class="section-tag" id="pulseTag">Loading</span>
+  </div>
+  <div class="pulse-grid" id="pulseGrid"></div>
+
+  <div class="section-header">
+    <h2>Group Dynamics</h2>
+    <span class="section-tag">Conversation topology</span>
+  </div>
+  <div class="groups-row" id="groupsRow"></div>
+
+  <div class="section-header">
+    <h2>Conversation Shape</h2>
+    <span class="section-tag">Group dynamics snapshot</span>
+    <button class="info-btn" onclick="toggleInfo('cqiInfo')">i</button>
+  </div>
+  <div class="info-panel" id="cqiInfo">
+    This measures the <em>shape</em> of group conversation — not individual effort. A group with absent members will show weaker dynamics even when the active members do excellent work. Four dimensions, equally weighted:
+    <strong>Reply engagement</strong> — are people responding to each other, not just posting in parallel?
+    <strong>Thread depth</strong> — do conversations develop beyond a single exchange?
+    <strong>Participation balance</strong> — is the workload shared across the group?
+    <strong>Cross-engagement</strong> — are members connecting with multiple peers?
+    Labels: <em>Getting Started → Developing → Building → Strong → Exemplary</em>.
+  </div>
+  <div class="cqi-row" id="cqiRow"></div>
+
+  <div class="section-header">
+    <h2>Engagement Velocity</h2>
+    <span class="section-tag">When conversations happen</span>
+  </div>
+  <div class="velocity-section">
+    <svg class="velocity-canvas" id="velocityChart" viewBox="0 0 1120 220"></svg>
+  </div>
+
+  <div class="section-header">
+    <h2>Role Fulfillment</h2>
+    <span class="section-tag">Did the roles shape the conversation?</span>
+    <button class="info-btn" onclick="toggleInfo('roleInfo')">i</button>
+  </div>
+  <div class="info-panel" id="roleInfo">
+    Role fulfillment estimates whether each assigned role shaped the group's analysis. It looks at:
+    <strong>Role-relevant language</strong> (40%) — did the member use terms, concepts, and analytical moves that align with their assigned role?
+    <strong>Engagement with others</strong> (25%) — did they build on peers' ideas or stay isolated?
+    <strong>Active participation</strong> (20%) — did they show up and contribute substantively?
+    <strong>Role identification</strong> (15%) — did they signal their lens to the group?
+    You don't have to announce "I am the Cast Mapper" to score well — doing the work matters most. Labels: <em>Not Yet → Emerging → Developing → Solid → Strong</em>.
+  </div>
+  <div class="role-grid" id="roleGrid"></div>
+
+  <div class="section-header">
+    <h2>Patterns Worth Noticing</h2>
+    <span class="section-tag">What the data reveals</span>
+  </div>
+  <div class="patterns-section" id="patternsSection"></div>
+</div>
+
+<div class="dashboard-footer">
+  <div class="footer-note">
+    This dashboard shows <strong>group-level metrics only</strong>. No individual student data is displayed. Discussion grades are based on consistent participation, engagement quality, and role fulfillment — not comparison to peers.
+  </div>
+  <div class="footer-badge">ENGL 325 · DISCUSSION PULSE · V2.0</div>
+</div>
+
+<script>
+// ============================================
+// CONFIGURATION
+// ============================================
+// For GitHub Pages deployment, set this to '' (empty) if CSVs live next to the HTML,
+// or to a relative path like './data/' or an absolute URL.
+// For local testing, point to wherever your CSVs live.
+const DATA_BASE = './data/';
+
+// Week configuration: add entries as the semester progresses.
+// rotation: which rotation this week belongs to
+// label: what shows on the button
+// folder: subfolder name under DATA_BASE
+// available: set to true once CSVs are in place
+// note: instructor note text for this week (edit directly or load from a file)
+const WEEKS = [
+  { key: 'week2', label: 'Wk 2', folder: 'week2', rotation: 'Trial', available: false, note: '' },
+  { key: 'week3', label: 'Wk 3', folder: 'week3', rotation: 'Rotation 1', available: false,
+    note: '<strong>From Prof. Jackson:</strong> First week of Rotation 1 with assigned roles. How did the roles shape what people focused on?' },
+  { key: 'week4', label: 'Wk 4', folder: 'week4', rotation: 'Rotation 1', available: true,
+    note: '<strong>From Prof. Jackson:</strong> This week\'s scenario (DisplayWorks teleconference) asked you to analyze group dynamics under pressure. Take a look at the network graphs below. Three groups, three very different shapes. What do you notice about the difference between posting and <em>conversing</em>?' },
+  { key: 'week5', label: 'Wk 5', folder: 'week5', rotation: 'Rotation 2', available: true, note: '<strong>From Prof. Jackson:</strong> New rotation, new groups. This week\'s scenario (Lilian Fung Collection awards) asked you to navigate professional congratulatory communication with multiple stakeholders. Notice what changed when groups reshuffled — some conversations deepened, some found new energy, and the reply patterns tell you who\'s building with their new teammates.' },
+  { key: 'week6', label: 'Wk 6', folder: 'week6', rotation: 'Rotation 2', available: false, note: '' },
+  { key: 'week7', label: 'Wk 7', folder: 'week7', rotation: 'Rotation 3', available: false, note: '' },
+  { key: 'week8', label: 'Wk 8', folder: 'week8', rotation: 'Rotation 3', available: false, note: '' },
+];
+
+// Instructor-authored patterns per week (edit these as you analyze each week)
+const PATTERNS = {
+  week4: [
+    { icon: 'insight', text: '<strong>Reply ratios.</strong> One group hit a 1.6 reply-to-post ratio — most ideas got genuine follow-up. Two groups posted strong analyses with reply ratios near zero. Same quality of thinking, very different shapes of conversation. Why?' },
+    { icon: 'warning', text: '<strong>Timing and runway.</strong> Check the velocity chart. One group\'s conversation builds across five days in waves. Others arrive in a single Saturday burst. What happens to dialogue when there\'s no time left for anyone to respond?' },
+    { icon: 'question', text: '<strong>Naming your role.</strong> Groups where members explicitly flagged their lens ("As the Delivery Specialist...") produced more differentiated analysis than groups where the role stayed invisible. Compare the role fulfillment bars across groups and look at what happened in the network graphs.' },
+    { icon: 'insight', text: '<strong>Questions and responses.</strong> 21 questions across the class this week, distributed unevenly. One student asked 11 and received the most replies of anyone. Worth thinking about what questions do in a group conversation that statements don\'t.' },
+  ],
+  week5: [
+    { icon: 'insight', text: '<strong>The reshuffle effect.</strong> New groups, new energy. One group jumped from 6 posts to 30 when the roster changed. Two students who were absent last week came back and contributed meaningfully. What does that tell you about the relationship between group chemistry and individual engagement?' },
+    { icon: 'question', text: '<strong>Who facilitates when the Facilitator is absent?</strong> One group lost their assigned Facilitator entirely. Look at who picked up the coordination work — posting outlines, synthesizing ideas, drafting submissions. The role got filled even without the title.' },
+    { icon: 'warning', text: '<strong>Substantive disagreement.</strong> Two students in the same group had a genuine intellectual debate — one argued a manager\'s delegation showed trust, the other read it as dumping work under pressure. Neither backed down. That\'s the kind of analytical friction that produces better thinking.' },
+    { icon: 'insight', text: '<strong>Sunday drop vs. sustained conversation.</strong> Compare groups where posts arrived across 4-5 days versus groups where everything landed Sunday night. The multi-day conversations produced replies, follow-ups, and evolving ideas. The Sunday drops produced monologues.' },
+  ],
+};
+
+// Group color palette
+const GROUP_COLORS = {
+  'Group A': '#6b7fd7', 'Group B': '#d77a4a', 'Group C': '#5aab8b',
+  'Group 1': '#6b7fd7', 'Group 2': '#d77a4a', 'Group 3': '#5aab8b', 'Group 4': '#c4a052'
+};
+const GROUP_GRADIENTS = {
+  'Group A': 'linear-gradient(135deg, #6b7fd7 0%, #8b9de7 100%)',
+  'Group B': 'linear-gradient(135deg, #d77a4a 0%, #e89a6a 100%)',
+  'Group C': 'linear-gradient(135deg, #5aab8b 0%, #7acbab 100%)',
+  'Group 1': 'linear-gradient(135deg, #6b7fd7 0%, #8b9de7 100%)',
+  'Group 2': 'linear-gradient(135deg, #d77a4a 0%, #e89a6a 100%)',
+  'Group 3': 'linear-gradient(135deg, #5aab8b 0%, #7acbab 100%)',
+  'Group 4': 'linear-gradient(135deg, #c4a052 0%, #d4b872 100%)',
+};
+
+// ============================================
+// CSV PARSER
+// ============================================
+function parseCSV(text) {
+  const lines = [];
+  let current = '';
+  let inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (ch === '"') {
+      if (inQuotes && text[i+1] === '"') { current += '"'; i++; }
+      else { inQuotes = !inQuotes; }
+    } else if ((ch === '\n' || ch === '\r') && !inQuotes) {
+      if (current.trim()) lines.push(current);
+      current = '';
+      if (ch === '\r' && text[i+1] === '\n') i++;
+    } else {
+      current += ch;
+    }
+  }
+  if (current.trim()) lines.push(current);
+
+  if (lines.length < 2) return [];
+  
+  // Split header respecting quotes
+  const splitRow = (row) => {
+    const cols = [];
+    let col = '';
+    let q = false;
+    for (let i = 0; i < row.length; i++) {
+      const c = row[i];
+      if (c === '"') { q = !q; }
+      else if (c === ',' && !q) { cols.push(col.trim()); col = ''; }
+      else { col += c; }
+    }
+    cols.push(col.trim());
+    return cols;
+  };
+
+  // Remove BOM
+  let headerLine = lines[0];
+  if (headerLine.charCodeAt(0) === 0xFEFF) headerLine = headerLine.slice(1);
+  const headers = splitRow(headerLine);
+  
+  return lines.slice(1).map(line => {
+    const values = splitRow(line);
+    const obj = {};
+    headers.forEach((h, i) => { obj[h] = values[i] || ''; });
+    return obj;
+  });
+}
+
+// ============================================
+// DATA LOADING
+// ============================================
+let currentWeek = null;
+
+async function fetchCSV(url) {
+  try {
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const text = await resp.text();
+    return parseCSV(text);
+  } catch (e) {
+    console.warn(`Failed to load ${url}:`, e.message);
+    return null;
+  }
+}
+
+async function loadWeek(weekKey) {
+  const week = WEEKS.find(w => w.key === weekKey);
+  if (!week || !week.available) return;
+  
+  currentWeek = weekKey;
+  
+  // Update nav
+  document.querySelectorAll('.week-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.week === weekKey);
+  });
+
+  const base = DATA_BASE + week.folder + '/';
+  const [studentData, groupData, rawPosts] = await Promise.all([
+    fetchCSV(base + 'discussion_student_summary.csv'),
+    fetchCSV(base + 'discussion_group_summary.csv'),
+    fetchCSV(base + 'discussion_posts_raw.csv'),
+  ]);
+
+  if (!studentData || !groupData) {
+    document.getElementById('pulseGrid').innerHTML = '<div class="loading">Data not available for this week yet.</div>';
+    return;
+  }
+
+  renderAll(week, studentData, groupData, rawPosts || []);
+}
+
+// ============================================
+// MASTER RENDER
+// ============================================
+function renderAll(week, students, groups, posts) {
+  // Instructor note
+  document.getElementById('instructorNote').innerHTML = week.note || '<strong>From Prof. Jackson:</strong> Analysis for this week coming soon.';
+  document.getElementById('pulseTag').textContent = `${week.label} · ${week.rotation}`;
+
+  // Compute class-wide metrics
+  const totalStudents = students.length;
+  const totalPosts = students.reduce((s, r) => s + num(r.TotalPosts), 0);
+  const totalReplies = students.reduce((s, r) => s + num(r.Replies), 0);
+  const silent = students.filter(s => num(s.TotalPosts) === 0).length;
+  const earlyCount = students.filter(s => s.PostedEarly === 'TRUE').length;
+  const activeCount = totalStudents - silent;
+  const earlyPct = activeCount > 0 ? Math.round((earlyCount / totalStudents) * 100) : 0;
+  const totalQuestions = students.reduce((s, r) => s + num(r.QuestionsAsked), 0);
+  const replyRatio = totalPosts > 0 ? (totalReplies / (totalPosts - totalReplies)).toFixed(1) : '0';
+
+  renderPulse(totalPosts, totalReplies, silent, totalStudents, earlyPct, totalQuestions, activeCount);
+  renderGroupCards(groups, students, posts);
+  renderCQI(groups);
+  renderVelocity(posts, groups);
+  renderRoles(students, groups);
+  renderPatterns(week.key);
+}
+
+// ============================================
+// PULSE STRIP
+// ============================================
+function renderPulse(totalPosts, totalReplies, silent, total, earlyPct, questions, active) {
+  const replyPct = totalPosts > 0 ? Math.round((totalReplies / totalPosts) * 100) : 0;
+  const qPerStudent = active > 0 ? (questions / active).toFixed(1) : '0';
+  
+  document.getElementById('pulseGrid').innerHTML = `
+    <div class="pulse-card animate-in delay-1">
+      <div class="big-num">${totalPosts}</div>
+      <div class="label">Total Posts</div>
+      <div class="sub">across all groups</div>
+    </div>
+    <div class="pulse-card animate-in delay-2">
+      <div class="big-num">${totalReplies}</div>
+      <div class="label">Replies</div>
+      <div class="sub">${replyPct}% reply ratio</div>
+    </div>
+    <div class="pulse-card animate-in delay-2">
+      <div class="big-num ${silent > 2 ? 'warn' : ''}">${silent}</div>
+      <div class="label">Silent Members</div>
+      <div class="sub">out of ${total} enrolled</div>
+    </div>
+    <div class="pulse-card animate-in delay-3">
+      <div class="big-num ${earlyPct >= 70 ? 'good' : ''}">${earlyPct}%</div>
+      <div class="label">Posted Early</div>
+      <div class="sub">Mon–Fri window</div>
+    </div>
+    <div class="pulse-card animate-in delay-3">
+      <div class="big-num">${questions}</div>
+      <div class="label">Questions Asked</div>
+      <div class="sub">${qPerStudent} per active student</div>
+    </div>
+  `;
+}
+
+// ============================================
+// GROUP CARDS + NETWORK GRAPHS
+// ============================================
+function renderGroupCards(groups, students, posts) {
+  const container = document.getElementById('groupsRow');
+  container.innerHTML = groups.map(g => {
+    const name = g.GroupName;
+    const color = GROUP_COLORS[name] || '#888';
+    const gradient = GROUP_GRADIENTS[name] || `linear-gradient(135deg, ${color}, ${color})`;
+    const totalPosts = num(g.TotalPosts);
+    const totalReplies = num(g.TotalReplies);
+    const avgWords = Math.round(num(g.AvgWordsPerPost));
+    const crossEng = g.CrossEngagement ? g.CrossEngagement.replace('%','') : '0';
+    const health = getGroupHealth(g);
+    const healthLabel = health === 'healthy' ? 'THRIVING' : (health === 'warning' ? 'QUIET' : 'STRUGGLING');
+    const svgId = 'net_' + name.replace(/\s+/g, '_');
+
+    return `
+      <div class="group-card animate-in delay-3">
+        <div class="group-card-header" style="background: ${gradient};">
+          <h3 style="font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: white; font-weight: 400;">${name}</h3>
+          <span class="health-pill ${health}">${healthLabel}</span>
+        </div>
+        <div class="group-card-body">
+          <div class="group-stats-row">
+            <div class="g-stat"><div class="val">${totalPosts}</div><div class="lbl">Posts</div></div>
+            <div class="g-stat"><div class="val ${totalReplies === 0 ? 'red' : (totalReplies > 10 ? 'green' : '')}">${totalReplies}</div><div class="lbl">Replies</div></div>
+            <div class="g-stat"><div class="val">${avgWords}</div><div class="lbl">Avg Words</div></div>
+            <div class="g-stat"><div class="val ${parseFloat(crossEng) < 20 ? 'red' : (parseFloat(crossEng) >= 40 ? 'green' : '')}">${crossEng}%</div><div class="lbl">Cross-Talk</div></div>
+          </div>
+          <div class="network-section">
+            <div class="network-label">Conversation Network</div>
+            <svg class="network-canvas" id="${svgId}" viewBox="0 0 320 180"></svg>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Draw networks from actual post data
+  groups.forEach(g => {
+    const name = g.GroupName;
+    const svgId = 'net_' + name.replace(/\s+/g, '_');
+    const color = GROUP_COLORS[name] || '#888';
+    const groupStudents = students.filter(s => s.GroupName === name);
+    const groupPosts = posts.filter(p => p.GroupName === name);
+    
+    // Build node list from students (anonymized by role)
+    const nodes = groupStudents.map((s, i) => {
+      const role = s.AssignedRole || '';
+      const abbrev = role ? roleAbbrev(role) : (num(s.TotalPosts) > 0 ? '?' : '—');
+      return {
+        id: s.StudentName,
+        label: abbrev,
+        posts: num(s.TotalPosts)
+      };
+    });
+
+    // Build edge list from replies
+    const edgeMap = {};
+    groupPosts.filter(p => p.PostType === 'reply' && p.ReplyingTo).forEach(p => {
+      const key = p.StudentName + '→' + p.ReplyingTo;
+      edgeMap[key] = (edgeMap[key] || 0) + 1;
+    });
+    const edges = Object.entries(edgeMap).map(([key, weight]) => {
+      const [from, to] = key.split('→');
+      return { from, to, weight };
+    });
+
+    drawNetwork(svgId, nodes, edges, color);
+  });
+}
+
+function getGroupHealth(g) {
+  const crossEng = parseFloat((g.CrossEngagement || '0').replace('%',''));
+  const ghostCount = num(g.StudentsWhoDidNotPost);
+  const totalReplies = num(g.TotalReplies);
+  if (ghostCount >= 2 || (totalReplies === 0 && num(g.TotalPosts) > 3)) return 'critical';
+  if (crossEng >= 40 && ghostCount === 0) return 'healthy';
+  return 'warning';
+}
+
+function roleAbbrev(role) {
+  const map = {
+    'Facilitator': 'Fac',
+    'Cast Mapper': 'CM',
+    'Solution Designer': 'SD',
+    'Message Designer': 'MD',
+    'Delivery Specialist': 'DS',
+    'Cultural Analyst': 'CA',
+  };
+  return map[role] || role.substring(0, 3);
+}
+
+// ============================================
+// NETWORK GRAPH RENDERER
+// ============================================
+function drawNetwork(svgId, nodes, edges, color) {
+  const svg = document.getElementById(svgId);
+  if (!svg) return;
+  const w = 320, h = 180;
+
+  let defs = `<defs>
+    <marker id="arr-${svgId}" viewBox="0 0 10 7" refX="22" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="0 0, 10 3.5, 0 7" fill="${color}" opacity="0.5"/>
+    </marker>
+  </defs>`;
+
+  const cx = w / 2, cy = h / 2, r = 60;
+  const positioned = nodes.map((n, i) => {
+    const angle = (i / nodes.length) * Math.PI * 2 - Math.PI / 2;
+    return { ...n, x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r };
+  });
+
+  let edgeSvg = '';
+  edges.forEach(e => {
+    const from = positioned.find(n => n.id === e.from);
+    const to = positioned.find(n => n.id === e.to);
+    if (from && to && from.id !== to.id) {
+      const weight = Math.min(e.weight || 1, 6);
+      edgeSvg += `<line x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" 
+        stroke="${color}" stroke-width="${0.5 + weight * 0.5}" opacity="${0.15 + weight * 0.08}"
+        marker-end="url(#arr-${svgId})"/>`;
+    }
+  });
+
+  let nodeSvg = '';
+  positioned.forEach(n => {
+    const size = Math.min(8 + (n.posts || 0) * 1.5, 22);
+    const isGhost = n.posts === 0;
+    nodeSvg += `<circle cx="${n.x}" cy="${n.y}" r="${size}" 
+      fill="${isGhost ? '#ccc' : color}" opacity="${isGhost ? 0.3 : 0.85}"
+      stroke="white" stroke-width="2"/>`;
+    if (!isGhost) {
+      nodeSvg += `<text x="${n.x}" y="${n.y + 4}" text-anchor="middle" 
+        font-family="IBM Plex Mono" font-size="9" font-weight="600" fill="white">${n.posts}</text>`;
+    }
+    nodeSvg += `<text x="${n.x}" y="${n.y + size + 12}" text-anchor="middle" 
+      font-family="IBM Plex Mono" font-size="8" fill="#8892a0">${n.label}</text>`;
+  });
+
+  svg.innerHTML = defs + edgeSvg + nodeSvg;
+}
+
+// ============================================
+// CONVERSATION QUALITY INDEX
+// ============================================
+function cqiZone(score) {
+  if (score >= 86) return { label: 'Exemplary', cls: 'exemplary' };
+  if (score >= 66) return { label: 'Strong', cls: 'strong' };
+  if (score >= 46) return { label: 'Building', cls: 'building' };
+  if (score >= 21) return { label: 'Developing', cls: 'developing' };
+  return { label: 'Getting Started', cls: 'starting' };
+}
+
+function roleZone(score) {
+  if (score >= 86) return 'Strong';
+  if (score >= 66) return 'Solid';
+  if (score >= 41) return 'Developing';
+  if (score >= 16) return 'Emerging';
+  return 'Not Yet';
+}
+
+function renderCQI(groups) {
+  const container = document.getElementById('cqiRow');
+  container.innerHTML = groups.map(g => {
+    const name = g.GroupName;
+    const color = GROUP_COLORS[name] || '#888';
+    const svgId = 'cqi_' + name.replace(/\s+/g, '_');
+    
+    const totalPosts = num(g.TotalPosts);
+    const totalReplies = num(g.TotalReplies);
+    const mainPosts = num(g.TotalMainPosts);
+    const threadDepth = parseFloat(g.AvgThreadDepth || 0);
+    const spread = parseFloat(g.ParticipationSpread || 0);
+    const crossEng = parseFloat((g.CrossEngagement || '0').replace('%',''));
+    const ghostCount = num(g.StudentsWhoDidNotPost);
+    const totalStudents = num(g.TotalStudents);
+    const activeStudents = totalStudents - ghostCount;
+
+    // Score components (each 0-25)
+    const replyScore = Math.min(25, totalPosts > 0 ? (totalReplies / totalPosts) * 40 : 0);
+    const depthScore = Math.min(25, threadDepth * 12);
+    // Balance: penalize spread among ACTIVE students, lighter ghost penalty
+    const balanceScore = Math.max(0, 25 - spread * 3 - ghostCount * 3);
+    const crossScore = Math.min(25, crossEng * 0.5);
+    
+    const score = Math.round(replyScore + depthScore + balanceScore + crossScore);
+    const zone = cqiZone(score);
+
+    return `
+      <div class="cqi-card animate-in delay-4">
+        <svg class="cqi-ring-container" id="${svgId}" viewBox="0 0 130 130"></svg>
+        <div class="cqi-label">${name}</div>
+        <span class="cqi-zone ${zone.cls}">${zone.label}</span>
+        <div class="cqi-breakdown">
+          Reply ratio: <span>${totalReplies}:${mainPosts}</span><br>
+          Thread depth: <span>${threadDepth.toFixed(1)}</span><br>
+          Active members: <span>${activeStudents}/${totalStudents}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Draw rings
+  groups.forEach(g => {
+    const name = g.GroupName;
+    const color = GROUP_COLORS[name] || '#888';
+    const svgId = 'cqi_' + name.replace(/\s+/g, '_');
+    
+    const totalPosts = num(g.TotalPosts);
+    const totalReplies = num(g.TotalReplies);
+    const threadDepth = parseFloat(g.AvgThreadDepth || 0);
+    const spread = parseFloat(g.ParticipationSpread || 0);
+    const crossEng = parseFloat((g.CrossEngagement || '0').replace('%',''));
+    const ghostCount = num(g.StudentsWhoDidNotPost);
+
+    const replyScore = Math.min(25, totalPosts > 0 ? (totalReplies / totalPosts) * 40 : 0);
+    const depthScore = Math.min(25, threadDepth * 12);
+    const balanceScore = Math.max(0, 25 - spread * 3 - ghostCount * 3);
+    const crossScore = Math.min(25, crossEng * 0.5);
+    const score = Math.round(replyScore + depthScore + balanceScore + crossScore);
+
+    drawCQIRing(svgId, score, color);
+  });
+}
+
+function drawCQIRing(svgId, score, color) {
+  const svg = document.getElementById(svgId);
+  if (!svg) return;
+  const cx = 65, cy = 65, r = 52;
+  const circumference = 2 * Math.PI * r;
+  const offset = circumference - (score / 100) * circumference;
+  
+  svg.innerHTML = `
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#e8e3d9" stroke-width="10"/>
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="10"
+      stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}"
+      stroke-linecap="round" transform="rotate(-90 ${cx} ${cy})"
+      class="cqi-ring-anim" data-target="${offset}"/>
+  `;
+  
+  // Animate
+  setTimeout(() => {
+    svg.querySelector('.cqi-ring-anim').style.transition = 'stroke-dashoffset 1.8s cubic-bezier(0.16, 1, 0.3, 1)';
+    svg.querySelector('.cqi-ring-anim').style.strokeDashoffset = offset;
+  }, 600);
+}
+
+// ============================================
+// ENGAGEMENT VELOCITY TIMELINE
+// ============================================
+function renderVelocity(posts, groups) {
+  const svg = document.getElementById('velocityChart');
+  if (!posts.length) { svg.innerHTML = '<text x="560" y="110" text-anchor="middle" fill="#8892a0" font-family="IBM Plex Sans">No post data available</text>'; return; }
+
+  const w = 1120, h = 220;
+  const pad = { top: 20, right: 20, bottom: 40, left: 50 };
+  const plotW = w - pad.left - pad.right;
+  const plotH = h - pad.top - pad.bottom;
+
+  // Get date range from posts
+  const allDates = posts.map(p => p.Date).filter(Boolean).sort();
+  const startDate = new Date(allDates[0]);
+  const endDate = new Date(allDates[allDates.length - 1]);
+  
+  // Build day array
+  const days = [];
+  const d = new Date(startDate);
+  while (d <= endDate) {
+    days.push(d.toISOString().split('T')[0]);
+    d.setDate(d.getDate() + 1);
+  }
+  if (days.length < 2) return;
+
+  // Count posts per day per group
+  const groupNames = [...new Set(groups.map(g => g.GroupName))];
+  const data = {};
+  groupNames.forEach(gn => {
+    data[gn] = days.map(day => posts.filter(p => p.GroupName === gn && p.Date === day).length);
+  });
+
+  const maxVal = Math.max(1, ...Object.values(data).flat());
+  let svgContent = '';
+
+  // Grid lines
+  const gridSteps = 4;
+  for (let i = 0; i <= gridSteps; i++) {
+    const y = pad.top + (plotH / gridSteps) * i;
+    const val = Math.round(maxVal - (maxVal / gridSteps) * i);
+    svgContent += `<line x1="${pad.left}" y1="${y}" x2="${w - pad.right}" y2="${y}" stroke="#e8e3d9" stroke-width="1"/>`;
+    svgContent += `<text x="${pad.left - 8}" y="${y + 4}" text-anchor="end" font-family="IBM Plex Mono" font-size="9" fill="#8892a0">${val}</text>`;
+  }
+
+  // Day labels and weekend shading
+  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  days.forEach((day, i) => {
+    const x = pad.left + (i / (days.length - 1)) * plotW;
+    const dt = new Date(day + 'T12:00:00');
+    const dow = dt.getDay();
+    const label = dayNames[dow] + ' ' + (dt.getMonth()+1) + '/' + dt.getDate();
+    
+    // Weekend shading
+    if (dow === 0 || dow === 6) {
+      const segW = plotW / (days.length - 1);
+      svgContent += `<rect x="${x - segW/2}" y="${pad.top}" width="${segW}" height="${plotH}" fill="#f0ebe0" rx="2"/>`;
+    }
+    
+    svgContent += `<line x1="${x}" y1="${pad.top}" x2="${x}" y2="${h - pad.bottom}" stroke="#e8e3d9" stroke-width="0.5" opacity="0.5"/>`;
+    if (days.length <= 16 || i % 2 === 0) {
+      svgContent += `<text x="${x}" y="${h - pad.bottom + 18}" text-anchor="middle" font-family="IBM Plex Mono" font-size="${days.length > 12 ? 7 : 8}" fill="#8892a0">${label}</text>`;
+    }
+  });
+
+  // Draw lines per group
+  groupNames.forEach(gn => {
+    const color = GROUP_COLORS[gn] || '#888';
+    const values = data[gn];
+    const points = values.map((v, i) => ({
+      x: pad.left + (i / (days.length - 1)) * plotW,
+      y: pad.top + plotH - (v / maxVal) * plotH
+    }));
+
+    // Area fill
+    let areaD = `M ${points[0].x} ${pad.top + plotH}`;
+    points.forEach((p, i) => {
+      if (i === 0) areaD += ` L ${p.x} ${p.y}`;
+      else {
+        const cp1x = points[i-1].x + (p.x - points[i-1].x) * 0.4;
+        const cp2x = p.x - (p.x - points[i-1].x) * 0.4;
+        areaD += ` C ${cp1x} ${points[i-1].y} ${cp2x} ${p.y} ${p.x} ${p.y}`;
+      }
+    });
+    areaD += ` L ${points[points.length-1].x} ${pad.top + plotH} Z`;
+    svgContent += `<path d="${areaD}" fill="${color}" opacity="0.08"/>`;
+
+    // Line
+    let pathD = `M ${points[0].x} ${points[0].y}`;
+    points.forEach((p, i) => {
+      if (i === 0) return;
+      const cp1x = points[i-1].x + (p.x - points[i-1].x) * 0.4;
+      const cp2x = p.x - (p.x - points[i-1].x) * 0.4;
+      pathD += ` C ${cp1x} ${points[i-1].y} ${cp2x} ${p.y} ${p.x} ${p.y}`;
+    });
+    svgContent += `<path d="${pathD}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linecap="round"/>`;
+
+    // Dots
+    points.forEach((p, i) => {
+      if (values[i] > 0) {
+        svgContent += `<circle cx="${p.x}" cy="${p.y}" r="4" fill="${color}" stroke="white" stroke-width="1.5"/>`;
+      }
+    });
+  });
+
+  // Legend
+  const legendX = w - 80 * groupNames.length;
+  groupNames.forEach((gn, i) => {
+    const color = GROUP_COLORS[gn] || '#888';
+    const x = legendX + i * 80;
+    svgContent += `<circle cx="${x}" cy="${pad.top + 6}" r="5" fill="${color}"/>`;
+    svgContent += `<text x="${x + 10}" y="${pad.top + 10}" font-family="IBM Plex Mono" font-size="10" fill="#5a6472">${gn}</text>`;
+  });
+
+  svg.innerHTML = svgContent;
+}
+
+// ============================================
+// ROLE FULFILLMENT
+// ============================================
+function renderRoles(students, groups) {
+  const container = document.getElementById('roleGrid');
+  const groupNames = [...new Set(groups.map(g => g.GroupName))];
+  
+  container.innerHTML = groupNames.map(gn => {
+    const groupStudents = students.filter(s => s.GroupName === gn);
+    const color = GROUP_COLORS[gn] || '#888';
+    
+    const roleData = groupStudents.map(s => {
+      const role = s.AssignedRole || '(absent)';
+      const posted = num(s.TotalPosts) > 0;
+      const namedRole = s.RoleExplicitlyNamed === 'TRUE';
+      const keywords = num(s.RoleKeywordsUsed);
+      const engaged = num(s.UniqueStudentsEngaged);
+      
+      // Rebalanced: keywords (40%) + engagement (25%) + participation (20%) + naming (15%)
+      let score = 0;
+      if (!posted) { score = 0; }
+      else {
+        score += 20; // participated
+        score += Math.min(40, keywords * 8); // role-relevant language (doing the work)
+        score += Math.min(25, engaged * 8); // building with peers
+        if (namedRole) score += 15; // bonus for signaling role
+      }
+      
+      return { name: role, fulfilled: Math.min(100, score) };
+    });
+
+    const barsHtml = roleData.map(r => {
+      const zone = roleZone(r.fulfilled);
+      const barColor = r.fulfilled >= 66 ? color : (r.fulfilled >= 41 ? '#c4a052' : (r.fulfilled >= 16 ? '#8892a0' : '#b83a3a'));
+      return `
+        <div class="role-bar-row">
+          <div class="role-bar-label">${r.name}</div>
+          <div class="role-bar-track">
+            <div class="role-bar-fill" style="width: 0%; background: ${barColor};" data-target="${r.fulfilled}%"></div>
+          </div>
+          <div class="role-zone" style="color: ${barColor};">${zone}</div>
+        </div>
+      `;
+    }).join('');
+
+    return `
+      <div class="role-card animate-in delay-5">
+        <h4>${gn}</h4>
+        ${barsHtml}
+      </div>
+    `;
+  }).join('');
+
+  // Animate bars
+  setTimeout(() => {
+    document.querySelectorAll('.role-bar-fill').forEach(bar => {
+      const target = bar.dataset.target;
+      setTimeout(() => { bar.style.width = target; }, 100);
+    });
+  }, 400);
+}
+
+// ============================================
+// PATTERNS
+// ============================================
+function renderPatterns(weekKey) {
+  const container = document.getElementById('patternsSection');
+  const patterns = PATTERNS[weekKey];
+  
+  if (!patterns || patterns.length === 0) {
+    container.innerHTML = '<p style="color: rgba(244,241,235,0.6); font-style: italic;">Pattern analysis for this week coming soon.</p>';
+    return;
+  }
+
+  container.innerHTML = patterns.map(p => `
+    <div class="pattern-item">
+      <div class="pattern-icon ${p.icon}">${p.icon === 'insight' ? '💡' : (p.icon === 'warning' ? '⚠️' : '🔍')}</div>
+      <div class="pattern-text">${p.text}</div>
+    </div>
+  `).join('');
+}
+
+// ============================================
+// UTILITIES
+// ============================================
+function num(val) { return parseInt(val) || 0; }
+
+function toggleInfo(id) {
+  const panel = document.getElementById(id);
+  if (panel) panel.classList.toggle('open');
+}
+
+// ============================================
+// INITIALIZATION
+// ============================================
+function init() {
+  // Build week nav
+  const nav = document.getElementById('weekNav');
+  nav.innerHTML = WEEKS.map(w => 
+    `<button class="week-btn ${w.available ? '' : 'disabled'}" data-week="${w.key}">${w.label}</button>`
+  ).join('');
+
+  nav.querySelectorAll('.week-btn:not(.disabled)').forEach(btn => {
+    btn.addEventListener('click', () => loadWeek(btn.dataset.week));
+  });
+
+  // Load most recent available week
+  const latest = [...WEEKS].reverse().find(w => w.available);
+  if (latest) loadWeek(latest.key);
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
