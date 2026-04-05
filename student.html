@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENGL 325 Project Pulse -- Student View</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        header {
+            text-align: center; margin-bottom: 24px; padding: 20px;
+            background: rgba(255,255,255,0.04); border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        h1 { font-size: 1.6rem; color: #64ffda; margin-bottom: 6px; font-weight: 600; letter-spacing: -0.5px; }
+        .subtitle { color: #8892b0; font-size: 0.85rem; }
+
+        /* Timeline */
+        .timeline {
+            display: flex; gap: 4px; margin-bottom: 24px; padding: 16px;
+            background: rgba(255,255,255,0.04); border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+            overflow-x: auto;
+        }
+        .timeline-week {
+            flex: 1; min-width: 120px; padding: 12px 10px;
+            border-radius: 8px; text-align: center;
+            transition: all 0.3s; cursor: pointer;
+            border: 1.5px solid transparent;
+        }
+        .timeline-week:hover { background: rgba(255,255,255,0.04); }
+        .timeline-week.current {
+            background: rgba(100,255,218,0.08);
+            border-color: rgba(100,255,218,0.3);
+        }
+        .timeline-week.completed { opacity: 1; }
+        .timeline-week.upcoming { opacity: 0.4; }
+        .timeline-week .wk-label {
+            font-size: 0.72rem; font-weight: 600; color: #64ffda;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .timeline-week .wk-title {
+            font-size: 0.78rem; color: #ccd6f6; margin-top: 4px;
+            line-height: 1.3;
+        }
+        .timeline-week .wk-status {
+            margin-top: 6px; font-size: 0.68rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .wk-status.submitted { color: #4ade80; }
+        .wk-status.due { color: #fbbf24; }
+        .wk-status.upcoming-label { color: #6b7280; }
+
+        /* Team cards */
+        .teams-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 16px; margin-bottom: 24px;
+        }
+
+        .team-card {
+            background: rgba(255,255,255,0.04); border-radius: 12px;
+            padding: 20px; border: 1px solid rgba(255,255,255,0.08);
+            transition: border-color 0.3s;
+        }
+        .team-card:hover { border-color: rgba(100,255,218,0.2); }
+
+        .team-card-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 14px; padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .team-card-name { font-size: 1.05rem; font-weight: 600; color: #ccd6f6; }
+        .team-card-badge {
+            padding: 3px 10px; border-radius: 20px; font-size: 0.7rem;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .badge-on-time { background: rgba(74,222,128,0.15); color: #4ade80; }
+        .badge-late { background: rgba(251,191,36,0.15); color: #fbbf24; }
+        .badge-missing { background: rgba(248,113,113,0.15); color: #f87171; }
+        .badge-pending { background: rgba(255,255,255,0.06); color: #6b7280; }
+
+        /* Progress tracker */
+        .progress-bar-container {
+            margin: 12px 0; display: flex; gap: 4px;
+        }
+        .progress-segment {
+            flex: 1; height: 8px; border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .seg-complete { background: #4ade80; }
+        .seg-current { background: #64ffda; animation: pulse-seg 2s infinite; }
+        .seg-upcoming { background: rgba(255,255,255,0.08); }
+        .seg-late { background: #fbbf24; }
+        .seg-missing { background: #f87171; }
+
+        @keyframes pulse-seg {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Health indicator */
+        .health-row {
+            display: flex; align-items: center; gap: 10px;
+            margin: 10px 0; padding: 10px;
+            background: rgba(255,255,255,0.03); border-radius: 8px;
+        }
+        .health-dot {
+            width: 12px; height: 12px; border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .health-green { background: #4ade80; box-shadow: 0 0 8px rgba(74,222,128,0.4); }
+        .health-yellow { background: #fbbf24; box-shadow: 0 0 8px rgba(251,191,36,0.4); }
+        .health-red { background: #f87171; box-shadow: 0 0 8px rgba(248,113,113,0.4); }
+        .health-text { font-size: 0.82rem; color: #a8b2d1; }
+
+        /* Deliverable checklist */
+        .checklist { margin-top: 12px; }
+        .check-item {
+            display: flex; align-items: center; gap: 8px;
+            padding: 5px 0; font-size: 0.8rem;
+        }
+        .check-icon { width: 18px; text-align: center; font-size: 0.85rem; }
+        .check-label { color: #a8b2d1; }
+        .check-done { color: #4ade80; }
+        .check-pending { color: #6b7280; }
+
+        /* Week detail section */
+        .week-detail {
+            background: rgba(255,255,255,0.04); border-radius: 12px;
+            padding: 20px; margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .week-detail h2 {
+            font-size: 1.1rem; color: #64ffda; margin-bottom: 4px; font-weight: 600;
+        }
+        .week-detail .detail-sub {
+            font-size: 0.82rem; color: #8892b0; margin-bottom: 16px;
+        }
+
+        .detail-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+        }
+        @media (max-width: 700px) { .detail-grid { grid-template-columns: 1fr; } }
+
+        .detail-box {
+            background: rgba(255,255,255,0.03); border-radius: 8px;
+            padding: 14px; border: 1px solid rgba(255,255,255,0.05);
+        }
+        .detail-box h4 {
+            font-size: 0.75rem; font-weight: 600; color: #64ffda;
+            text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px;
+        }
+        .detail-box p { font-size: 0.82rem; color: #a8b2d1; line-height: 1.5; }
+
+        /* Footer note */
+        .footer-note {
+            text-align: center; padding: 16px; margin-top: 20px;
+            font-size: 0.75rem; color: #6b7280;
+        }
+
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-in { animation: fadeSlideIn 0.3s ease forwards; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <header>
+        <h1>Project Pulse</h1>
+        <div class="subtitle">ENGL 325 · AI Governance Group Project · Spring 2026</div>
+    </header>
+
+    <!-- TIMELINE -->
+    <div class="timeline" id="timeline"></div>
+
+    <!-- CURRENT WEEK DETAIL -->
+    <div class="week-detail animate-in" id="weekDetail"></div>
+
+    <!-- TEAM CARDS -->
+    <div class="teams-grid" id="teamsGrid"></div>
+
+    <div class="footer-note">
+        Project Pulse tracks team-level submission status and project progress. Individual performance is assessed separately by the instructor.
+    </div>
+
+</div>
+
+<script>
+// ============================================================
+// DATA -- Populated from project_assessment_WK[XX].json
+// Team-level only. NO individual student data.
+// ============================================================
+
+const WEEKS = {
+    WK09: { label: "WK09", title: "Project Kickoff", status: "complete", due: "Mar 22" },
+    WK10: { label: "WK10", title: "System Definition Brief", status: "complete", due: "Mar 29" },
+    WK11: { label: "WK11", title: "Risk & Harm Matrix + Narrative", status: "current", due: "Apr 5" },
+    WK12: { label: "WK12", title: "Model Limitations & Bias Disclosure", status: "upcoming", due: "Apr 12" },
+    WK13: { label: "WK13", title: "Governance & Oversight Plan", status: "upcoming", due: "Apr 19" },
+    WK14: { label: "WK14", title: "Executive Decision Memo", status: "upcoming", due: "Apr 26" },
+    WK15: { label: "WK15", title: "Final Report + Role Reflection", status: "upcoming", due: "May 1" },
+    WK16: { label: "WK16", title: "Oral Defense", status: "upcoming", due: "Finals" }
+};
+
+const TEAMS = {
+    team1: {
+        name: "Governance Alpha",
+        members: 6,
+        submissions: {
+            WK09: "on-time",
+            WK10: "on-time",
+            WK11: "pending"
+        },
+        health: {
+            WK10: { level: "green", message: "Strong first submission. System definition is clear and well-scoped." },
+            WK11: { level: "green", message: "Deliverable in progress. Breakout room activity is strong." }
+        }
+    },
+    team2: {
+        name: "Lakeside Review Board",
+        members: 5,
+        submissions: {
+            WK09: "on-time",
+            WK10: "on-time",
+            WK11: "pending"
+        },
+        health: {
+            WK10: { level: "yellow", message: "Solid submission with room for improvement on stakeholder mapping. Review instructor feedback carefully before Week 11." },
+            WK11: { level: "green", message: "Deliverable in progress." }
+        }
+    },
+    team3: {
+        name: "Risk Assessment Group",
+        members: 5,
+        submissions: {
+            WK09: "on-time",
+            WK10: "late",
+            WK11: "pending"
+        },
+        health: {
+            WK10: { level: "yellow", message: "Submitted late. Key areas flagged in instructor feedback -- review before building Week 11 on Week 10 foundations." },
+            WK11: { level: "green", message: "Deliverable in progress. Team activity improving." }
+        }
+    }
+};
+
+// What each week requires -- student-facing checklist
+const WEEK_REQUIREMENTS = {
+    WK09: {
+        title: "Project Kickoff",
+        description: "Team formation, role assignment, and scenario confirmation. Credit/No Credit -- complete and on time, or not.",
+        sections: [
+            "Team Name -- professional, not a fantasy football league",
+            "Team Roster -- all members with Ferris email",
+            "Role Assignments -- who leads which deliverable (Weeks 10-14), one per member",
+            "Scenario Confirmation -- 2-3 sentences proving you read and understood the HarborRank/Lakeside context",
+            "Team Contact Plan -- channel, meeting cadence, backup method"
+        ],
+        format: "Use the Project Kickoff Document template. Submit to Canvas by end of Week 9."
+    },
+    WK10: {
+        title: "System Definition Brief",
+        description: "Define exactly what HarborRank is, who uses it, who it affects, and what it does not do -- inside Lakeside's specific context.",
+        sections: [
+            "System Purpose -- the specific bottleneck, workflow, and organizational benefit",
+            "Decision Authority -- recommendation vs. decision, and who overrides",
+            "Users vs. Affected Parties -- map all groups (they're not the same)",
+            "Data Inputs -- what HarborRank needs to function",
+            "Explicit Exclusions -- what this system does NOT do"
+        ],
+        format: "2 pages, professional business format, 12pt, single-spaced"
+    },
+    WK11: {
+        title: "Risk & Harm Matrix + Narrative",
+        description: "Identify what could actually go wrong with HarborRank at Lakeside. Real, credible, specific risks with traceable causal chains.",
+        sections: [
+            "Risk Matrix -- one row per risk, all seven columns, all four categories",
+            "Priority Narrative -- 4-5 highest-priority risks analyzed in depth",
+            "Causal chains in every matrix entry -- trace HOW harm happens",
+            "Detectability assessed for each risk",
+            "Risks traceable back to your Week 10 System Definition"
+        ],
+        format: "Table + 2 pages narrative, professional format"
+    },
+    WK12: {
+        title: "Model Limitations & Bias Disclosure",
+        description: "Document everything HarborRank can't do, where it'll fail, and what biases it carries. Write this assuming it'll be quoted in court.",
+        sections: [
+            "Known Limitations -- specific capability gaps",
+            "Likely Failure Modes -- what failure looks like in practice",
+            "Bias Vectors -- training data, design choices, and deployment context (all three)",
+            "Required Human Overrides -- triggers and authority chain",
+            "Explicit Non-Use Cases -- hard lines, not suggestions"
+        ],
+        format: "3-5 pages, APA style, at least one integrated visual"
+    },
+    WK13: {
+        title: "Governance & Oversight Plan",
+        description: "Design the structure that makes your analysis enforceable. Who owns this on Monday morning?",
+        sections: [
+            "Ownership and Authority -- named roles, not departments",
+            "Monitoring Plan -- metrics, frequency, who runs each check",
+            "Trigger Conditions -- review, pause, and shutdown thresholds",
+            "Vendor Management -- audit rights, SLAs, non-compliance consequences",
+            "Sunset Provisions -- when Phase 1 ends (planned or forced)"
+        ],
+        format: "3-5 pages, APA style, at least one integrated visual, within $75K budget"
+    },
+    WK14: {
+        title: "Executive Decision Memo",
+        description: "Make the call. Proceed, Proceed with Conditions, Delay, or Cancel -- and defend it.",
+        sections: [
+            "Recommendation -- stated in the first page, one of four options",
+            "Decision Rationale -- specific findings from Weeks 10-13",
+            "Tradeoff Analysis -- what Lakeside gains and gives up",
+            "Risk if Not Acted Upon -- realistic downside of inaction",
+            "Conditions or Next Steps -- specific and time-bound"
+        ],
+        format: "3-5 pages, APA style, memo header (To/From/Date/Re:), at least one visual"
+    },
+    WK15: {
+        title: "Final Report + Role Reflection",
+        description: "Compile and revise all five deliverables into a cohesive 8-10 page AI Governance Report. Plus individual Role Reflection Memo.",
+        sections: [
+            "Executive Summary -- standalone overview of the full report and recommendation",
+            "Integrated Deliverables -- WK10-14 revised for coherence, not just stapled together",
+            "Global Coherence -- cross-references between sections, consistent terminology, no contradictions",
+            "Professional Formatting -- table of contents, section numbering, page numbers, consistent headings",
+            "Role Reflection Memo (individual, separate submission) -- your specific contribution, team dynamics, transfer insights"
+        ],
+        format: "8-10 pages (team report, 25 pts) + 1 page Role Reflection Memo (individual, feeds Professionalism grade). APA style."
+    },
+    WK16: {
+        title: "Oral Defense",
+        description: "10-minute team presentation + 5 minutes hostile Q&A. Defend your recommendation to skeptical executives.",
+        sections: [
+            "Recommendation Clarity -- state it within the first two minutes, one of the four options",
+            "Evidence Grounding -- cite your own deliverables to support every major claim",
+            "Hostile Q&A Preparation -- anticipate challenges to your weakest points",
+            "Team Coherence -- speak with one voice, hand off smoothly, no contradictions between members"
+        ],
+        format: "10 min presentation + 5 min Q&A. Team grade (12 pts). No slides required but visual aids permitted."
+    }
+};
+
+let currentWeek = 'WK11';
+
+// ============================================================
+// RENDERING
+// ============================================================
+
+function init() {
+    renderTimeline();
+    renderWeekDetail();
+    renderTeams();
+}
+
+function selectWeek(wk) {
+    currentWeek = wk;
+    renderTimeline();
+    renderWeekDetail();
+    renderTeams();
+}
+
+function renderTimeline() {
+    document.getElementById('timeline').innerHTML = Object.entries(WEEKS).map(([wk, info]) => {
+        const isSelected = wk === currentWeek;
+        const statusLabel = info.status === 'complete' ? '<span class="wk-status submitted">Complete</span>' :
+                           info.status === 'current' ? '<span class="wk-status due">Due ' + info.due + '</span>' :
+                           '<span class="wk-status upcoming-label">' + info.due + '</span>';
+        // Visual class: 'selected' follows click, status classes are informational only
+        const opacityClass = info.status === 'upcoming' && !isSelected ? 'upcoming' : '';
+
+        return `<div class="timeline-week ${isSelected ? 'current' : ''} ${opacityClass}" onclick="selectWeek('${wk}')">
+            <div class="wk-label">${info.label}</div>
+            <div class="wk-title">${info.title}</div>
+            ${statusLabel}
+        </div>`;
+    }).join('');
+}
+
+function renderWeekDetail() {
+    const week = WEEKS[currentWeek];
+    const req = WEEK_REQUIREMENTS[currentWeek];
+
+    if (!req) {
+        document.getElementById('weekDetail').innerHTML = `
+            <h2>${week.title}</h2>
+            <div class="detail-sub">${week.label} · Due ${week.due}</div>
+            <p style="color:#8892b0;font-size:0.85rem">Details for this week are not yet available.</p>
+        `;
+        return;
+    }
+
+    const checklistHtml = req.sections.map(s =>
+        `<div class="check-item"><span class="check-icon check-pending">○</span><span class="check-label">${s}</span></div>`
+    ).join('');
+
+    document.getElementById('weekDetail').innerHTML = `
+        <h2>${req.title}</h2>
+        <div class="detail-sub">${week.label} · Due ${week.due} · ${req.format}</div>
+        <div class="detail-grid">
+            <div class="detail-box">
+                <h4>What This Week Requires</h4>
+                <p>${req.description}</p>
+            </div>
+            <div class="detail-box">
+                <h4>Required Sections</h4>
+                <div class="checklist">${checklistHtml}</div>
+            </div>
+        </div>
+    `;
+}
+
+function renderTeams() {
+    document.getElementById('teamsGrid').innerHTML = Object.entries(TEAMS).map(([teamId, team]) => {
+        // Progress bar segments
+        const deliverableWeeks = ['WK09', 'WK10', 'WK11', 'WK12', 'WK13', 'WK14', 'WK15'];
+        const progressHtml = deliverableWeeks.map(wk => {
+            const sub = team.submissions[wk];
+            let cls = 'seg-upcoming';
+            if (sub === 'on-time') cls = 'seg-complete';
+            else if (sub === 'late') cls = 'seg-late';
+            else if (sub === 'missing') cls = 'seg-missing';
+            else if (WEEKS[wk]?.status === 'current') cls = 'seg-current';
+            return `<div class="progress-segment ${cls}" title="${wk}: ${sub || WEEKS[wk]?.status || 'upcoming'}"></div>`;
+        }).join('');
+
+        // Submission badge for current week
+        const currentSub = team.submissions[currentWeek];
+        let badgeClass = 'badge-pending';
+        let badgeLabel = 'In Progress';
+        if (currentSub === 'on-time') { badgeClass = 'badge-on-time'; badgeLabel = 'Submitted'; }
+        else if (currentSub === 'late') { badgeClass = 'badge-late'; badgeLabel = 'Late'; }
+        else if (currentSub === 'missing') { badgeClass = 'badge-missing'; badgeLabel = 'Missing'; }
+
+        // Health indicator
+        const health = team.health[currentWeek];
+        let healthHtml = '';
+        if (health) {
+            const dotClass = health.level === 'green' ? 'health-green' : health.level === 'yellow' ? 'health-yellow' : 'health-red';
+            healthHtml = `<div class="health-row">
+                <div class="health-dot ${dotClass}"></div>
+                <div class="health-text">${health.message}</div>
+            </div>`;
+        }
+
+        // Completed count
+        const completed = Object.values(team.submissions).filter(s => s === 'on-time' || s === 'late').length;
+        const total = deliverableWeeks.length;
+
+        return `
+        <div class="team-card animate-in">
+            <div class="team-card-header">
+                <span class="team-card-name">${team.name}</span>
+                <span class="team-card-badge ${badgeClass}">${badgeLabel}</span>
+            </div>
+
+            <div style="font-size:0.78rem;color:#8892b0;margin-bottom:10px">
+                ${team.members} members · ${completed}/${total} deliverables submitted
+            </div>
+
+            <div class="progress-bar-container">${progressHtml}</div>
+
+            ${healthHtml}
+        </div>`;
+    }).join('');
+}
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENGL 325 Project Pulse -- Instructor View</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        .container { max-width: 1600px; margin: 0 auto; }
+
+        /* ---- HEADER ---- */
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        h1 { font-size: 1.8rem; color: #64ffda; margin-bottom: 6px; font-weight: 600; letter-spacing: -0.5px; }
+        .subtitle { color: #8892b0; font-size: 0.9rem; }
+
+        /* ---- VIEW TABS ---- */
+        .view-tabs {
+            display: flex; gap: 8px; margin-bottom: 20px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 10px; padding: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .view-tab {
+            padding: 10px 20px; border: none; background: transparent;
+            color: #8892b0; border-radius: 8px; cursor: pointer;
+            font-family: inherit; font-size: 0.85rem; font-weight: 500;
+            transition: all 0.25s;
+        }
+        .view-tab:hover { color: #ccd6f6; background: rgba(255,255,255,0.05); }
+        .view-tab.active { background: rgba(100,255,218,0.12); color: #64ffda; }
+
+        /* ---- WEEK SELECTOR ---- */
+        .week-selector {
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px; padding: 16px 20px; margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+        }
+        .week-selector label { color: #64ffda; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .week-btn {
+            padding: 8px 16px; border: 1.5px solid rgba(100,255,218,0.3);
+            background: transparent; color: #64ffda; border-radius: 6px;
+            cursor: pointer; font-family: inherit; font-size: 0.82rem;
+            transition: all 0.2s; font-weight: 500;
+        }
+        .week-btn:hover { background: rgba(100,255,218,0.08); border-color: #64ffda; }
+        .week-btn.active { background: #64ffda; color: #1a1a2e; font-weight: 600; }
+        .week-btn.no-data { opacity: 0.35; cursor: not-allowed; }
+
+        /* ---- SUMMARY STRIP ---- */
+        .summary-strip {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px; margin-bottom: 20px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.04);
+            border-radius: 10px; padding: 16px; text-align: center;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .stat-card .val { font-size: 2rem; font-weight: 700; color: #64ffda; font-family: 'IBM Plex Mono', monospace; }
+        .stat-card .lbl { font-size: 0.75rem; color: #8892b0; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-card.warn { border-left: 3px solid #fbbf24; }
+        .stat-card.danger { border-left: 3px solid #f87171; }
+        .stat-card.good { border-left: 3px solid #4ade80; }
+
+        /* ---- TEAM OVERVIEW GRID ---- */
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+        @media (max-width: 1100px) { .team-grid { grid-template-columns: 1fr; } }
+
+        .team-card {
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px; padding: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: border-color 0.3s;
+        }
+        .team-card:hover { border-color: rgba(100,255,218,0.3); }
+
+        .team-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 16px; padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .team-name { font-size: 1.1rem; font-weight: 600; color: #ccd6f6; }
+        .team-status {
+            padding: 4px 10px; border-radius: 20px; font-size: 0.72rem;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .status-on-time { background: rgba(74,222,128,0.15); color: #4ade80; }
+        .status-late { background: rgba(251,191,36,0.15); color: #fbbf24; }
+        .status-missing { background: rgba(248,113,113,0.15); color: #f87171; }
+
+        /* Heat map cells */
+        .criteria-grid { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: center; }
+        .criteria-label { font-size: 0.78rem; color: #a8b2d1; }
+        .heat-bar {
+            width: 80px; height: 18px; border-radius: 3px;
+            background: rgba(255,255,255,0.06); position: relative; overflow: hidden;
+        }
+        .heat-fill {
+            position: absolute; top: 0; left: 0; height: 100%; border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+        .heat-4 { background: #4ade80; }
+        .heat-3 { background: #64ffda; }
+        .heat-2 { background: #fbbf24; }
+        .heat-1 { background: #f87171; }
+        .heat-0 { background: #6b7280; }
+
+        /* Tangible data points */
+        .tangible-row {
+            display: flex; align-items: center; gap: 8px;
+            padding: 5px 0; font-size: 0.78rem;
+        }
+        .tangible-icon { font-size: 0.9rem; width: 20px; text-align: center; }
+        .tangible-label { color: #a8b2d1; flex: 1; }
+        .tangible-val { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; font-weight: 500; }
+        .val-yes { color: #4ade80; }
+        .val-partial { color: #fbbf24; }
+        .val-no { color: #f87171; }
+        .val-na { color: #6b7280; }
+
+        .section-label {
+            font-size: 0.72rem; font-weight: 600; color: #64ffda;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin: 14px 0 8px; padding-bottom: 4px;
+            border-bottom: 1px solid rgba(100,255,218,0.15);
+        }
+
+        /* Cross-cutting flags */
+        .flag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+        .flag-tag {
+            padding: 3px 8px; border-radius: 4px; font-size: 0.7rem;
+            font-weight: 500; letter-spacing: 0.3px;
+        }
+        .flag-ai-concern { background: rgba(248,113,113,0.2); color: #f87171; }
+        .flag-ai-likely { background: rgba(74,222,128,0.15); color: #4ade80; }
+        .flag-ai-uncertain { background: rgba(251,191,36,0.15); color: #fbbf24; }
+        .flag-continuity-yes { background: rgba(100,255,218,0.12); color: #64ffda; }
+        .flag-continuity-no { background: rgba(248,113,113,0.2); color: #f87171; }
+        .flag-writing-exec { background: rgba(100,255,218,0.12); color: #64ffda; }
+        .flag-writing-rough { background: rgba(251,191,36,0.15); color: #fbbf24; }
+
+        /* ---- INDIVIDUAL STUDENT VIEW ---- */
+        .student-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+
+        .student-card {
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px; padding: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s;
+        }
+        .student-card:hover { border-color: rgba(100,255,218,0.25); }
+        .student-card.flagged { border-left: 3px solid #f87171; }
+        .student-card.strong { border-left: 3px solid #4ade80; }
+
+        .student-name-row {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 10px;
+        }
+        .student-name { font-size: 1rem; font-weight: 600; color: #ccd6f6; }
+        .student-team { font-size: 0.72rem; color: #8892b0; padding: 2px 8px; background: rgba(255,255,255,0.06); border-radius: 10px; }
+
+        /* Sparkline / trajectory */
+        .trajectory-row {
+            display: flex; align-items: center; gap: 10px;
+            margin: 10px 0; padding: 8px 0;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .trajectory-label { font-size: 0.72rem; color: #8892b0; text-transform: uppercase; letter-spacing: 0.5px; width: 70px; }
+        .sparkline-container { flex: 1; display: flex; align-items: center; gap: 3px; height: 28px; }
+        .spark-dot {
+            width: 22px; height: 22px; border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.6rem; font-weight: 700; font-family: 'IBM Plex Mono', monospace;
+            transition: transform 0.2s;
+        }
+        .spark-dot:hover { transform: scale(1.3); }
+        .spark-dot[data-score="4"] { background: #4ade80; color: #1a1a2e; }
+        .spark-dot[data-score="3"] { background: rgba(100,255,218,0.7); color: #1a1a2e; }
+        .spark-dot[data-score="2"] { background: rgba(251,191,36,0.7); color: #1a1a2e; }
+        .spark-dot[data-score="1"] { background: rgba(248,113,113,0.7); color: #1a1a2e; }
+        .spark-dot[data-score="0"] { background: rgba(107,114,128,0.5); color: #e0e0e0; }
+        .spark-dot.empty { background: rgba(255,255,255,0.06); color: #6b7280; }
+
+        .trend-arrow { font-size: 1.1rem; margin-left: 6px; }
+        .trend-up { color: #4ade80; }
+        .trend-down { color: #f87171; }
+        .trend-flat { color: #fbbf24; }
+
+        /* Student detail rows */
+        .student-detail { font-size: 0.78rem; color: #a8b2d1; padding: 3px 0; }
+        .student-detail strong { color: #ccd6f6; }
+
+        /* Feedback block */
+        .feedback-block {
+            margin-top: 10px; padding: 10px 12px;
+            background: rgba(100,255,218,0.04);
+            border-radius: 6px; border-left: 2px solid rgba(100,255,218,0.25);
+            font-size: 0.78rem; color: #a8b2d1; line-height: 1.5;
+            font-style: italic;
+        }
+
+        /* ---- ALERTS VIEW ---- */
+        .alerts-panel {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+        }
+        @media (max-width: 900px) { .alerts-panel { grid-template-columns: 1fr; } }
+
+        .alert-section {
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px; padding: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .alert-section h3 {
+            font-size: 0.85rem; font-weight: 600; color: #64ffda;
+            margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .alert-item {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 0.82rem;
+        }
+        .alert-item:last-child { border-bottom: none; }
+        .alert-dot {
+            width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0;
+        }
+        .dot-red { background: #f87171; }
+        .dot-yellow { background: #fbbf24; }
+        .dot-green { background: #4ade80; }
+        .alert-text { color: #a8b2d1; }
+        .alert-text strong { color: #ccd6f6; }
+
+        /* Manifest delta section */
+        .manifest-section {
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px; padding: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            margin-top: 16px;
+        }
+        .manifest-section h3 {
+            font-size: 0.85rem; font-weight: 600; color: #64ffda;
+            margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .manifest-team { margin-bottom: 14px; }
+        .manifest-team-name { font-size: 0.82rem; font-weight: 600; color: #ccd6f6; margin-bottom: 6px; }
+        .manifest-file {
+            display: flex; align-items: center; gap: 8px;
+            padding: 4px 0; font-size: 0.75rem; color: #a8b2d1;
+        }
+        .manifest-badge {
+            font-size: 0.65rem; padding: 1px 6px; border-radius: 3px;
+            font-weight: 600; text-transform: uppercase;
+        }
+        .badge-new { background: rgba(74,222,128,0.15); color: #4ade80; }
+        .badge-updated { background: rgba(100,255,218,0.12); color: #64ffda; }
+        .badge-unchanged { background: rgba(255,255,255,0.06); color: #6b7280; }
+
+        /* ---- HIDDEN VIEWS ---- */
+        .view-panel { display: none; }
+        .view-panel.active { display: block; }
+
+        /* ---- NOTES ---- */
+        .notes-block {
+            margin-top: 12px; padding: 8px 10px;
+            background: rgba(248,113,113,0.06);
+            border-radius: 6px; border-left: 2px solid rgba(248,113,113,0.3);
+            font-size: 0.75rem; color: #e0a0a0; line-height: 1.4;
+        }
+
+        /* ---- TOOLTIP ---- */
+        .tooltip-trigger { position: relative; cursor: help; border-bottom: 1px dotted rgba(255,255,255,0.2); }
+        .tooltip-trigger:hover::after {
+            content: attr(data-tip); position: absolute; bottom: 100%; left: 50%;
+            transform: translateX(-50%); padding: 6px 10px;
+            background: #233554; border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 6px; font-size: 0.72rem; color: #ccd6f6;
+            white-space: nowrap; z-index: 100;
+        }
+
+        /* ---- DELIVERABLE REFERENCE PANEL ---- */
+        .deliverable-panel {
+            background: rgba(255,255,255,0.04);
+            border-radius: 14px; padding: 20px 24px; margin-bottom: 20px;
+            border: 1px solid rgba(100,255,218,0.12);
+            display: grid; grid-template-columns: 1fr 280px; gap: 24px;
+            align-items: start;
+        }
+        @media (max-width: 1000px) { .deliverable-panel { grid-template-columns: 1fr; } }
+
+        .deliv-left {}
+        .deliv-title-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+        .deliv-week-badge {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+            font-weight: 700; color: #1a1a2e; background: #64ffda;
+            padding: 3px 10px; border-radius: 4px; letter-spacing: 1px;
+        }
+        .deliv-name { font-size: 1.15rem; font-weight: 600; color: #ccd6f6; }
+        .deliv-meta {
+            font-size: 0.78rem; color: #8892b0; margin: 6px 0 14px;
+            display: flex; gap: 16px; flex-wrap: wrap;
+        }
+        .deliv-meta span { display: flex; align-items: center; gap: 4px; }
+        .deliv-meta .accent { color: #64ffda; font-weight: 500; }
+
+        /* Weight bar chart */
+        .weight-chart { margin-bottom: 16px; }
+        .weight-row {
+            display: grid; grid-template-columns: 160px 1fr 40px;
+            align-items: center; gap: 10px; padding: 4px 0;
+        }
+        .weight-label { font-size: 0.76rem; color: #a8b2d1; text-align: right; }
+        .weight-bar-track {
+            height: 20px; background: rgba(255,255,255,0.04);
+            border-radius: 3px; position: relative; overflow: hidden;
+        }
+        .weight-bar-fill {
+            height: 100%; border-radius: 3px;
+            transition: width 0.5s ease;
+            display: flex; align-items: center; padding-left: 6px;
+            font-size: 0.65rem; font-weight: 600; color: #1a1a2e;
+            min-width: 20px;
+        }
+        .weight-heaviest { background: #64ffda; }
+        .weight-normal { background: rgba(100,255,218,0.5); }
+        .weight-light { background: rgba(100,255,218,0.3); color: #ccd6f6; }
+        .weight-pts { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: #8892b0; }
+
+        /* Required sections checklist */
+        .req-sections { margin-top: 10px; }
+        .req-section-item {
+            display: flex; align-items: flex-start; gap: 8px;
+            padding: 4px 0; font-size: 0.78rem; color: #a8b2d1;
+        }
+        .req-bullet { color: #64ffda; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+        .req-text strong { color: #ccd6f6; }
+
+        /* Donut chart container */
+        .deliv-right { display: flex; flex-direction: column; align-items: center; }
+        .donut-container { position: relative; width: 180px; height: 180px; }
+        .donut-container svg { transform: rotate(-90deg); }
+        .donut-center {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .donut-center .big { font-size: 1.6rem; font-weight: 700; color: #64ffda; font-family: 'IBM Plex Mono', monospace; }
+        .donut-center .small { font-size: 0.7rem; color: #8892b0; }
+        .donut-legend { margin-top: 12px; width: 100%; }
+        .donut-legend-item {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 0.7rem; color: #a8b2d1; padding: 2px 0;
+        }
+        .donut-legend-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+        /* Key focus callout */
+        .key-focus {
+            margin-top: 14px; padding: 10px 14px;
+            background: rgba(100,255,218,0.06);
+            border-radius: 8px; border: 1px solid rgba(100,255,218,0.12);
+        }
+        .key-focus-label {
+            font-size: 0.68rem; font-weight: 700; color: #64ffda;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+        }
+        .key-focus-text { font-size: 0.78rem; color: #ccd6f6; line-height: 1.5; }
+        .key-focus-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+        .key-focus-tag {
+            font-size: 0.68rem; padding: 2px 8px; border-radius: 3px;
+            background: rgba(100,255,218,0.08); color: #64ffda; font-weight: 500;
+        }
+
+        /* Fade in animation */
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-in { animation: fadeSlideIn 0.3s ease forwards; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <header>
+        <h1>Project Pulse -- Instructor View</h1>
+        <div class="subtitle">ENGL 325 · AI Governance Group Project · Weeks 10--16 · Spring 2026</div>
+    </header>
+
+    <!-- VIEW TABS -->
+    <div class="view-tabs">
+        <button class="view-tab active" onclick="switchView('teams')">Team Overview</button>
+        <button class="view-tab" onclick="switchView('students')">Individual Students</button>
+        <button class="view-tab" onclick="switchView('alerts')">Alerts & Trends</button>
+    </div>
+
+    <!-- WEEK SELECTOR -->
+    <div class="week-selector">
+        <label>Week</label>
+        <div id="weekButtons"></div>
+    </div>
+
+    <!-- SUMMARY STRIP -->
+    <div class="summary-strip" id="summaryStrip"></div>
+
+    <!-- DELIVERABLE REFERENCE PANEL -->
+    <div class="deliverable-panel" id="deliverablePanel"></div>
+
+    <!-- ============ TEAM OVERVIEW VIEW ============ -->
+    <div class="view-panel active" id="view-teams">
+        <div class="team-grid" id="teamGrid"></div>
+    </div>
+
+    <!-- ============ INDIVIDUAL STUDENTS VIEW ============ -->
+    <div class="view-panel" id="view-students">
+        <div class="student-grid" id="studentGrid"></div>
+    </div>
+
+    <!-- ============ ALERTS & TRENDS VIEW ============ -->
+    <div class="view-panel" id="view-alerts">
+        <div class="alerts-panel" id="alertsPanel"></div>
+        <div class="manifest-section" id="manifestSection"></div>
+    </div>
+
+</div>
+
+<script>
+// ============================================================
+// STATIC REFERENCE DATA
+// ============================================================
+
+const WEEK_META = {
+    WK10: { label: "WK10", title: "System Definition Brief", deliverable: "Deliverable 1", points: 3.5 },
+    WK11: { label: "WK11", title: "Risk & Harm Matrix + Narrative", deliverable: "Deliverable 2", points: 3.5 },
+    WK12: { label: "WK12", title: "Model Limitations & Bias Disclosure", deliverable: "Deliverable 3", points: 3.5 },
+    WK13: { label: "WK13", title: "Governance & Oversight Plan", deliverable: "Deliverable 4", points: 3.5 },
+    WK14: { label: "WK14", title: "Executive Decision Memo", deliverable: "Deliverable 5", points: 3.5 },
+    WK15: { label: "WK15", title: "Final Report + Role Reflection", deliverable: "Final Report", points: 25 },
+    WK16: { label: "WK16", title: "Oral Defense", deliverable: "Defense", points: 12 }
+};
+
+const CRITERIA = {
+    WK10: {
+        tangible: [
+            { id: "override_named", label: "Override authority named", key: "decisionAuthority" },
+            { id: "users_vs_affected", label: "Users vs. affected parties distinguished", key: "usersAffected" },
+            { id: "exclusions_present", label: "Explicit exclusions present", key: "exclusions" },
+            { id: "vendor_language", label: "Independent of vendor framing", key: "vendorIndependence" }
+        ],
+        heat: [
+            { id: "system_purpose", label: "System Purpose", weight: 20 },
+            { id: "decision_auth", label: "Decision Authority", weight: 15 },
+            { id: "users_affected", label: "Users vs. Affected Parties", weight: 25 },
+            { id: "data_inputs", label: "Data Inputs", weight: 15 },
+            { id: "exclusions", label: "Explicit Exclusions", weight: 15 },
+            { id: "exec_comm", label: "Executive Communication", weight: 10 }
+        ]
+    },
+    WK11: {
+        tangible: [
+            { id: "categories_count", label: "Risk categories covered", key: "categoryCoverage", type: "count", max: 4 },
+            { id: "causal_chains", label: "Causal chains present", key: "causalChains" },
+            { id: "detectability", label: "Detectability addressed", key: "detectability" },
+            { id: "priority_count", label: "Priority risks narrated", key: "priorityCount", type: "count", max: 5 }
+        ],
+        heat: [
+            { id: "mechanism_spec", label: "Mechanism Specificity", weight: 25 },
+            { id: "risk_spec", label: "Risk Specificity", weight: 20 },
+            { id: "category_cov", label: "Category Coverage", weight: 15 },
+            { id: "detect", label: "Detectability", weight: 10 },
+            { id: "prioritization", label: "Prioritization", weight: 15 },
+            { id: "matrix_narrative", label: "Matrix-Narrative Coherence", weight: 10 },
+            { id: "exec_comm", label: "Executive Communication", weight: 5 }
+        ]
+    },
+    WK12: {
+        tangible: [
+            { id: "bias_vectors", label: "Bias vectors addressed", key: "biasVectors", type: "count", max: 3 },
+            { id: "override_triggers", label: "Override triggers named", key: "overrideTriggers" },
+            { id: "nonuse_cases", label: "Non-use cases present", key: "nonUseCases" },
+            { id: "prior_consistent", label: "Consistent with WK10-11", key: "priorConsistency" }
+        ],
+        heat: [
+            { id: "limit_spec", label: "Limitation Specificity", weight: 20 },
+            { id: "bias_analysis", label: "Bias Vector Analysis", weight: 25 },
+            { id: "failure_modes", label: "Failure Modes", weight: 15 },
+            { id: "override_spec", label: "Override Specificity", weight: 20 },
+            { id: "nonuse", label: "Non-Use Cases", weight: 10 },
+            { id: "consistency", label: "Consistency w/Prior", weight: 5 },
+            { id: "prof_format", label: "Professional Format", weight: 5 }
+        ]
+    },
+    WK13: {
+        tangible: [
+            { id: "named_owners", label: "Named owners (job titles)", key: "namedOwners" },
+            { id: "trigger_tiers", label: "Trigger tiers defined", key: "triggerTiers", type: "count", max: 3 },
+            { id: "budget_75k", label: "Budget within $75K constraint", key: "budgetRealism" },
+            { id: "sunset_clause", label: "Sunset clause present", key: "sunsetClause" }
+        ],
+        heat: [
+            { id: "ownership", label: "Ownership Clarity", weight: 20 },
+            { id: "monitoring", label: "Monitoring Specificity", weight: 20 },
+            { id: "triggers", label: "Trigger Thresholds", weight: 25 },
+            { id: "vendor_req", label: "Vendor Requirements", weight: 15 },
+            { id: "sunset", label: "Sunset Conditions", weight: 10 },
+            { id: "budget", label: "Budget Realism", weight: 5 },
+            { id: "prof_format", label: "Professional Format", weight: 5 }
+        ]
+    },
+    WK14: {
+        tangible: [
+            { id: "recommendation", label: "Recommendation stated", key: "recommendation", type: "option", options: ["Proceed", "Conditions", "Delay", "Cancel"] },
+            { id: "prior_refs", label: "References prior deliverables", key: "priorRefs" },
+            { id: "time_bound", label: "Conditions/steps time-bound", key: "timeBound" },
+            { id: "dissent_doc", label: "Dissent documented", key: "dissentDoc" }
+        ],
+        heat: [
+            { id: "rec_clarity", label: "Recommendation Clarity", weight: 20 },
+            { id: "evidence", label: "Evidence-Based Rationale", weight: 25 },
+            { id: "tradeoffs", label: "Tradeoff Honesty", weight: 20 },
+            { id: "constraints", label: "Constraint Awareness", weight: 15 },
+            { id: "next_steps", label: "Actionable Next Steps", weight: 15 },
+            { id: "prof_format", label: "Professional Format", weight: 5 }
+        ]
+    }
+};
+
+const DELIVERABLE_INFO = {
+    WK10: {
+        pages: "2 pages",
+        points: "3.5 course pts (100-pt rubric scale)",
+        dueText: "End of Week 10",
+        scale: "4-pt (Exceeds / Meets / Partial / Minimal / Missing)",
+        keyQuestion: "Can they define the system independently of vendor marketing? Do they know who uses it vs. who gets affected by it?",
+        lookingFor: ["Precision", "Boundary clarity", "Executive-legible language", "Independent of vendor framing"],
+        whyMatters: "If you can't define the system clearly, you can't assess it honestly.",
+        heaviestCriterion: "Users vs. Affected Parties",
+        commonMiss: "Students collapse users and affected parties into one group, or restate HarborRank marketing copy as their purpose statement.",
+        criteria: [
+            { name: "Users vs. Affected Parties", weight: 25, desc: "All relevant groups identified and correctly categorized. Applicants, employees, union reps, patients distinguished." },
+            { name: "System Purpose", weight: 20, desc: "Specific, organizational, avoids vendor language. Names the bottleneck, the workflow, the claimed benefit." },
+            { name: "Decision Authority", weight: 15, desc: "Recommendation vs. decision distinguished. Override roles named. Process described at Lakeside, not abstract." },
+            { name: "Data Inputs", weight: 15, desc: "Documents input types -- resumes, job descriptions, scoring criteria. High-level, not data-science depth." },
+            { name: "Explicit Exclusions", weight: 15, desc: "Specific, scenario-grounded non-use cases. Not generic disclaimers." },
+            { name: "Executive Communication", weight: 10, desc: "Document reads like it could go to the CEO. Clean, direct, no jargon." }
+        ],
+        requiredSections: [
+            { label: "System purpose", desc: "What problem does it solve? For whom?" },
+            { label: "Decision authority", desc: "Does it make decisions or just recommend? Who has override power?" },
+            { label: "Users vs. affected parties", desc: "Who uses it? Who's affected by it? (Not always the same)" },
+            { label: "Data inputs", desc: "What information does it need?" },
+            { label: "Explicit exclusions", desc: "'This system does NOT...' -- managing expectations" }
+        ]
+    },
+    WK11: {
+        title: "Risk & Harm Matrix + Narrative",
+        pages: "Table + 2 pages",
+        points: "3.5 course pts (100-pt rubric scale)",
+        dueText: "End of Week 11",
+        scale: "4-pt (Exceeds / Meets / Partial / Minimal / Missing)",
+        keyQuestion: "Can they move beyond 'AI is risky' to specific, causal, grounded harm scenarios?",
+        lookingFor: ["Specificity", "Plausibility", "Clear causation", "No moralizing"],
+        whyMatters: "Organizations that don't document risks in advance look incompetent when those risks materialize.",
+        heaviestCriterion: "Mechanism Specificity",
+        commonMiss: "Students list risk categories without causal chains, skip detectability entirely, or write narrative that just restates the matrix.",
+        criteria: [
+            { name: "Mechanism Specificity", weight: 25, desc: "Every risk has a clear mechanism -- how does it happen? Causal chain from system behavior to actual harm." },
+            { name: "Risk Specificity", weight: 20, desc: "Risks are concrete ('rejects community college resumes at 3x rate'), not vague ('bad outcomes')." },
+            { name: "Category Coverage", weight: 15, desc: "All four categories: operational, ethical/bias, legal/regulatory, reputational." },
+            { name: "Detectability", weight: 10, desc: "Each risk rated for how easy it is to spot when it happens." },
+            { name: "Prioritization", weight: 15, desc: "Narrative identifies and justifies 4-5 highest-priority risks." },
+            { name: "Matrix-Narrative Coherence", weight: 10, desc: "Narrative and matrix tell the same story. No contradictions." },
+            { name: "Executive Communication", weight: 5, desc: "Professional, scannable, no moralizing." }
+        ],
+        requiredSections: [
+            { label: "Risk Matrix", desc: "Table: category, description, who harmed, mechanism, likelihood, severity, detectability" },
+            { label: "Priority Narrative", desc: "2 pages explaining 4-5 highest risks in detail with reasoning" }
+        ]
+    },
+    WK12: {
+        title: "Model Limitations & Bias Disclosure",
+        pages: "2-2.5 pages",
+        points: "3.5 course pts (100-pt rubric scale)",
+        dueText: "End of Week 12",
+        scale: "4-pt (Exceeds / Meets / Partial / Minimal / Missing)",
+        keyQuestion: "Can they be honest about what the system can't do? Would this survive being quoted back in court?",
+        lookingFor: ["Honesty under pressure", "Specificity", "Clear liability boundaries"],
+        whyMatters: "Organizations destroyed by AI failures are the ones who pretended they didn't see problems coming.",
+        heaviestCriterion: "Bias Vector Analysis",
+        commonMiss: "Students soften language ('may occasionally underperform') instead of documenting concrete failure scenarios. Override section defaults to 'HR can review.'",
+        criteria: [
+            { name: "Bias Vector Analysis", weight: 25, desc: "All three entry points: training data, design choices, deployment context. Analyzed, not just listed." },
+            { name: "Override Specificity", weight: 20, desc: "Override triggers named. Who reviews? What threshold? Not just 'HR can intervene.'" },
+            { name: "Limitation Specificity", weight: 20, desc: "Concrete limitations -- 'struggles with non-traditional career paths' not 'may have edge cases.'" },
+            { name: "Failure Modes", weight: 15, desc: "What does failure look like? How will we know it's not working?" },
+            { name: "Non-Use Cases", weight: 10, desc: "Situations where the system should never be used, period." },
+            { name: "Consistency w/Prior Work", weight: 5, desc: "Builds on WK10 scope and WK11 risks. No contradictions." },
+            { name: "Professional Format", weight: 5, desc: "Court-ready documentation quality." }
+        ],
+        requiredSections: [
+            { label: "Known limitations", desc: "Problems the system can't solve, scenarios it handles badly" },
+            { label: "Likely failure modes", desc: "How will we know it's not working? What does failure look like?" },
+            { label: "Bias vectors", desc: "Training data / design choices / deployment context" },
+            { label: "Required human overrides", desc: "When must a human take over? What triggers review?" },
+            { label: "Explicit non-use cases", desc: "Situations where this system should never be used" }
+        ]
+    },
+    WK13: {
+        title: "Governance & Oversight Plan",
+        pages: "2 pages",
+        points: "3.5 course pts (100-pt rubric scale)",
+        dueText: "End of Week 13",
+        scale: "4-pt (Exceeds / Meets / Partial / Minimal / Missing)",
+        keyQuestion: "If this system gets deployed, who's responsible, how do you monitor it, and when do you shut it down?",
+        lookingFor: ["Organizational realism", "Role clarity", "Enforceability"],
+        whyMatters: "Systems without governance plans fail quietly and catastrophically.",
+        heaviestCriterion: "Trigger Thresholds",
+        commonMiss: "Students assign ownership to 'IT department' instead of named roles. Budget section ignores the $75K constraint. Trigger conditions are vague.",
+        criteria: [
+            { name: "Trigger Thresholds", weight: 25, desc: "Three tiers defined: review, pause, shutdown. Each with specific measurable conditions." },
+            { name: "Ownership Clarity", weight: 20, desc: "Named job titles with accountability. Not 'IT' or 'management.'" },
+            { name: "Monitoring Specificity", weight: 20, desc: "Concrete metrics, review cadence, what gets measured and how often." },
+            { name: "Vendor Requirements", weight: 15, desc: "What Lakeside requires from HarborRank -- SLAs, audit access, data handling." },
+            { name: "Sunset Conditions", weight: 10, desc: "Planned review timeline and criteria for decommissioning." },
+            { name: "Budget Realism", weight: 5, desc: "Plan fits within $75,000 constraint. Costs acknowledged." },
+            { name: "Professional Format", weight: 5, desc: "Enforceable document quality." }
+        ],
+        requiredSections: [
+            { label: "Named human owners", desc: "Specific roles/titles with accountability" },
+            { label: "Review cadence", desc: "How often, what metrics, who reviews" },
+            { label: "Escalation protocol", desc: "What triggers concern, who gets notified, decision tree" },
+            { label: "Documentation retention", desc: "What records, how long, where stored" },
+            { label: "Training requirements", desc: "Who needs training, what they learn" },
+            { label: "Kill-switch criteria", desc: "Conditions for immediate shutdown" }
+        ]
+    },
+    WK14: {
+        title: "Executive Decision Memo",
+        pages: "1-1.5 pages",
+        points: "3.5 course pts (100-pt rubric scale)",
+        dueText: "End of Week 14",
+        scale: "4-pt (Exceeds / Meets / Partial / Minimal / Missing)",
+        keyQuestion: "After five weeks of analysis, what do you actually recommend -- and can you defend it?",
+        lookingFor: ["Decisiveness", "Evidence synthesis", "Tradeoff honesty", "Actionability"],
+        whyMatters: "This is where five weeks of work becomes a single defensible decision.",
+        heaviestCriterion: "Evidence-Based Rationale",
+        commonMiss: "Students hedge ('we kind of recommend...'), don't reference prior deliverables by name, or list next steps without timelines.",
+        criteria: [
+            { name: "Evidence-Based Rationale", weight: 25, desc: "Rationale synthesizes specific findings from WK10-13. References prior deliverables by name." },
+            { name: "Recommendation Clarity", weight: 20, desc: "One of four options stated clearly: Proceed / Proceed with Conditions / Delay / Cancel Phase 1." },
+            { name: "Tradeoff Honesty", weight: 20, desc: "Gains, losses, and uncertainties all documented. Dissent noted if applicable." },
+            { name: "Constraint Awareness", weight: 15, desc: "Both $75K budget and organizational capacity addressed." },
+            { name: "Actionable Next Steps", weight: 15, desc: "Conditions or next steps are specific and time-bound." },
+            { name: "Professional Format", weight: 5, desc: "Formal memo header block. Executive-ready." }
+        ],
+        requiredSections: [
+            { label: "Recommendation", desc: "One of: Proceed / Proceed with Conditions / Delay / Cancel Phase 1" },
+            { label: "Rationale", desc: "Evidence-based justification referencing prior deliverables" },
+            { label: "Tradeoffs", desc: "What you gain, lose, and remain uncertain about" },
+            { label: "Conditions or next steps", desc: "Specific, time-bound, actionable" }
+        ]
+    }
+};
+
+// ============================================================
+// STATE
+// ============================================================
+let currentWeek  = null;
+let currentView  = 'teams';
+let allAssessments = {};   // wk -> full assessment JSON
+
+// ============================================================
+// DATA LOADING
+// ============================================================
+
+async function loadAvailableWeeks() {
+    const weeks = ['WK10','WK11','WK12','WK13','WK14'];
+    const results = await Promise.allSettled(weeks.map(async wk => {
+        const resp = await fetch(`data/project/project_assessment_${wk}.json`);
+        if (!resp.ok) throw new Error(`${wk} not available`);
+        return { wk, data: await resp.json() };
+    }));
+    allAssessments = {};
+    results.forEach(r => {
+        if (r.status === 'fulfilled') allAssessments[r.value.wk] = r.value.data;
+    });
+}
+
+// ============================================================
+// RENDERING
+// ============================================================
+
+async function init() {
+    document.getElementById('summaryStrip').innerHTML =
+        '<div class="stat-card" style="grid-column:1/-1"><div class="lbl">Loading assessments...</div></div>';
+    await loadAvailableWeeks();
+    currentWeek = Object.keys(allAssessments)[0] || null;
+    renderWeekButtons();
+    renderAll();
+}
+
+function switchView(view) {
+    currentView = view;
+    document.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+    document.querySelector(`[onclick="switchView('${view}')"]`).classList.add('active');
+    document.getElementById(`view-${view}`).classList.add('active');
+    renderAll();
+}
+
+function switchWeek(wk) {
+    if (!allAssessments[wk]) return;
+    currentWeek = wk;
+    document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`[data-week="${wk}"]`).classList.add('active');
+    renderAll();
+}
+
+function renderAll() {
+    if (!currentWeek) {
+        document.getElementById('summaryStrip').innerHTML =
+            '<div class="stat-card" style="grid-column:1/-1"><div class="lbl">No assessment data available yet.</div></div>';
+        document.getElementById('deliverablePanel').innerHTML = '';
+        document.getElementById('teamGrid').innerHTML = '';
+        document.getElementById('studentGrid').innerHTML = '';
+        document.getElementById('alertsPanel').innerHTML = '';
+        document.getElementById('manifestSection').innerHTML = '';
+        return;
+    }
+    renderSummary();
+    renderDeliverablePanel();
+    if (currentView === 'teams') renderTeamView();
+    else if (currentView === 'students') renderStudentView();
+    else if (currentView === 'alerts') renderAlertsView();
+}
+
+function renderWeekButtons() {
+    const container = document.getElementById('weekButtons');
+    container.innerHTML = Object.keys(WEEK_META).map(wk => {
+        const hasData = !!allAssessments[wk];
+        return `<button class="week-btn ${wk === currentWeek ? 'active' : ''} ${!hasData ? 'no-data' : ''}" data-week="${wk}" onclick="switchWeek('${wk}')" ${!hasData ? 'disabled' : ''}>${WEEK_META[wk].label}</button>`;
+    }).join(' ');
+}
+
+function renderSummary() {
+    const assessment = allAssessments[currentWeek];
+    if (!assessment) return;
+    const teams = Object.values(assessment.teams);
+    const onTime  = teams.filter(t => t.submission === 'on-time').length;
+    const late    = teams.filter(t => t.submission === 'late').length;
+    const missing = teams.filter(t => t.submission === 'missing').length;
+    const aiConcerns = teams.filter(t => t.flags.ai === 'ai-concern' || t.flags.ai === 'uncertain').length;
+
+    let absentStudents = 0, lowContrib = 0;
+    teams.forEach(t => {
+        Object.values(t.students).forEach(s => {
+            if (s.contribution === 'absent') absentStudents++;
+            if (s.contribution === 'low' || s.contribution === 'minimal') lowContrib++;
+        });
+    });
+
+    document.getElementById('summaryStrip').innerHTML = `
+        <div class="stat-card good"><div class="val">${onTime}</div><div class="lbl">On Time</div></div>
+        <div class="stat-card ${late > 0 ? 'warn' : ''}"><div class="val">${late}</div><div class="lbl">Late</div></div>
+        <div class="stat-card ${missing > 0 ? 'danger' : ''}"><div class="val">${missing}</div><div class="lbl">Missing</div></div>
+        <div class="stat-card ${aiConcerns > 0 ? 'warn' : ''}"><div class="val">${aiConcerns}</div><div class="lbl">AI Flags</div></div>
+        <div class="stat-card ${absentStudents > 0 ? 'danger' : ''}"><div class="val">${absentStudents}</div><div class="lbl">Absent Students</div></div>
+        <div class="stat-card ${lowContrib > 0 ? 'warn' : ''}"><div class="val">${lowContrib}</div><div class="lbl">Low/Minimal</div></div>
+    `;
+}
+
+function renderDeliverablePanel() {
+    const info = DELIVERABLE_INFO[currentWeek];
+    const panel = document.getElementById('deliverablePanel');
+    if (!info) { panel.innerHTML = '<p style="color:#8892b0">Deliverable info not available for this week.</p>'; return; }
+
+    // Sort criteria by weight descending for the bar chart
+    const sortedCriteria = [...info.criteria].sort((a, b) => b.weight - a.weight);
+    const maxWeight = sortedCriteria[0].weight;
+
+    // Weight bar chart
+    const barsHtml = sortedCriteria.map(c => {
+        const pct = (c.weight / maxWeight) * 100;
+        const cls = c.weight >= maxWeight ? 'weight-heaviest' : c.weight >= 15 ? 'weight-normal' : 'weight-light';
+        return `<div class="weight-row">
+            <span class="weight-label">${c.name}</span>
+            <div class="weight-bar-track">
+                <div class="weight-bar-fill ${cls}" style="width:${pct}%" title="${c.desc}">${c.weight >= 15 ? c.name : ''}</div>
+            </div>
+            <span class="weight-pts">${c.weight}</span>
+        </div>`;
+    }).join('');
+
+    // Required sections
+    const sectionsHtml = info.requiredSections.map(s =>
+        `<div class="req-section-item"><span class="req-bullet">▸</span><span class="req-text"><strong>${s.label}</strong> -- ${s.desc}</span></div>`
+    ).join('');
+
+    // Donut chart SVG
+    const donutRadius = 65;
+    const donutCircumference = 2 * Math.PI * donutRadius;
+    let donutOffset = 0;
+    const donutColors = ['#64ffda', '#4ade80', '#38bdf8', '#a78bfa', '#fbbf24', '#f87171', '#8b5cf6'];
+    const donutSegments = info.criteria.map((c, i) => {
+        const fraction = c.weight / 100;
+        const dashLen = fraction * donutCircumference;
+        const gap = donutCircumference - dashLen;
+        const segment = `<circle cx="90" cy="90" r="${donutRadius}" fill="none" stroke="${donutColors[i % donutColors.length]}" stroke-width="22" stroke-dasharray="${dashLen} ${gap}" stroke-dashoffset="${-donutOffset}" opacity="0.85"/>`;
+        donutOffset += dashLen;
+        return segment;
+    }).join('');
+
+    const legendHtml = info.criteria.map((c, i) =>
+        `<div class="donut-legend-item"><div class="donut-legend-swatch" style="background:${donutColors[i % donutColors.length]}"></div>${c.name} (${c.weight})</div>`
+    ).join('');
+
+    // Looking-for tags
+    const tagsHtml = info.lookingFor.map(t => `<span class="key-focus-tag">${t}</span>`).join('');
+
+    panel.innerHTML = `
+        <div class="deliv-left animate-in">
+            <div class="deliv-title-row">
+                <span class="deliv-week-badge">${WEEK_META[currentWeek].label}</span>
+                <span class="deliv-name">${info.title}</span>
+            </div>
+            <div class="deliv-meta">
+                <span>📄 <span class="accent">${info.pages}</span></span>
+                <span>📊 <span class="accent">${info.points}</span></span>
+                <span>📅 <span class="accent">${info.dueText}</span></span>
+                <span>⚖ <span class="accent">${info.scale}</span></span>
+            </div>
+
+            <div class="section-label" style="margin-top:0">Criteria Weight Distribution</div>
+            <div class="weight-chart">${barsHtml}</div>
+
+            <div class="section-label">Required Sections</div>
+            <div class="req-sections">${sectionsHtml}</div>
+
+            <div class="key-focus">
+                <div class="key-focus-label">Key Question</div>
+                <div class="key-focus-text">${info.keyQuestion}</div>
+                <div class="key-focus-label" style="margin-top:10px">What I'm Looking For</div>
+                <div class="key-focus-tags">${tagsHtml}</div>
+                <div class="key-focus-label" style="margin-top:10px">Common Miss</div>
+                <div class="key-focus-text" style="color:#fbbf24">${info.commonMiss}</div>
+                <div class="key-focus-label" style="margin-top:10px">Why This Matters</div>
+                <div class="key-focus-text" style="font-style:italic;color:#a8b2d1">${info.whyMatters}</div>
+            </div>
+        </div>
+
+        <div class="deliv-right animate-in">
+            <div style="font-size:0.72rem;font-weight:600;color:#64ffda;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Weight Distribution</div>
+            <div class="donut-container">
+                <svg width="180" height="180" viewBox="0 0 180 180">
+                    ${donutSegments}
+                </svg>
+                <div class="donut-center">
+                    <div class="big">100</div>
+                    <div class="small">rubric pts</div>
+                </div>
+            </div>
+            <div class="donut-legend">${legendHtml}</div>
+            <div style="margin-top:12px;padding:8px 10px;background:rgba(100,255,218,0.06);border-radius:6px;text-align:center">
+                <span style="font-size:0.7rem;color:#8892b0">HEAVIEST CRITERION</span><br>
+                <span style="font-size:0.88rem;font-weight:600;color:#64ffda">${info.heaviestCriterion}</span>
+            </div>
+        </div>
+    `;
+}
+
+
+function renderTeamView() {
+    const assessment = allAssessments[currentWeek];
+    const criteria = CRITERIA[currentWeek];
+    if (!assessment || !criteria) {
+        document.getElementById('teamGrid').innerHTML = '<p style="color:#8892b0">No assessment data available for this week.</p>';
+        return;
+    }
+
+    document.getElementById('teamGrid').innerHTML = Object.entries(assessment.teams).map(([teamId, team]) => {
+        const statusClass = team.submission === 'on-time' ? 'status-on-time' : team.submission === 'late' ? 'status-late' : 'status-missing';
+        const statusLabel = team.submission === 'on-time' ? 'On Time' : team.submission === 'late' ? 'Late' : 'Missing';
+
+        const tangibleHtml = criteria.tangible.map(c => {
+            const val = team.tangible[c.key];
+            let display, cls;
+            if (c.type === 'count') {
+                display = `${val}/${c.max}`;
+                cls = val >= c.max ? 'val-yes' : val >= c.max/2 ? 'val-partial' : 'val-no';
+            } else if (c.type === 'option') {
+                display = val || '--';
+                cls = val ? 'val-yes' : 'val-no';
+            } else {
+                display = val === 'yes' ? '\u2713' : val === 'partial' ? '~' : val === 'no' ? '\u2717' : '--';
+                cls = val === 'yes' ? 'val-yes' : val === 'partial' ? 'val-partial' : val === 'no' ? 'val-no' : 'val-na';
+            }
+            return `<div class="tangible-row"><span class="tangible-label">${c.label}</span><span class="tangible-val ${cls}">${display}</span></div>`;
+        }).join('');
+
+        const heatHtml = criteria.heat.map(c => {
+            const score = team.heat[c.id] ?? 0;
+            const pct = (score / 4) * 100;
+            return `<span class="criteria-label">${c.label} <span style="color:#64ffda;font-size:0.7rem">(${c.weight})</span></span>
+                <div class="heat-bar"><div class="heat-fill heat-${score}" style="width:${pct}%"></div></div>`;
+        }).join('');
+
+        const aiClass = team.flags.ai === 'likely-authentic' ? 'flag-ai-likely' : team.flags.ai === 'uncertain' ? 'flag-ai-uncertain' : 'flag-ai-concern';
+        const aiLabel = (team.flags.ai || '').replace(/-/g, ' ');
+        const contClass = team.flags.continuity === 'yes' ? 'flag-continuity-yes' : team.flags.continuity === 'no' ? 'flag-continuity-no' : '';
+        const writingClass = (team.flags.writing === 'executive' || team.flags.writing === 'professional') ? 'flag-writing-exec' : 'flag-writing-rough';
+        const epochHtml = (team.flags.epoch || []).map(e =>
+            `<span class="flag-tag" style="background:rgba(100,255,218,0.08);color:#64ffda">${e}</span>`
+        ).join('');
+
+        return `
+        <div class="team-card animate-in">
+            <div class="team-header">
+                <span class="team-name">${team.teamName}</span>
+                <span class="team-status ${statusClass}">${statusLabel}</span>
+            </div>
+            <div style="font-size:0.78rem;color:#8892b0;margin-bottom:12px">
+                Lead: <strong style="color:#ccd6f6">${team.leadAuthor}</strong> &middot; ${WEEK_META[currentWeek].title}
+            </div>
+
+            <div class="section-label">Tangible Data Points</div>
+            ${tangibleHtml}
+
+            <div class="section-label">Quality Heat Map</div>
+            <div class="criteria-grid">${heatHtml}</div>
+
+            <div class="section-label">Flags</div>
+            <div class="flag-row">
+                <span class="flag-tag ${aiClass}">${aiLabel}</span>
+                <span class="flag-tag ${writingClass}">${team.flags.writing || ''}</span>
+                ${team.flags.continuity !== 'n/a' ? `<span class="flag-tag ${contClass}">continuity: ${team.flags.continuity}</span>` : ''}
+                ${epochHtml}
+            </div>
+
+            ${team.notes ? `<div class="notes-block">${team.notes}</div>` : ''}
+        </div>`;
+    }).join('');
+}
+
+function renderStudentView() {
+    const assessment = allAssessments[currentWeek];
+    if (!assessment) {
+        document.getElementById('studentGrid').innerHTML = '<p style="color:#8892b0">No assessment data for this week.</p>';
+        return;
+    }
+
+    const contribOrder = { absent: 0, minimal: 1, low: 2, adequate: 3, high: 4 };
+    const allStudents = [];
+
+    Object.entries(assessment.teams).forEach(([teamId, team]) => {
+        Object.entries(team.students).forEach(([name]) => {
+            const currentData = assessment.teams[teamId].students[name];
+            const flagged = (currentData.flags || []).some(f =>
+                ['ABSENT','CONSECUTIVE_ABSENT','DECLINING'].includes(f)
+            );
+            const studentData = { name, teamId, teamName: team.teamName, flagged, weeks: {} };
+            Object.entries(allAssessments).forEach(([wk, wkA]) => {
+                const s = wkA.teams[teamId]?.students[name];
+                if (s) studentData.weeks[wk] = s;
+            });
+            allStudents.push(studentData);
+        });
+    });
+
+    allStudents.sort((a, b) => {
+        if (a.flagged !== b.flagged) return a.flagged ? -1 : 1;
+        const aC = contribOrder[a.weeks[currentWeek]?.contribution] ?? 3;
+        const bC = contribOrder[b.weeks[currentWeek]?.contribution] ?? 3;
+        return aC - bC;
+    });
+
+    document.getElementById('studentGrid').innerHTML = allStudents.map(student => {
+        const currentData = student.weeks[currentWeek];
+        if (!currentData) return '';
+
+        const contribColors = { high: '#4ade80', adequate: '#64ffda', low: '#fbbf24', minimal: '#fbbf24', absent: '#f87171' };
+        const contribColor = contribColors[currentData.contribution] || '#8892b0';
+        const cardClass = student.flagged || currentData.contribution === 'absent' ? 'flagged' :
+                          currentData.contribution === 'high' ? 'strong' : '';
+
+        const sparkHtml = Object.keys(WEEK_META).slice(0, 5).map(wk => {
+            const d = student.weeks[wk];
+            if (!d) return `<div class="spark-dot empty" title="${wk}: no data">-</div>`;
+            const score = contribOrder[d.contribution] ?? 3;
+            return `<div class="spark-dot" data-score="${score}" title="${wk}: ${d.contribution}">${score}</div>`;
+        }).join('');
+
+        const scores = Object.keys(WEEK_META).slice(0, 5)
+            .map(wk => student.weeks[wk] ? (contribOrder[student.weeks[wk].contribution] ?? 3) : null)
+            .filter(s => s !== null);
+        let trendHtml = '';
+        if (scores.length >= 2) {
+            const diff = scores[scores.length - 1] - scores[scores.length - 2];
+            trendHtml = diff > 0 ? '<span class="trend-arrow trend-up">&#9650;</span>' :
+                        diff < 0 ? '<span class="trend-arrow trend-down">&#9660;</span>' :
+                        '<span class="trend-arrow trend-flat">&#9658;</span>';
+        }
+
+        const dhColors = { strong: '#4ade80', adequate: '#64ffda', weak: '#fbbf24', absent: '#f87171' };
+        const dhColor = dhColors[currentData.discussionHistory] || '#6b7280';
+
+        const studentFlags = currentData.flags || [];
+        const flagsHtml = studentFlags.length ? `<div class="flag-row" style="margin-top:8px">${studentFlags.map(f =>
+            `<span class="flag-tag" style="background:rgba(248,113,113,0.15);color:#f87171;font-size:0.65rem">${f.replace(/_/g,' ')}</span>`
+        ).join('')}</div>` : '';
+
+        const breakoutHtml = currentData.breakoutPosts != null ? `
+            <div class="student-detail" style="margin-top:2px;font-family:'IBM Plex Mono',monospace;font-size:0.74rem">
+                Posts: <strong style="color:#64ffda">${currentData.breakoutPosts}</strong> &nbsp;
+                Words: <strong style="color:#64ffda">${currentData.breakoutWords}</strong>
+            </div>` : '';
+
+        const feedbackHtml = currentData.suggestedFeedback ?
+            `<div class="feedback-block">${currentData.suggestedFeedback}</div>` : '';
+
+        return `
+        <div class="student-card ${cardClass} animate-in">
+            <div class="student-name-row">
+                <span class="student-name">${student.name}</span>
+                <span class="student-team">${student.teamName}</span>
+            </div>
+            <div class="student-detail">
+                Role: <strong>${currentData.role}</strong> &middot;
+                Contribution: <strong style="color:${contribColor}">${currentData.contribution}</strong>
+            </div>
+            <div class="student-detail" style="margin-top:2px">
+                Discussion: <span style="color:${dhColor};font-weight:600">${currentData.discussionHistory}</span>
+            </div>
+            ${breakoutHtml}
+            <div class="trajectory-row">
+                <span class="trajectory-label">Trajectory</span>
+                <div class="sparkline-container">${sparkHtml}${trendHtml}</div>
+            </div>
+            <div class="student-detail" style="line-height:1.5">${currentData.signal}</div>
+            ${flagsHtml}
+            ${feedbackHtml}
+        </div>`;
+    }).join('');
+}
+
+function renderAlertsView() {
+    const assessment = allAssessments[currentWeek];
+    if (!assessment) return;
+
+    const ctc = assessment.crossTeamComparison;
+    const alerts = ctc?.weeklyAlerts || {};
+
+    document.getElementById('alertsPanel').innerHTML = `
+        <div class="alert-section">
+            <h3>&#128308; Needs Immediate Attention</h3>
+            ${(alerts.red || []).length ?
+                alerts.red.map(a => `<div class="alert-item"><div class="alert-dot dot-red"></div><div class="alert-text">${a}</div></div>`).join('') :
+                '<div class="alert-item"><div class="alert-text" style="color:#6b7280">No critical alerts this week.</div></div>'}
+        </div>
+        <div class="alert-section">
+            <h3>&#128993; Watch List</h3>
+            ${(alerts.yellow || []).length ?
+                alerts.yellow.map(a => `<div class="alert-item"><div class="alert-dot dot-yellow"></div><div class="alert-text">${a}</div></div>`).join('') :
+                '<div class="alert-item"><div class="alert-text" style="color:#6b7280">No warnings this week.</div></div>'}
+            <h3 style="margin-top:16px">&#128994; Highlights</h3>
+            ${(alerts.green || []).map(a => `<div class="alert-item"><div class="alert-dot dot-green"></div><div class="alert-text">${a}</div></div>`).join('')}
+        </div>
+    `;
+
+    const byCatHtml = Object.entries(ctc?.byCategory || {}).map(([key, cat]) => {
+        const heatCrit = CRITERIA[currentWeek]?.heat.find(h => h.id === key);
+        const label = heatCrit ? heatCrit.label : key;
+        const rankHtml = (cat.ranking || []).map((r, i) =>
+            `<span style="font-size:0.75rem;color:${i===0?'#4ade80':i===1?'#64ffda':'#8892b0'}">${r}</span>`
+        ).join(' &middot; ');
+        return `<div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+            <div style="font-size:0.76rem;font-weight:600;color:#ccd6f6;margin-bottom:3px">${label}</div>
+            <div>${rankHtml}</div>
+            ${cat.note ? `<div style="font-size:0.72rem;color:#8892b0;margin-top:3px;font-style:italic">${cat.note}</div>` : ''}
+        </div>`;
+    }).join('');
+
+    const emergingHtml = (ctc?.emergingPatterns || []).map(p =>
+        `<div class="alert-item"><div class="alert-dot" style="background:#38bdf8;margin-top:5px"></div><div class="alert-text">${p}</div></div>`
+    ).join('');
+
+    document.getElementById('manifestSection').innerHTML = `
+        ${ctc?.summary ? `
+            <h3>Cross-Team Summary</h3>
+            <div style="padding:10px 0;font-size:0.82rem;color:#a8b2d1;line-height:1.6">${ctc.summary}</div>
+        ` : ''}
+        ${byCatHtml ? `<h3 style="margin-top:16px">Criterion Rankings</h3>${byCatHtml}` : ''}
+        ${emergingHtml ? `<h3 style="margin-top:16px">Emerging Patterns</h3>${emergingHtml}` : ''}
+    `;
+}
+
+// ============================================================
+// INIT
+// ============================================================
+init();
+</script>
+</body>
+</html>

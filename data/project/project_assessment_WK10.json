@@ -1,0 +1,421 @@
+{
+  "week": "WK10",
+  "weekTitle": "System Definition Brief",
+  "assessmentDate": "2026-04-02",
+  "dataCompleteness": {
+    "deliverables": "complete",
+    "statusReports": "complete",
+    "breakoutMetrics": "complete",
+    "breakoutPosts": "complete",
+    "manifestDelta": "unavailable",
+    "note": "Breakout data backfilled from Code You parser run 2026-04-04. Name normalization issue flagged -- Canvas uses variant name formats. Metrics merged manually for duplicates (e.g. Aaron Helsel / Michael Helsel, Lindsey Allen / Lindsey T Allen)."
+  },
+  "teams": {
+    "team1": {
+      "teamName": "Team X",
+      "priorTeamName": "Governance Alpha",
+      "submission": "on-time",
+      "leadAuthor": "Williamson, Alixandria",
+      "tangible": {
+        "decisionAuthority": "yes",
+        "usersAffected": "partial",
+        "exclusions": "yes",
+        "vendorIndependence": "yes"
+      },
+      "heat": {
+        "system_purpose": 3,
+        "decision_auth": 3,
+        "users_affected": 2,
+        "data_inputs": 3,
+        "exclusions": 4,
+        "exec_comm": 3
+      },
+      "flags": {
+        "ai": "uncertain",
+        "writing": "professional",
+        "continuity": "n/a",
+        "epoch": [
+          "Opinion",
+          "Presence"
+        ]
+      },
+      "informational": {
+        "aiToolsDisclosed": "ChatGPT (wordplay/sentences, executive language), Canva AI (visual)",
+        "sourcesUsed": [
+          "HarborRank Vendor Profile",
+          "MIT AI Risk Repository",
+          "EEOC 2024 guidance"
+        ],
+        "visualSubmitted": true,
+        "visualFormat": "docx"
+      },
+      "notes": "Strongest exclusions section in the class -- nine specific, organizationally-grounded items. Purpose section solid with correct 'claims' language and Phase 1 scoping. The hiring manager classification contradiction in Users vs. Affected Parties is the main structural problem: HMs listed under Users with text saying they don't interact with the system. Budget note misplaced in Decision Authority. ChatGPT citation listed as a reference source -- inappropriate for professional document.",
+      "students": {
+        "Williamson, Alixandria": {
+          "role": "Lead Author",
+          "contribution": "high",
+          "signal": "23 posts, 1671 words, 7 days active -- most active student on the team by far. Coordinated roles, answered questions, managed deadlines. Clear team leader.",
+          "discussionHistory": "strong",
+          "breakoutPosts": 23,
+          "breakoutWords": 1671,
+          "filesContributed": [
+            "Deliverable_1.docx (final assembly)"
+          ],
+          "suggestedFeedback": "Strong lead work. Decision Authority section is clean. Watch the HM classification in Users/Affected -- that contradiction needs fixing before WK11 builds on it.",
+          "flags": []
+        },
+        "Atton, Chandler": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "6 posts, 432 words, 5 days active. Proposed daily check-in curfew, claimed System Purpose section early and delivered it. Solid contributor.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": 6,
+          "breakoutWords": 432,
+          "filesContributed": [],
+          "suggestedFeedback": "Purpose section works -- bottleneck named, Phase 1 scoped. Tighten the 'claims' language going forward; you got it right, keep it consistent.",
+          "flags": []
+        },
+        "Monarch, Brennan": {
+          "role": "Researcher",
+          "contribution": "low",
+          "signal": "3 posts, 195 words, 2 days active. Wrote Data Inputs section (strong output) but minimal discussion presence. Work product exceeds discussion engagement.",
+          "discussionHistory": "weak",
+          "breakoutPosts": 3,
+          "breakoutWords": 195,
+          "filesContributed": [],
+          "suggestedFeedback": "Data Inputs section is one of the stronger ones in the class. MIT Risk Repository reference shows you're reading the sources. Keep that specificity in WK11.",
+          "flags": [
+            "DISCUSSION_WEAK_PROJECT_STRONG"
+          ]
+        },
+        "Dumas, Lizann": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "10 posts, 551 words, 6 days active. Consistent presence, helped onboard Bogue. Wrote the standout Exclusions section. Strong turnaround from WK2-8.",
+          "discussionHistory": "weak",
+          "breakoutPosts": 10,
+          "breakoutWords": 551,
+          "filesContributed": [],
+          "suggestedFeedback": "Your exclusions section is the best part of this deliverable. That level of specificity is exactly what executive readers need. Carry that into WK11.",
+          "flags": [
+            "DISCUSSION_WEAK_PROJECT_STRONG"
+          ]
+        },
+        "Craig, Tyler": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "6 posts, 852 words, 3 days active. High avg word count (142w/post). Substantive contributions including Users/Affected section. Quality over quantity.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": 6,
+          "breakoutWords": 852,
+          "filesContributed": [],
+          "suggestedFeedback": "Good detail in the stakeholder mapping. Fix the hiring manager placement -- you can't call them users and then say they don't interact with the system. Pick a lane or argue for both explicitly.",
+          "flags": []
+        },
+        "Bogue, Jason": {
+          "role": "Visual Designer",
+          "contribution": "adequate",
+          "signal": "4 posts, 687 words, 3 days active. 171.8 avg words/post -- highest on team. Showed up late but engaged genuinely: apologized, asked clarifying questions, delivered visual with detailed As-Is/To-Be content. Not the disengaged student from WK2-8.",
+          "discussionHistory": "absent",
+          "breakoutPosts": 4,
+          "breakoutWords": 687,
+          "filesContributed": [
+            "Hiring_Workflow_Visual_Diagram.docx"
+          ],
+          "suggestedFeedback": "Good to see you in the discussion. Your visual is submitted and your questions show you're engaging with the material. Keep this momentum into WK11 -- own a written section, not just the diagram.",
+          "flags": [
+            "IMPROVING"
+          ]
+        }
+      }
+    },
+    "team2": {
+      "teamName": "Team Y",
+      "priorTeamName": "Lakeside Review Board",
+      "submission": "on-time",
+      "leadAuthor": "Harris, Mekyle",
+      "tangible": {
+        "decisionAuthority": "yes",
+        "usersAffected": "partial",
+        "exclusions": "yes",
+        "vendorIndependence": "no"
+      },
+      "heat": {
+        "system_purpose": 1,
+        "decision_auth": 3,
+        "users_affected": 2,
+        "data_inputs": 2,
+        "exclusions": 3,
+        "exec_comm": 2
+      },
+      "flags": {
+        "ai": "uncertain",
+        "writing": "rough",
+        "continuity": "n/a",
+        "epoch": []
+      },
+      "informational": {
+        "aiToolsDisclosed": "ChatGPT (sentence structures, executive language, wordplay)",
+        "sourcesUsed": [
+          "None listed beyond ChatGPT"
+        ],
+        "visualSubmitted": true,
+        "visualFormat": "pdf"
+      },
+      "notes": "Decision Authority is the one strong section -- scorecards, override logging, audit trail. Everything else ranges from thin to missing. Purpose section is the critical failure: completely generic, zero Lakeside specifics, no numbers, no bottleneck named. This reads like someone described HR screening software to ChatGPT and submitted the output. Data Inputs are vague. HMs appear in both Users and Affected columns without explanation. No additional sources used beyond ChatGPT. The deliverable was submitted in two identical formats (worksheet + brief) with no iteration between them.",
+      "students": {
+        "Allen, Lindsey": {
+          "role": "Visual Designer",
+          "contribution": "adequate",
+          "signal": "9 posts, 504 words, 5 days active. Wrote Decision Authority (strongest section) and created the visual. Carrying the team's quality output.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": 9,
+          "breakoutWords": 504,
+          "filesContributed": [
+            "As-isTo-be.pdf"
+          ],
+          "suggestedFeedback": "Your Decision Authority section is carrying this deliverable. The audit trail and override logging are exactly right. Good work -- now push the rest of the team to match that specificity.",
+          "flags": [
+            "CARRYING"
+          ]
+        },
+        "Haygood, Nathan": {
+          "role": "Researcher",
+          "contribution": "low",
+          "signal": "6 posts, 144 words, 4 days active. 24 avg words/post -- mostly brief coordination messages. Wrote the Purpose section (critical miss). Low substance in both discussion and deliverable.",
+          "discussionHistory": "absent",
+          "breakoutPosts": 6,
+          "breakoutWords": 144,
+          "filesContributed": [],
+          "suggestedFeedback": "The purpose section needs a complete rebuild. Start with Lakeside's numbers: 6,300 applications, 450 hires, 3,200 employees. Name the bottleneck. Ground every claim in this specific organization.",
+          "flags": []
+        },
+        "Helsel, Michael": {
+          "role": "Researcher",
+          "contribution": "high",
+          "signal": "12 posts, 1333 words, 5 days active, 12 questions asked -- most questions of anyone across all teams. Active coordination, pushing teammates. Wrote Sections 3/4 and helped with final submission. Discussion presence exceeds deliverable quality.",
+          "discussionHistory": "strong",
+          "breakoutPosts": 12,
+          "breakoutWords": 1333,
+          "filesContributed": [],
+          "suggestedFeedback": "Users/Affected mapping is the right concept but HMs can't sit in both columns without explanation. Data Inputs needs specifics -- what configuration parameters does HR actually control? You showed strong analytical chops on the individual assignment. Bring that here.",
+          "flags": []
+        },
+        "Hamblin, Payton": {
+          "role": "Reviewer",
+          "contribution": "low",
+          "signal": "4 posts, 275 words, 2 days active. All posts on March 29-30 (due date weekend). Late entry, minimal substance. Self-reported role: Reviewer. Consistent with IA2 pattern of minimal engagement.",
+          "discussionHistory": "weak",
+          "breakoutPosts": 4,
+          "breakoutWords": 275,
+          "filesContributed": [],
+          "suggestedFeedback": "'Completed reviewing' is not a contribution in a five-person team where everyone else wrote a section. WK11 needs visible work product -- own a section, produce content.",
+          "flags": [
+            "DECLINING"
+          ]
+        },
+        "Harris, Mekyle": {
+          "role": "Lead Author",
+          "contribution": "high",
+          "signal": "11 posts, 2610 words -- highest word count of ANY student across all three teams. Posted two complete deliverable drafts (~1200w each) at 11:51 PM on due date. Both drafts contain Lakeside-specific grounding that is MISSING from the submitted deliverable. Harris produced better work than what was submitted. Team coordination failure prevented his content from reaching the final doc.",
+          "discussionHistory": "absent",
+          "breakoutPosts": 11,
+          "breakoutWords": 2610,
+          "filesContributed": [],
+          "suggestedFeedback": "Your discussion drafts show strong organizational grounding that didn't make it into the final deliverable. The work exists -- it just arrived too late for integration. Get your content to the team earlier so it shapes the final product.",
+          "flags": [
+            "DISCUSSION_STRONG_PROJECT_WEAK"
+          ]
+        }
+      }
+    },
+    "team3": {
+      "teamName": "VitalHire Team",
+      "priorTeamName": "Risk Assessment Group",
+      "submission": "on-time",
+      "leadAuthor": "Barber, Allie",
+      "tangible": {
+        "decisionAuthority": "partial",
+        "usersAffected": "yes",
+        "exclusions": "yes",
+        "vendorIndependence": "yes"
+      },
+      "heat": {
+        "system_purpose": 4,
+        "decision_auth": 3,
+        "users_affected": 3,
+        "data_inputs": 2,
+        "exclusions": 4,
+        "exec_comm": 3
+      },
+      "flags": {
+        "ai": "likely-authentic",
+        "writing": "professional",
+        "continuity": "n/a",
+        "epoch": [
+          "Opinion",
+          "Presence",
+          "Empathy"
+        ]
+      },
+      "informational": {
+        "aiToolsDisclosed": "AI used to organize document and improve clarity. All content written by team.",
+        "sourcesUsed": [
+          "HarborRank Vendor Profile",
+          "MIT AI Risk Repository (Disparate Impact category noted)",
+          "EEOC guidance (implied in exclusions)"
+        ],
+        "visualSubmitted": true,
+        "visualFormat": "png"
+      },
+      "notes": "Best Purpose section in the class -- Lakeside numbers in sentence one, bottleneck named, vendor independence maintained throughout. Best Exclusions section -- 'does not guarantee compliance with EEOC regulations' shows genuine Source 3 engagement and independent thinking. Decision Authority is clear on who decides but thin on process mechanics (no logging, no audit trail described). Data Inputs thin on configuration specifics. Users/Affected mapping is cleanest of the three teams -- HMs correctly placed as affected, departments included as downstream stakeholders. Writing is consistently professional across all sections. Strongest EPOCH signal of any team.",
+      "students": {
+        "Barber, Allie": {
+          "role": "Lead Author",
+          "contribution": "high",
+          "signal": "10 posts, 679 words, 5 days active. Coordination + content production. Led the team, created the visual, compiled the final doc. Discussion confirms the CARRYING flag.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": 10,
+          "breakoutWords": 679,
+          "filesContributed": [
+            "VITALH_2.PDF (final deliverable)",
+            "VITALH_1.PNG (visual)"
+          ],
+          "suggestedFeedback": "Your Purpose section anchors this whole deliverable. Opening with the Lakeside numbers was the right call. The visual is clean and functional. Strong lead work.",
+          "flags": [
+            "CARRYING"
+          ]
+        },
+        "Minzey, Lexi": {
+          "role": "Researcher",
+          "contribution": "low",
+          "signal": "3 posts, 44 total words, 14.7 avg. Three one-line responses. Wrote Decision Authority section (adequate) but near-invisible in team coordination.",
+          "discussionHistory": "weak",
+          "breakoutPosts": 3,
+          "breakoutWords": 44,
+          "filesContributed": [],
+          "suggestedFeedback": "Decision Authority is clear on who decides. The gap is process: how are overrides logged? Where? By whom? That's what WK11 risk analysis will need.",
+          "flags": []
+        },
+        "Niltasuwan, Klay": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "4 posts, 127 words, 3 days active. Moderate presence. Wrote the cleanest Users/Affected mapping of any team. Work product stronger than discussion volume suggests.",
+          "discussionHistory": "strong",
+          "breakoutPosts": 4,
+          "breakoutWords": 127,
+          "filesContributed": [],
+          "suggestedFeedback": "Cleanest stakeholder map in the class. Missing the oversight layer -- HR leadership, legal, senior leadership are affected by compliance exposure. Add them in WK11.",
+          "flags": [
+            "DISCUSSION_WEAK_PROJECT_STRONG"
+          ]
+        },
+        "Batho, Cole": {
+          "role": "Researcher",
+          "contribution": "low",
+          "signal": "10 posts but 22.2 avg words/post. Almost all brief coordination ('Looks great!', 'Thank you!', 'Yes I see that now!'). Volume without substance. Self-assigned Reviewer role. Data Inputs section was the thinnest in the deliverable.",
+          "discussionHistory": "weak",
+          "breakoutPosts": 10,
+          "breakoutWords": 222,
+          "filesContributed": [],
+          "suggestedFeedback": "You're showing up in discussion, which matters. But 10 posts averaging 22 words each isn't substantive engagement. WK11 needs longer, more analytical contributions -- react to the content, not just the logistics.",
+          "flags": []
+        },
+        "Baldwin, Sam": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "2 posts, 257 words, 2 days active. Low volume but high substance (128.5 avg). Wrote the EEOC compliance gap insight -- the strongest analytical move in any WK10 submission. Quality over quantity, but needs more presence.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": 2,
+          "breakoutWords": 257,
+          "filesContributed": [],
+          "suggestedFeedback": "The EEOC compliance gap line is the best single insight in any WK10 deliverable. That analytical instinct is exactly right. Show up more in discussion -- your teammates need that voice earlier in the week, not just at the end.",
+          "flags": [
+            "DISCUSSION_WEAK_PROJECT_STRONG"
+          ]
+        }
+      }
+    }
+  },
+  "crossTeamComparison": {
+    "summary": "Three distinct performance profiles. VitalHire leads on organizational grounding and writing quality. Team X leads on scope and specificity (especially exclusions and data inputs). Team Y has one strong section (Decision Authority) surrounded by significant gaps, with the Purpose section being a near-total miss.",
+    "byCategory": {
+      "system_purpose": {
+        "ranking": [
+          "VitalHire (4)",
+          "Team X (3)",
+          "Team Y (1)"
+        ],
+        "note": "Massive spread. VitalHire opens with Lakeside numbers. Team X uses 'claims' language correctly. Team Y wrote generic software copy with zero organizational specificity."
+      },
+      "decision_authority": {
+        "ranking": [
+          "Team X (3)",
+          "Team Y (3)",
+          "VitalHire (3)"
+        ],
+        "note": "Closest category. All three understand the recommendation-not-decision distinction. Team X and Team Y mention audit trails. VitalHire is clear but missing process mechanics."
+      },
+      "users_affected": {
+        "ranking": [
+          "VitalHire (3)",
+          "Team X (2)",
+          "Team Y (2)"
+        ],
+        "note": "VitalHire's mapping is cleanest -- correct HM classification, departments as downstream affected. Team X and Team Y both have the HM-in-both-columns problem."
+      },
+      "data_inputs": {
+        "ranking": [
+          "Team X (3)",
+          "VitalHire (2)",
+          "Team Y (2)"
+        ],
+        "note": "Team X has the most specificity -- ATS integration, recruiter feedback loop, configuration settings. VitalHire and Team Y both go thin on configuration parameters."
+      },
+      "exclusions": {
+        "ranking": [
+          "Team X (4)",
+          "VitalHire (4)",
+          "Team Y (3)"
+        ],
+        "note": "Strongest category across all teams. Team X has nine grounded exclusions. VitalHire has the EEOC compliance gap insight. Team Y covers the basics well."
+      },
+      "exec_comm": {
+        "ranking": [
+          "Team X (3)",
+          "VitalHire (3)",
+          "Team Y (2)"
+        ],
+        "note": "Team X and VitalHire maintain professional register throughout. Team Y is inconsistent -- Decision Authority reads executive-level while Purpose reads undergraduate."
+      }
+    },
+    "emergingPatterns": [
+      "Exclusions is the strongest category across all three teams. Students understand 'what does this system NOT do' better than 'what problem does it solve.' Interesting -- negative scope is clearer to them than positive scope.",
+      "Users vs. Affected Parties is the most commonly confused area. Two of three teams put hiring managers in the wrong column or in both columns. The user/affected distinction needs reinforcement before WK11.",
+      "AI tool usage varies: Team X and Team Y disclosed ChatGPT for language polish on specific sections. VitalHire used it only for organization. Team Y's no-additional-sources combined with ChatGPT for language raises the question of whether the content or just the polish came from AI.",
+      "Team Y's performance gap is structural, not cosmetic. The Purpose section failure cascades -- without organizational grounding, the rest of the document floats. This team needs intervention before WK11 or the risk matrix will be equally unmoored.",
+      "Individual contribution distribution: VitalHire's Barber is carrying (Lead Author + Visual + compiled final doc). Team Y's Allen wrote the only strong section plus the visual. Both flagged as CARRYING."
+    ],
+    "weeklyAlerts": {
+      "red": [
+        "Team Y Purpose section: complete rebuild needed before WK11. Harris produced a Lakeside-grounded draft in discussion that never made it into the submitted deliverable. Team coordination failure.",
+        "Team Y coordination timing: Harris's 1200-word drafts posted at 11:51 PM on due date. Content was good but arrived too late. The team needs to establish earlier deadlines for section drafts."
+      ],
+      "yellow": [
+        "Team X Users/Affected: HM classification contradiction needs fixing before WK11.",
+        "VitalHire Decision Authority: process mechanics (logging, audit trail) missing.",
+        "Barber (VitalHire): Carrying flag confirmed by breakout data. 10 posts + lead + visual + compiled final. Unsustainable.",
+        "Hamblin (Team Y): 4 posts, all on due date weekend. Consistent minimal engagement pattern across IA2 and WK10.",
+        "Batho (VitalHire): 10 posts but 22 avg words. Presence without substance.",
+        "Minzey (VitalHire): 3 posts, 44 words total. Near-invisible in team coordination."
+      ],
+      "green": [
+        "Bogue (Team X): IMPROVING. Showed up, apologized, engaged genuinely, delivered visual. Not the disengaged student from WK2-8.",
+        "Harris (Team Y): REVISED UPWARD. Highest word count in the class. Produced Lakeside-grounded deliverable drafts. The problem is timing, not effort.",
+        "Dumas (Team X): Strong turnaround confirmed. 10 posts, 6 days active, wrote the standout Exclusions section.",
+        "Baldwin (VitalHire): EEOC insight remains the best analytical move across all teams.",
+        "All three teams submitted on time with status reports."
+      ]
+    }
+  }
+}
