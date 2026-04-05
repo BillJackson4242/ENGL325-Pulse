@@ -1,0 +1,4 @@
+﻿GroupName,WeekNumber,TotalStudents,ActiveStudents,TotalPosts,TotalMainPosts,TotalReplies,TotalWords,AvgWordsPerPost,ThreadCount,ParticipationSpread,EarlyPostingRate,GroupAuthenticityScore,GroupAIPatternScore
+Group A,Week 6,6,5,12,5,7,1406,117.2,5,83.3%,16.7%,3,0
+Group B,Week 6,7,6,27,9,18,2360,87.4,9,85.7%,14.8%,14,0
+Group C,Week 6,6,6,31,11,20,3303,106.5,11,100.0%,29.0%,25,0

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENGL 325 · Discussion Pulse · Instructor</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0e14; --paper: #f4f1eb; --paper-dark: #e8e3d9;
+  --accent: #c45d3e; --accent-glow: #e8734f;
+  --teal: #2a7a6e; --teal-light: #3ba392;
+  --slate: #5a6472; --slate-light: #8892a0;
+  --gold: #c4a052; --danger: #b83a3a; --success: #3a8a5c;
+  --bg-card: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'IBM Plex Sans', sans-serif; background: var(--ink); color: var(--paper); line-height: 1.6; }
+
+.top-bar {
+  background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--border);
+  padding: 16px 40px; display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px; position: sticky; top: 0; z-index: 100;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.top-bar-left { display: flex; align-items: baseline; gap: 16px; }
+.top-bar h1 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; font-weight: 400; }
+.top-bar h1 span { color: var(--accent-glow); }
+.instructor-badge {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  padding: 4px 12px; border-radius: 4px; background: var(--accent); color: white;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.week-nav { display: flex; gap: 6px; flex-wrap: wrap; }
+.week-btn {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  padding: 6px 14px; border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: var(--slate-light);
+  border-radius: 4px; cursor: pointer; transition: all 0.2s;
+}
+.week-btn:hover:not(.disabled) { border-color: var(--accent); color: var(--paper); }
+.week-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
+.week-btn.disabled { opacity: 0.2; pointer-events: none; }
+
+.container { max-width: 1440px; margin: 0 auto; padding: 24px 40px 80px; }
+
+.section-hdr {
+  font-family: 'DM Serif Display', serif; font-size: 1.3rem; font-weight: 400;
+  margin: 32px 0 16px; padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: baseline; gap: 12px;
+}
+.section-hdr .count {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+  color: var(--slate-light); letter-spacing: 0.5px;
+}
+
+.stats-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 24px; }
+.stat-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 16px; text-align: center;
+}
+.stat-card .val { font-family: 'DM Serif Display', serif; font-size: 2rem; line-height: 1; }
+.stat-card .val.warn { color: var(--danger); }
+.stat-card .val.good { color: var(--success); }
+.stat-card .lbl {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+  color: var(--slate-light); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 6px;
+}
+
+.triage-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.triage-card { border-radius: 10px; padding: 20px; border: 1px solid var(--border); }
+.triage-card.red { background: rgba(184,58,58,0.06); border-color: rgba(184,58,58,0.2); }
+.triage-card.gold { background: rgba(196,160,82,0.06); border-color: rgba(196,160,82,0.2); }
+.triage-card.green { background: rgba(58,138,92,0.06); border-color: rgba(58,138,92,0.2); }
+.triage-hdr {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px;
+}
+.triage-card.red .triage-hdr { color: #f87171; }
+.triage-card.gold .triage-hdr { color: var(--gold); }
+.triage-card.green .triage-hdr { color: #4ade80; }
+.t-item {
+  padding: 10px 8px; border-bottom: 1px solid rgba(255,255,255,0.04);
+  cursor: pointer; transition: background 0.15s; border-radius: 4px;
+}
+.t-item:hover { background: rgba(255,255,255,0.03); }
+.t-item:last-child { border-bottom: none; }
+.t-name { font-weight: 600; font-size: 0.92rem; }
+.t-detail { color: var(--slate-light); font-size: 0.78rem; margin-top: 3px; }
+.t-assessment { font-size: 0.78rem; color: var(--slate-light); margin-top: 4px; font-style: italic; }
+.tag {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px;
+  padding: 2px 8px; border-radius: 3px; margin-left: 6px; letter-spacing: 0.5px;
+  display: inline-block; vertical-align: middle;
+}
+.tag.ghost { background: rgba(184,58,58,0.3); color: #f87171; }
+.tag.ai { background: rgba(196,93,62,0.3); color: var(--accent-glow); }
+.tag.isolated { background: rgba(196,160,82,0.3); color: var(--gold); }
+.tag.absent { background: rgba(184,58,58,0.25); color: #f87171; }
+.tag.concern { background: rgba(196,93,62,0.2); color: var(--accent-glow); }
+.tag.excellent { background: rgba(58,138,92,0.2); color: #4ade80; }
+.tag.strong { background: rgba(42,122,110,0.2); color: var(--teal-light); }
+.tag.adequate { background: rgba(255,255,255,0.06); color: var(--slate-light); }
+.tag.needs-improvement { background: rgba(196,160,82,0.2); color: var(--gold); }
+.tag.concerning { background: rgba(184,58,58,0.2); color: #f87171; }
+.triage-empty { color: #555; font-style: italic; font-size: 0.85rem; }
+
+.networks-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.net-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px; text-align: center;
+}
+.net-card h4 { font-family: 'DM Serif Display', serif; font-size: 1.05rem; font-weight: 400; margin-bottom: 12px; }
+.net-canvas { width: 100%; height: 220px; }
+
+.filter-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
+.filter-btn {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  padding: 6px 16px; border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: var(--slate-light);
+  border-radius: 4px; cursor: pointer; transition: all 0.2s;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--paper); }
+.filter-btn.active { background: rgba(255,255,255,0.08); color: var(--paper); border-color: rgba(255,255,255,0.2); }
+.filter-spacer { flex: 1; }
+.search-input {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  padding: 6px 14px; background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  border-radius: 4px; color: var(--paper); outline: none; width: 200px;
+}
+.search-input::placeholder { color: var(--slate-light); }
+.search-input:focus { border-color: var(--accent); }
+
+.student-grid { display: flex; flex-direction: column; gap: 8px; }
+.s-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+  overflow: hidden; transition: all 0.2s;
+}
+.s-card:hover { border-color: rgba(255,255,255,0.15); }
+.s-card.expanded { border-color: rgba(255,255,255,0.2); }
+.s-header {
+  display: grid; grid-template-columns: 200px 80px 140px repeat(6, 1fr) auto;
+  align-items: center; gap: 8px; padding: 12px 16px; cursor: pointer; transition: background 0.15s;
+}
+.s-header:hover { background: rgba(255,255,255,0.02); }
+.s-name { font-weight: 600; font-size: 0.88rem; }
+.s-group {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+  padding: 3px 8px; border-radius: 4px; color: white; text-align: center;
+}
+.s-role { color: var(--teal-light); font-size: 0.78rem; }
+.s-metric { font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; text-align: center; }
+.s-metric.zero { color: #555; }
+.s-metric.warn { color: var(--danger); font-weight: 600; }
+.s-metric.good { color: var(--success); }
+.s-expand { font-size: 0.8rem; color: var(--slate-light); transition: transform 0.3s; width: 24px; text-align: center; }
+.s-card.expanded .s-expand { transform: rotate(180deg); }
+.s-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; border-top: 1px solid transparent; }
+.s-card.expanded .s-body { max-height: 2000px; border-top-color: var(--border); }
+.s-body-inner { padding: 20px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.assess-label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--slate-light); margin-bottom: 6px;
+}
+.assess-overall { font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin-bottom: 8px; }
+.assess-overall.excellent { color: #4ade80; }
+.assess-overall.strong { color: var(--teal-light); }
+.assess-overall.adequate { color: var(--gold); }
+.assess-overall.needs-improvement { color: var(--accent-glow); }
+.assess-overall.concerning { color: var(--danger); }
+
+.assess-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.assess-tag {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px;
+  padding: 3px 10px; border-radius: 4px; letter-spacing: 0.5px;
+}
+.at-yes { background: rgba(58,138,92,0.15); color: #4ade80; }
+.at-partial { background: rgba(196,160,82,0.15); color: var(--gold); }
+.at-no { background: rgba(184,58,58,0.15); color: #f87171; }
+.at-auth-good { background: rgba(42,122,110,0.15); color: var(--teal-light); }
+.at-auth-warn { background: rgba(196,93,62,0.15); color: var(--accent-glow); }
+.at-synth { background: rgba(255,255,255,0.06); color: var(--slate-light); }
+
+.assess-notes { font-size: 0.84rem; color: var(--slate-light); line-height: 1.7; margin-bottom: 12px; }
+.assess-flag {
+  background: rgba(196,93,62,0.1); border: 1px solid rgba(196,93,62,0.2);
+  border-radius: 6px; padding: 10px 14px; font-size: 0.82rem;
+  color: var(--accent-glow); line-height: 1.5; margin-bottom: 12px;
+}
+.metric-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.82rem;
+}
+.metric-row:last-child { border-bottom: none; }
+.metric-label { color: var(--slate-light); }
+.metric-val { font-family: 'IBM Plex Mono', monospace; font-weight: 500; }
+
+.longi-section { margin-top: 12px; }
+.longi-flag { font-size: 0.78rem; color: var(--accent-glow); padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+.longi-flag:last-child { border-bottom: none; }
+
+.copy-btn {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  padding: 6px 16px; border: 1px solid var(--teal); background: transparent;
+  color: var(--teal-light); border-radius: 4px; cursor: pointer;
+  transition: all 0.2s; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 8px;
+}
+.copy-btn:hover { background: var(--teal); color: white; }
+.copy-btn.copied { background: var(--success); border-color: var(--success); color: white; }
+
+.s-grid-header {
+  display: grid; grid-template-columns: 200px 80px 140px repeat(6, 1fr) auto;
+  gap: 8px; padding: 8px 16px; margin-bottom: 4px;
+}
+.s-grid-header span {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem;
+  letter-spacing: 0.5px; text-transform: uppercase; color: var(--slate-light); text-align: center;
+}
+.s-grid-header span:first-child, .s-grid-header span:nth-child(3) { text-align: left; }
+
+.no-qual { font-style: italic; color: var(--slate-light); font-size: 0.84rem; padding: 12px 0; }
+
+.dash-footer {
+  text-align: center; padding: 32px; font-size: 0.7rem;
+  font-family: 'IBM Plex Mono', monospace; color: var(--slate-light);
+  letter-spacing: 1px; border-top: 1px solid var(--border); margin-top: 40px;
+}
+
+@media (max-width: 1100px) {
+  .s-header { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .s-grid-header { display: none; }
+  .s-body-inner { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(3, 1fr); }
+  .triage-row { grid-template-columns: 1fr; }
+  .container { padding: 16px 20px 60px; }
+  .top-bar { padding: 12px 20px; }
+  .networks-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-left">
+    <h1>Discussion <span>Pulse</span></h1>
+    <span class="instructor-badge">Instructor</span>
+  </div>
+  <nav class="week-nav" id="weekNav"></nav>
+</div>
+
+<div class="container">
+  <div id="statsRow"></div>
+  <div id="triageSection"></div>
+  <div class="section-hdr">Conversation Networks <span class="count">with student names</span></div>
+  <div class="networks-row" id="networksRow"></div>
+  <div class="section-hdr" id="rosterHdr">Full Roster</div>
+  <div class="filter-bar" id="filterBar"></div>
+  <div class="s-grid-header" id="gridHeader"></div>
+  <div class="student-grid" id="studentGrid"></div>
+</div>
+
+<div class="dash-footer">ENGL 325 · DISCUSSION PULSE · INSTRUCTOR VIEW · V2.0</div>
+
+<script>
+const DATA_BASE = './data/';
+const WEEKS = [
+  { key: 'week2', label: 'Wk 2', folder: 'week2', available: false },
+  { key: 'week3', label: 'Wk 3', folder: 'week3', available: true },
+  { key: 'week4', label: 'Wk 4', folder: 'week4', available: true },
+  { key: 'week5', label: 'Wk 5', folder: 'week5', available: true },
+  { key: 'week6', label: 'Wk 6', folder: 'week6', available: true },
+  { key: 'week7', label: 'Wk 7', folder: 'week7', available: true },
+  { key: 'week8', label: 'Wk 8', folder: 'week8', available: true },
+];
+const GC = {
+  'Group A':'#6b7fd7','Group B':'#d77a4a','Group C':'#5aab8b',
+  'Group 1':'#6b7fd7','Group 2':'#d77a4a','Group 3':'#5aab8b','Group 4':'#c4a052'
+};
+
+let currentWeek = null;
+let students = [], groups = [], qual = [], posts = [];
+let allWeeksData = {};
+let filterMode = 'all', searchTerm = '';
+
+// CSV Parser
+function parseCSV(text) {
+  const lines = []; let cur = '', inQ = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (c === '"') { if (inQ && text[i+1] === '"') { cur += '"'; i++; } else inQ = !inQ; }
+    else if ((c === '\n' || c === '\r') && !inQ) { if (cur.trim()) lines.push(cur); cur = ''; if (c === '\r' && text[i+1] === '\n') i++; }
+    else cur += c;
+  }
+  if (cur.trim()) lines.push(cur);
+  if (lines.length < 2) return [];
+  const split = r => { const cols=[]; let col='',q=false; for(let i=0;i<r.length;i++){const c=r[i];if(c==='"')q=!q;else if(c===','&&!q){cols.push(col.trim());col='';}else col+=c;} cols.push(col.trim()); return cols; };
+  let h = lines[0]; if (h.charCodeAt(0)===0xFEFF) h=h.slice(1);
+  const hdr = split(h);
+  return lines.slice(1).map(l => { const v=split(l); const o={}; hdr.forEach((k,i)=>o[k]=v[i]||''); return o; });
+}
+
+async function fetchCSV(url) {
+  try { const r = await fetch(url); if(!r.ok) throw 0; return parseCSV(await r.text()); }
+  catch(e) { return null; }
+}
+
+function num(v) { return parseInt(v)||0; }
+function flt(v) { return parseFloat(v)||0; }
+
+// Fuzzy student name matching (handles "Last, First" vs "First Last")
+function nameMatch(a, b) {
+  const n1 = (a||'').trim().toLowerCase();
+  const n2 = (b||'').trim().toLowerCase();
+  if (n1 === n2) return true;
+  if (n1.replace(/,\s*/,' ') === n2) return true;
+  if (n2.replace(/,\s*/,' ') === n1) return true;
+  // Try reversing
+  const rev1 = n1.split(/,\s*/).reverse().join(' ');
+  const rev2 = n2.split(/,\s*/).reverse().join(' ');
+  return rev1 === n2 || rev2 === n1;
+}
+
+function getQual(studentName) {
+  return qual.find(q => nameMatch(q.StudentName, studentName)) || null;
+}
+
+function firstName(name) {
+  if (name.includes(',')) {
+    const parts = name.split(',').map(s => s.trim());
+    return parts[1] ? parts[1].split(' ')[0] : parts[0];
+  }
+  return name.split(' ')[0];
+}
+
+function roleAbbr(role) {
+  const m = {'Facilitator':'Fac','Cast Mapper':'CM','Solution Designer':'SD','Message Designer':'MD','Delivery Specialist':'DS','Cultural Analyst':'CA'};
+  return m[role] || '';
+}
+
+// Load all weeks for longitudinal tracking
+async function loadAllWeeks() {
+  const available = WEEKS.filter(w => w.available);
+  await Promise.all(available.map(async w => {
+    const base = DATA_BASE + w.folder + '/';
+    const [s, q] = await Promise.all([
+      fetchCSV(base + 'discussion_student_summary.csv'),
+      fetchCSV(base + 'qualitative_assessment.csv'),
+    ]);
+    if (s) allWeeksData[w.key] = { students: s, qual: q || [] };
+  }));
+}
+
+async function loadWeek(key) {
+  const w = WEEKS.find(x => x.key === key);
+  if (!w || !w.available) return;
+  currentWeek = key;
+  document.querySelectorAll('.week-btn').forEach(b => b.classList.toggle('active', b.dataset.week === key));
+  
+  const base = DATA_BASE + w.folder + '/';
+  const [s, g, q, p] = await Promise.all([
+    fetchCSV(base + 'discussion_student_summary.csv'),
+    fetchCSV(base + 'discussion_group_summary.csv'),
+    fetchCSV(base + 'qualitative_assessment.csv'),
+    fetchCSV(base + 'discussion_posts_raw.csv'),
+  ]);
+  
+  students = s || []; groups = g || []; qual = q || []; posts = p || [];
+  renderAll();
+}
+
+// Longitudinal flags
+function getLongiFlags(studentName) {
+  const flags = [];
+  const weekKeys = Object.keys(allWeeksData).sort();
+  let absentWeeks = [], aiWeeks = [], assessTrack = [];
+  
+  weekKeys.forEach(wk => {
+    const wd = allWeeksData[wk];
+    const s = wd.students.find(st => nameMatch(st.StudentName, studentName));
+    const q = wd.qual.find(qt => nameMatch(qt.StudentName, studentName));
+    const label = wk.replace('week','Wk ');
+    
+    if (s && num(s.TotalPosts) === 0) absentWeeks.push(label);
+    if (s && num(s.AIPatternScore) >= 3) aiWeeks.push(`${label} (AI:${s.AIPatternScore})`);
+    if (q) assessTrack.push({ week: label, overall: q.OverallAssessment || '' });
+  });
+  
+  if (absentWeeks.length >= 2) flags.push(`⚠️ Absent: ${absentWeeks.join(', ')} — ${absentWeeks.length} weeks with zero posts`);
+  if (aiWeeks.length >= 2) flags.push(`🔴 Repeated AI flags: ${aiWeeks.join(', ')}`);
+  
+  if (assessTrack.length >= 2) {
+    const lvl = { 'Excellent': 5, 'Strong': 4, 'Adequate': 3, 'Needs Improvement': 2, 'Concerning': 1 };
+    const first = lvl[assessTrack[0].overall] || 0;
+    const last = lvl[assessTrack[assessTrack.length - 1].overall] || 0;
+    if (last > first && last - first >= 2) flags.push(`📈 Improved: ${assessTrack[0].week} (${assessTrack[0].overall}) → ${assessTrack[assessTrack.length-1].week} (${assessTrack[assessTrack.length-1].overall})`);
+    if (first > last && first - last >= 2) flags.push(`📉 Declined: ${assessTrack[0].week} (${assessTrack[0].overall}) → ${assessTrack[assessTrack.length-1].week} (${assessTrack[assessTrack.length-1].overall})`);
+  }
+  return flags;
+}
+
+function renderAll() { renderStats(); renderTriage(); renderNetworks(); renderFilters(); renderStudentGrid(); }
+
+function renderStats() {
+  const totalPosts = students.reduce((s,r) => s + num(r.TotalPosts), 0);
+  const totalReplies = students.reduce((s,r) => s + num(r.Replies), 0);
+  const ghosts = students.filter(s => num(s.TotalPosts) === 0).length;
+  const aiFlags = students.filter(s => num(s.AIPatternScore) >= 3).length;
+  const excellent = qual.filter(q => q.OverallAssessment === 'Excellent').length;
+  const qualCount = qual.length;
+  
+  document.getElementById('statsRow').innerHTML = `<div class="stats-row">
+    <div class="stat-card"><div class="val">${totalPosts}</div><div class="lbl">Total Posts</div></div>
+    <div class="stat-card"><div class="val">${totalReplies}</div><div class="lbl">Replies</div></div>
+    <div class="stat-card"><div class="val ${ghosts > 2 ? 'warn' : ''}">${ghosts}</div><div class="lbl">Ghosts</div></div>
+    <div class="stat-card"><div class="val ${aiFlags > 0 ? 'warn' : ''}">${aiFlags}</div><div class="lbl">AI Flagged</div></div>
+    <div class="stat-card"><div class="val good">${excellent}</div><div class="lbl">Excellent</div></div>
+    <div class="stat-card"><div class="val">${qualCount > 0 ? qualCount : '—'}</div><div class="lbl">Assessed</div></div>
+  </div>`;
+}
+
+function renderTriage() {
+  const merged = students.map(s => ({ ...s, qual: getQual(s.StudentName) }));
+  
+  const red = merged.filter(m => num(m.TotalPosts) === 0 || num(m.AIPatternScore) >= 3 ||
+    (m.qual && (m.qual.OverallAssessment === 'Concerning' || m.qual.Flag === 'AI_CONCERN')));
+  
+  const gold = merged.filter(m => {
+    if (red.includes(m)) return false;
+    if (m.qual && (m.qual.OverallAssessment === 'Needs Improvement' || m.qual.OverallAssessment === 'Adequate')) return true;
+    if (num(m.TotalPosts) === 1 && !m.qual) return true;
+    if (num(m.TotalPosts) > 0 && num(m.Replies) === 0 && num(m.InboundReplies) === 0) return true;
+    return false;
+  });
+  
+  const green = merged.filter(m => !red.includes(m) && !gold.includes(m) &&
+    (m.qual && (m.qual.OverallAssessment === 'Excellent' || m.qual.OverallAssessment === 'Strong') ||
+    num(m.TotalPosts) >= 5 && num(m.UniqueStudentsEngaged) >= 3));
+
+  function tItem(m, showFeedback) {
+    let tags = '';
+    if (num(m.TotalPosts) === 0) tags += '<span class="tag ghost">GHOST</span>';
+    if (num(m.AIPatternScore) >= 3) tags += `<span class="tag ai">AI:${m.AIPatternScore}</span>`;
+    if (m.qual && m.qual.Flag === 'AI_CONCERN') tags += '<span class="tag ai">AI CONCERN</span>';
+    if (m.qual && m.qual.Flag === 'ABSENT') tags += '<span class="tag absent">ABSENT</span>';
+    if (m.qual && m.qual.Flag === 'Concern' && m.qual.Flag !== 'AI_CONCERN') tags += '<span class="tag concern">CONCERN</span>';
+    if (num(m.TotalPosts) > 0 && num(m.Replies) === 0 && num(m.InboundReplies) === 0 && num(m.TotalPosts) <= 2)
+      tags += '<span class="tag isolated">ISOLATED</span>';
+    if (m.qual && m.qual.OverallAssessment) {
+      const cls = m.qual.OverallAssessment.toLowerCase().replace(/\s+/g, '-');
+      tags += `<span class="tag ${cls}">${m.qual.OverallAssessment.toUpperCase()}</span>`;
+    }
+    
+    const detail = `${m.GroupName} · ${m.AssignedRole || '—'} · ${m.TotalPosts} posts · ${m.Replies} replies`;
+    const longi = getLongiFlags(m.StudentName);
+    let longiHtml = longi.length ? `<div class="t-assessment">${longi[0]}</div>` : '';
+    let feedHtml = '';
+    if (showFeedback && m.qual && m.qual.FeedbackNotes) {
+      const short = m.qual.FeedbackNotes.length > 150 ? m.qual.FeedbackNotes.substring(0, 150) + '…' : m.qual.FeedbackNotes;
+      feedHtml = `<div class="t-assessment">${short}</div>`;
+    }
+    
+    return `<div class="t-item" onclick="scrollToStudent('${m.StudentName.replace(/'/g,"\\'")}')">
+      <span class="t-name">${m.StudentName}</span>${tags}
+      <div class="t-detail">${detail}</div>${longiHtml}${feedHtml}
+    </div>`;
+  }
+
+  document.getElementById('triageSection').innerHTML = `<div class="triage-row">
+    <div class="triage-card red">
+      <div class="triage-hdr">🔴 Needs Attention (${red.length})</div>
+      ${red.length ? red.map(m => tItem(m, true)).join('') : '<div class="triage-empty">None this week ✨</div>'}
+    </div>
+    <div class="triage-card gold">
+      <div class="triage-hdr">🟡 Watch (${gold.length})</div>
+      ${gold.length ? gold.map(m => tItem(m, false)).join('') : '<div class="triage-empty">None this week</div>'}
+    </div>
+    <div class="triage-card green">
+      <div class="triage-hdr">🟢 Strong (${green.length})</div>
+      ${green.length ? green.map(m => tItem(m, false)).join('') : '<div class="triage-empty">None this week</div>'}
+    </div>
+  </div>`;
+}
+
+// Network Graphs with student names
+function renderNetworks() {
+  const container = document.getElementById('networksRow');
+  if (!groups.length) { container.innerHTML = ''; return; }
+  
+  container.innerHTML = groups.map(g => {
+    const svgId = 'net_' + g.GroupName.replace(/\s+/g, '_');
+    return `<div class="net-card">
+      <h4>${g.GroupName} <span style="font-family:'IBM Plex Mono';font-size:0.7rem;color:var(--slate-light);font-weight:400;">
+        ${g.ActiveStudents}/${g.TotalStudents} active · ${g.TotalReplies} replies · ${g.CrossEngagement} cross</span></h4>
+      <svg class="net-canvas" id="${svgId}" viewBox="0 0 340 220"></svg>
+    </div>`;
+  }).join('');
+
+  groups.forEach(g => {
+    const svgId = 'net_' + g.GroupName.replace(/\s+/g, '_');
+    const color = GC[g.GroupName] || '#888';
+    const gStudents = students.filter(s => s.GroupName === g.GroupName);
+    const gPosts = posts.filter(p => p.GroupName === g.GroupName);
+    
+    const nodes = gStudents.map(s => ({
+      id: s.StudentName, label: firstName(s.StudentName),
+      posts: num(s.TotalPosts), role: s.AssignedRole || ''
+    }));
+    
+    const edgeMap = {};
+    gPosts.filter(p => p.PostType === 'reply' && p.ReplyingTo).forEach(p => {
+      const key = p.StudentName + '→' + p.ReplyingTo;
+      edgeMap[key] = (edgeMap[key] || 0) + 1;
+    });
+    const edges = Object.entries(edgeMap).map(([key, w]) => {
+      const [from, to] = key.split('→');
+      return { from, to, weight: w };
+    });
+
+    drawNetwork(svgId, nodes, edges, color);
+  });
+}
+
+function drawNetwork(svgId, nodes, edges, color) {
+  const svg = document.getElementById(svgId);
+  if (!svg) return;
+  const w = 340, h = 220, cx = w/2, cy = h/2, r = 75;
+
+  let defs = `<defs><marker id="arr-${svgId}" viewBox="0 0 10 7" refX="28" refY="3.5" markerWidth="7" markerHeight="5" orient="auto-start-reverse"><polygon points="0 0, 10 3.5, 0 7" fill="${color}" opacity="0.5"/></marker></defs>`;
+
+  const pos = nodes.map((n, i) => {
+    const angle = (i / nodes.length) * Math.PI * 2 - Math.PI / 2;
+    return { ...n, x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r };
+  });
+
+  let eSvg = '';
+  edges.forEach(e => {
+    const from = pos.find(n => n.id === e.from);
+    const to = pos.find(n => n.id === e.to);
+    if (from && to && from.id !== to.id) {
+      const wt = Math.min(e.weight || 1, 6);
+      const dx = to.x - from.x, dy = to.y - from.y;
+      const len = Math.sqrt(dx*dx + dy*dy) || 1;
+      const ox = (-dy / len) * 3, oy = (dx / len) * 3;
+      eSvg += `<line x1="${from.x+ox}" y1="${from.y+oy}" x2="${to.x+ox}" y2="${to.y+oy}" 
+        stroke="${color}" stroke-width="${0.8 + wt * 0.6}" opacity="${0.2 + wt * 0.08}"
+        marker-end="url(#arr-${svgId})"/>`;
+    }
+  });
+
+  let nSvg = '';
+  pos.forEach(n => {
+    const sz = Math.min(10 + (n.posts || 0) * 1.2, 22);
+    const ghost = n.posts === 0;
+    nSvg += `<circle cx="${n.x}" cy="${n.y}" r="${sz}" fill="${ghost?'#555':color}" opacity="${ghost?0.4:0.9}" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>`;
+    if (!ghost) nSvg += `<text x="${n.x}" y="${n.y + 4}" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" font-weight="600" fill="white">${n.posts}</text>`;
+    nSvg += `<text x="${n.x}" y="${n.y + sz + 13}" text-anchor="middle" font-family="IBM Plex Sans" font-size="9" font-weight="500" fill="${ghost?'#666':'#ccc'}">${n.label}</text>`;
+    if (n.role) nSvg += `<text x="${n.x}" y="${n.y + sz + 24}" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#666">${roleAbbr(n.role)}</text>`;
+  });
+
+  svg.innerHTML = defs + eSvg + nSvg;
+}
+
+function renderFilters() {
+  const filters = [
+    {key:'all',label:'All'},{key:'red',label:'🔴 Needs Attention'},{key:'gold',label:'🟡 Watch'},{key:'green',label:'🟢 Strong'},
+  ];
+  document.getElementById('filterBar').innerHTML = filters.map(f =>
+    `<button class="filter-btn ${filterMode===f.key?'active':''}" data-f="${f.key}">${f.label}</button>`
+  ).join('') + `<span class="filter-spacer"></span><input class="search-input" placeholder="Search student..." value="${searchTerm}" id="searchInput">`;
+  
+  document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click', () => {
+    filterMode = b.dataset.f; renderFilters(); renderStudentGrid();
+  }));
+  document.getElementById('searchInput').addEventListener('input', e => {
+    searchTerm = e.target.value.toLowerCase(); renderStudentGrid();
+  });
+}
+
+// Student Grid with expandable cards
+function renderStudentGrid() {
+  document.getElementById('gridHeader').innerHTML = `
+    <span>Student</span><span>Group</span><span>Role</span>
+    <span>Posts</span><span>Replies</span><span>Engaged</span>
+    <span>Auth</span><span>AI</span><span>Overall</span><span></span>`;
+  
+  let merged = students.map(s => ({ ...s, qual: getQual(s.StudentName) }));
+  if (searchTerm) merged = merged.filter(m => m.StudentName.toLowerCase().includes(searchTerm));
+  
+  if (filterMode === 'red') {
+    merged = merged.filter(m => num(m.TotalPosts) === 0 || num(m.AIPatternScore) >= 3 ||
+      (m.qual && (m.qual.OverallAssessment === 'Concerning' || m.qual.Flag === 'AI_CONCERN')));
+  } else if (filterMode === 'gold') {
+    merged = merged.filter(m => {
+      if (num(m.TotalPosts) === 0 || num(m.AIPatternScore) >= 3) return false;
+      if (m.qual && m.qual.OverallAssessment === 'Concerning') return false;
+      return (m.qual && (m.qual.OverallAssessment === 'Needs Improvement' || m.qual.OverallAssessment === 'Adequate')) ||
+        num(m.TotalPosts) === 1 || (num(m.Replies) === 0 && num(m.TotalPosts) > 0);
+    });
+  } else if (filterMode === 'green') {
+    merged = merged.filter(m => (m.qual && (m.qual.OverallAssessment === 'Excellent' || m.qual.OverallAssessment === 'Strong')) ||
+      (!m.qual && num(m.TotalPosts) >= 5 && num(m.UniqueStudentsEngaged) >= 3));
+  }
+  
+  const ao = {'Concerning':0,'Needs Improvement':1,'Adequate':2,'Strong':3,'Excellent':4,'':5};
+  merged.sort((a,b) => {
+    const aO = a.qual ? (ao[a.qual.OverallAssessment] ?? 5) : (num(a.TotalPosts)===0 ? -1 : 5);
+    const bO = b.qual ? (ao[b.qual.OverallAssessment] ?? 5) : (num(b.TotalPosts)===0 ? -1 : 5);
+    if (aO !== bO) return aO - bO;
+    return a.StudentName.localeCompare(b.StudentName);
+  });
+
+  document.getElementById('rosterHdr').innerHTML = `Full Roster <span class="count">${merged.length} students · ${currentWeek ? currentWeek.replace('week','Week ') : ''}</span>`;
+  
+  const container = document.getElementById('studentGrid');
+  container.innerHTML = merged.map(m => {
+    const s = m, q = m.qual;
+    const p = num(s.TotalPosts), rep = num(s.Replies), eng = num(s.UniqueStudentsEngaged);
+    const auth = num(s.AuthenticityScore), ai = num(s.AIPatternScore);
+    const gc = GC[s.GroupName] || '#888';
+    const cardId = 'card_' + s.StudentName.replace(/[^a-zA-Z0-9]/g, '_');
+    
+    let overallHtml = '<span class="s-metric" style="color:#555;">—</span>';
+    if (q && q.OverallAssessment) {
+      const cls = q.OverallAssessment.toLowerCase().replace(/\s+/g, '-');
+      overallHtml = `<span class="tag ${cls}" style="font-size:8px;">${q.OverallAssessment}</span>`;
+    }
+    
+    let bodyHtml = '';
+    if (q) {
+      const fulfilled = (q.RoleFulfilled || '').toLowerCase();
+      const fCls = fulfilled === 'yes' ? 'at-yes' : fulfilled === 'partial' ? 'at-partial' : 'at-no';
+      const authA = q.AuthenticityAssessment || '';
+      const aCls = authA.includes('Authentic') && !authA.includes('Concern') && !authA.includes('Uncertain') ? 'at-auth-good' : 'at-auth-warn';
+      
+      let tags = `<span class="assess-tag ${fCls}">Role: ${q.RoleFulfilled||'—'}</span>`;
+      tags += `<span class="assess-tag ${aCls}">${authA}</span>`;
+      tags += `<span class="assess-tag at-synth">Synthesis: ${q.IdeaSynthesis||'—'}</span>`;
+      tags += `<span class="assess-tag at-synth">Risk: ${q.RiskTaking||'—'}</span>`;
+      
+      const oCls = (q.OverallAssessment || '').toLowerCase().replace(/\s+/g, '-');
+      let flagHtml = (q.Flag && q.FlagReason) ? `<div class="assess-flag">🚩 ${q.Flag}: ${q.FlagReason}</div>` : '';
+      
+      const longi = getLongiFlags(s.StudentName);
+      let longiHtml = longi.length ? `<div class="longi-section"><div class="assess-label">Longitudinal</div>${longi.map(f=>`<div class="longi-flag">${f}</div>`).join('')}</div>` : '';
+      const fbId = 'fb_' + cardId;
+      
+      bodyHtml = `<div class="s-body-inner">
+        <div>
+          <div class="assess-label">Claude Assessment · ${currentWeek?currentWeek.replace('week','Week '):''}</div>
+          <div class="assess-overall ${oCls}">${q.OverallAssessment||'—'}</div>
+          <div class="assess-tags">${tags}</div>
+          ${flagHtml}
+          <div class="assess-label">Feedback Notes</div>
+          <div class="assess-notes" id="${fbId}">${q.FeedbackNotes||'No notes.'}</div>
+          <button class="copy-btn" onclick="copyFeedback('${fbId}',this,event)">📋 Copy for Canvas</button>
+          ${longiHtml}
+        </div>
+        <div>
+          <div class="assess-label">Code You Metrics</div>
+          <div class="metric-row"><span class="metric-label">Total Posts</span><span class="metric-val">${s.TotalPosts}</span></div>
+          <div class="metric-row"><span class="metric-label">Main / Replies</span><span class="metric-val">${s.MainPosts} / ${s.Replies}</span></div>
+          <div class="metric-row"><span class="metric-label">Total Words</span><span class="metric-val">${s.TotalWords}</span></div>
+          <div class="metric-row"><span class="metric-label">Avg Words/Post</span><span class="metric-val">${s.AvgWordsPerPost?flt(s.AvgWordsPerPost).toFixed(0):'—'}</span></div>
+          <div class="metric-row"><span class="metric-label">Questions Asked</span><span class="metric-val">${s.QuestionsAsked}</span></div>
+          <div class="metric-row"><span class="metric-label">Unique Engaged</span><span class="metric-val">${s.UniqueStudentsEngaged}</span></div>
+          <div class="metric-row"><span class="metric-label">Inbound Replies</span><span class="metric-val">${s.InboundReplies||'0'}</span></div>
+          <div class="metric-row"><span class="metric-label">Posted Early</span><span class="metric-val">${s.PostedEarly==='TRUE'?'✓':'✗'}</span></div>
+          <div class="metric-row"><span class="metric-label">Days Active</span><span class="metric-val">${s.DaysActive}</span></div>
+          <div class="metric-row"><span class="metric-label">Role Named</span><span class="metric-val">${s.RoleExplicitlyNamed==='TRUE'?'✓':'✗'}</span></div>
+          <div class="metric-row"><span class="metric-label">Role Keywords</span><span class="metric-val">${s.RoleKeywordsUsed}</span></div>
+          <div class="metric-row"><span class="metric-label">Authenticity Score</span><span class="metric-val" style="${auth>=5?'color:var(--success)':''}">${s.AuthenticityScore}</span></div>
+          <div class="metric-row"><span class="metric-label">AI Pattern Score</span><span class="metric-val" style="${ai>=3?'color:var(--accent-glow);font-weight:700':''}">${ai>0?s.AIPatternScore:'—'}</span></div>
+          <div class="metric-row"><span class="metric-label">First → Last Post</span><span class="metric-val">${s.FirstPostDay||'—'} → ${s.LastPostDay||'—'}</span></div>
+        </div>
+      </div>`;
+    } else {
+      const longi = getLongiFlags(s.StudentName);
+      let lH = longi.length ? longi.map(f=>`<div class="longi-flag">${f}</div>`).join('') : '';
+      bodyHtml = `<div style="padding:20px 24px;">
+        <div class="no-qual">No qualitative assessment for this week.</div>${lH ? `<div style="margin-top:8px;">${lH}</div>` : ''}
+        <div class="assess-label" style="margin-top:12px;">Code You Metrics</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px;">
+          <div class="metric-row"><span class="metric-label">Posts</span><span class="metric-val">${s.TotalPosts}</span></div>
+          <div class="metric-row"><span class="metric-label">Replies</span><span class="metric-val">${s.Replies}</span></div>
+          <div class="metric-row"><span class="metric-label">Engaged</span><span class="metric-val">${s.UniqueStudentsEngaged}</span></div>
+          <div class="metric-row"><span class="metric-label">AI</span><span class="metric-val">${ai>0?s.AIPatternScore:'—'}</span></div>
+        </div>
+      </div>`;
+    }
+    
+    return `<div class="s-card" id="${cardId}" data-name="${s.StudentName}">
+      <div class="s-header" onclick="toggleCard('${cardId}')">
+        <span class="s-name">${s.StudentName}</span>
+        <span class="s-group" style="background:${gc}">${s.GroupName}</span>
+        <span class="s-role">${s.AssignedRole||'—'}</span>
+        <span class="s-metric ${p===0?'warn':p>=5?'good':''}">${p}</span>
+        <span class="s-metric ${rep===0&&p>0?'warn':''}">${rep}</span>
+        <span class="s-metric ${eng>=3?'good':''}">${eng}</span>
+        <span class="s-metric ${auth>=5?'good':''}">${auth}</span>
+        <span class="s-metric ${ai>=3?'warn':''}">${ai>0?ai:'—'}</span>
+        ${overallHtml}
+        <span class="s-expand">▼</span>
+      </div>
+      <div class="s-body">${bodyHtml}</div>
+    </div>`;
+  }).join('');
+}
+
+function toggleCard(id) { document.getElementById(id)?.classList.toggle('expanded'); }
+
+function scrollToStudent(name) {
+  for (const card of document.querySelectorAll('.s-card')) {
+    if (card.dataset.name === name) {
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      card.classList.add('expanded');
+      card.style.borderColor = 'var(--accent)';
+      setTimeout(() => { card.style.borderColor = ''; }, 3000);
+      break;
+    }
+  }
+}
+
+function copyFeedback(fbId, btn, event) {
+  event.stopPropagation();
+  const el = document.getElementById(fbId);
+  if (!el) return;
+  navigator.clipboard.writeText(el.textContent).then(() => {
+    btn.textContent = '✓ Copied!'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copy for Canvas'; btn.classList.remove('copied'); }, 2000);
+  }).catch(() => {
+    const r = document.createRange(); r.selectNodeContents(el);
+    const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    document.execCommand('copy'); s.removeAllRanges();
+    btn.textContent = '✓ Copied!'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copy for Canvas'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+async function init() {
+  const nav = document.getElementById('weekNav');
+  nav.innerHTML = WEEKS.map(w =>
+    `<button class="week-btn ${w.available?'':'disabled'}" data-week="${w.key}">${w.label}</button>`
+  ).join('');
+  nav.querySelectorAll('.week-btn:not(.disabled)').forEach(b =>
+    b.addEventListener('click', () => loadWeek(b.dataset.week))
+  );
+  await loadAllWeeks();
+  const latest = [...WEEKS].reverse().find(w => w.available);
+  if (latest) loadWeek(latest.key);
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>

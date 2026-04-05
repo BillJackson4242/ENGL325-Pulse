@@ -1,0 +1,20 @@
+﻿StudentName,GroupName,WeekNumber,AssignedRole,TotalPosts,MainPosts,Replies,TotalWords,AvgWordsPerPost,QuestionsAsked,UniqueStudentsRepliedTo,InboundReplies,InboundReplyStudents,UniqueStudentsEngaged,ReferencedOthers,ReferencedOthersCount,PostedEarly,DaysActive,FirstPostDay,LastPostDay,FirstPostTimestamp,RoleExplicitlyNamed,RoleKeywordsUsed,AuthenticityScore,AIPatternScore,ThreadsStarted,ThreadsParticipatedIn
+Jason Bogue,Group A,Week 6,Cultural Analyst,1,1,0,149,149.0,0,0,0,0,0,False,0,False,1,Sunday,Sunday,2026-02-22 07:57 PM,False,2,0,0,1,1
+Jessica Padgett,Group A,Week 6,Facilitator,0,0,0,0,0,0,0,0,0,0,False,0,False,0,N/A,N/A,N/A,False,0,0,0,0,0
+Lexi Minzey,Group A,Week 6,Solution Designer,2,1,1,165,82.5,0,1,2,2,2,True,1,False,1,Friday,Friday,2026-02-20 02:26 PM,True,1,2,0,1,2
+Lindsey T Allen,Group A,Week 6,Delivery Specialist,3,1,2,348,116.0,0,2,2,2,2,True,2,True,2,Tuesday,Saturday,2026-02-17 03:02 AM,True,1,0,0,1,3
+Mekyle Harris,Group A,Week 6,Message Designer,3,1,2,398,132.7,4,1,0,0,1,False,0,False,1,Monday,Monday,2026-02-23 03:39 AM,False,0,1,0,1,2
+Nathan Haygood,Group A,Week 6,Cast Mapper,3,1,2,346,115.3,0,2,3,2,3,True,2,True,3,Tuesday,Monday,2026-02-17 11:08 PM,False,2,0,0,1,3
+Alixandria Williamson,Group B,Week 6,Message Designer,7,1,6,469,67.0,0,3,3,2,3,True,2,True,5,Wednesday,Monday,2026-02-18 10:40 PM,True,3,4,0,1,4
+Brianna E Hamilton,Group B,Week 6,Solution Designer,0,0,0,0,0,0,0,0,0,0,False,0,False,0,N/A,N/A,N/A,False,0,0,0,0,0
+Chandler Atton,Group B,Week 6,Cultural Analyst,4,1,3,606,151.5,0,2,4,4,4,True,1,True,3,Wednesday,Monday,2026-02-18 09:42 PM,False,0,4,0,1,3
+Liz Ann Dumas,Group B,Week 6,Facilitator,3,1,2,213,71.0,1,2,1,1,2,True,1,False,1,Saturday,Saturday,2026-02-21 04:41 PM,False,1,3,0,1,3
+Payton N Hamblin,Group B,Week 6,Delivery Specialist,6,4,2,375,62.5,0,2,3,2,3,True,1,True,3,Wednesday,Monday,2026-02-18 09:43 PM,True,2,0,0,4,3
+Tyler Craig,Group B,Week 6,Cast Mapper,6,2,4,697,116.2,1,3,4,4,5,True,3,False,3,Thursday,Sunday,2026-02-19 02:46 AM,False,0,3,0,2,4
+User unknown,Group B,Week 6,,1,0,1,0,0.0,0,1,0,0,1,False,0,False,1,Sunday,Sunday,2026-02-22 11:01 PM,False,0,0,0,0,1
+Allie Barber,Group C,Week 6,Delivery Specialist,4,1,3,439,109.8,0,3,1,1,3,True,2,True,2,Wednesday,Thursday,2026-02-18 02:21 PM,True,0,5,0,1,4
+Brennan Monarch,Group C,Week 6,Cast Mapper,1,1,0,311,311.0,0,0,1,1,1,False,0,False,1,Sunday,Sunday,2026-02-22 09:29 PM,True,1,0,0,1,1
+Cody Batho,Group C,Week 6,Solution Designer,7,4,3,770,110.0,0,1,6,3,3,False,0,True,3,Tuesday,Monday,2026-02-17 09:32 PM,True,3,4,0,4,2
+Klay Niltasuwan,Group C,Week 6,Facilitator,8,2,6,732,91.5,0,3,3,3,4,True,4,True,4,Wednesday,Monday,2026-02-18 02:07 PM,False,3,6,0,2,4
+Michael Helsel,Group C,Week 6,Message Designer,9,2,7,773,85.9,2,3,5,3,4,True,7,True,4,Wednesday,Monday,2026-02-18 04:30 PM,True,2,8,0,2,4
+Sam Baldwin,Group C,Week 6,Cultural Analyst,2,1,1,278,139.0,0,1,0,0,1,False,0,False,1,Sunday,Sunday,2026-02-22 07:35 PM,True,3,2,0,1,2

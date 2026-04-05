@@ -1,0 +1,4 @@
+﻿GroupName,WeekNumber,TotalStudents,TotalPosts,TotalMainPosts,TotalReplies,AvgPostsPerStudent,AvgRepliesPerStudent,TotalWords,AvgWordsPerPost,TotalQuestions,AvgThreadDepth,ParticipationSpread,CrossEngagement,EarlyPostingRate,StudentsWhoPosted,StudentsWhoDidNotPost
+Group A,Week 3,6,10,5,5,1.67,0.83,1880,188.0,9,1.0,0.94,16.7%,50.0%,6,0
+Group B,Week 3,6,21,9,12,3.5,2.0,3704,176.4,6,1.33,2.93,30.0%,33.3%,6,0
+Group C,Week 3,6,36,9,27,6.0,4.5,3159,87.8,14,3.0,4.55,30.0%,33.3%,5,1
