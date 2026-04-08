@@ -1,0 +1,375 @@
+{
+  "week": "WK11",
+  "weekTitle": "Risk & Harm Matrix + Narrative",
+  "assessmentDate": "2026-04-07",
+  "dataCompleteness": {
+    "deliverables": "complete",
+    "statusReports": "complete",
+    "breakoutMetrics": "complete",
+    "breakoutPosts": "complete",
+    "manifestDelta": "unavailable",
+    "priorAssessment": "WK10",
+    "note": "Full pipeline operational for WK11. Code You produced rubric scores, participant data CSVs, and grading summary. App Claude produced this JSON after independent qualitative read of all deliverables."
+  },
+  "codeYouScores": {
+    "note": "Code You working grades preserved for comparison. Disagreements noted inline.",
+    "team1": {"raw": "23/28", "weighted": 81.25, "grade": "B"},
+    "team2": {"raw": "18/28", "weighted": 66.25, "grade": "D"},
+    "team3": {"raw": "18/28", "weighted": 62.5, "grade": "D"}
+  },
+  "teams": {
+    "team1": {
+      "teamName": "Team X",
+      "submission": "on-time",
+      "leadAuthor": "Atton, Chandler",
+
+      "tangible": {
+        "categoryCoverage": "4/4",
+        "causalChains": "yes",
+        "detectability": "yes",
+        "priorityCount": "4/5"
+      },
+
+      "heat": {
+        "mechanism_spec": 3,
+        "risk_spec": 3,
+        "category_cov": 4,
+        "detect": 3,
+        "prioritization": 3,
+        "matrix_narrative": 4,
+        "exec_comm": 3
+      },
+
+      "flags": {
+        "ai": "likely-authentic",
+        "writing": "professional",
+        "continuity": "yes",
+        "epoch": ["Opinion", "Presence", "Creativity"]
+      },
+
+      "informational": {
+        "aiToolsDisclosed": "No AI tools used",
+        "sourcesUsed": ["MIT Technology Review (Amazon case)", "NIST AI RMF Playbook"],
+        "complicationCard": false
+      },
+
+      "notes": "Strongest WK11 submission. 11 risks across all four categories with explicit causal chains. Data breach analysis is the standout -- Tyler's IT background produced the most technically grounded section in any submission. Amazon citation for historical bias is smart sourcing. The single integrated document with matrix-then-narrative structure is the right format choice. Boycott/reputational chain is the weakest mechanism (traces process gap more than system behavior). Status report shows genuine meta-awareness: Chandler owns his coordination gaps honestly. Bogue signed off section but did NOT sign the deliverable -- new problem.",
+
+      "students": {
+        "Atton, Chandler": {
+          "role": "Lead Author",
+          "contribution": "high",
+          "signal": "9 posts, balanced engagement. Completed reputational risks, edited all sections, formatted final deliverable, wrote status report, submitted by deadline. Status report shows honest self-assessment of lead role gaps. Easter weekend coordination under pressure.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": 9,
+          "breakoutWords": null,
+          "filesContributed": ["Final deliverable", "Status report"],
+          "suggestedFeedback": "Strong lead week. Your status report is the most honest self-assessment I've seen -- owning the communication gap and naming what you'd do differently is exactly the kind of reflection that makes teams better. The reputational section needs tighter mechanism chains for WK12.",
+          "flags": []
+        },
+        "Craig, Tyler": {
+          "role": "Researcher",
+          "contribution": "high",
+          "signal": "9 posts, late start (Apr 4) but highest analytical value. Added 4 risks to matrix and wrote the full priority risk narrative. IT background produced the data breach and credential screening analysis -- strongest single sections in the class. Acknowledged by Chandler publicly.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": 9,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "Your IT background is showing -- and that's the point. The data breach analysis and credential screening sections are the strongest analytical work in any WK11 submission. Start earlier next week so the team has time to integrate your thinking.",
+          "flags": ["LATE_START"]
+        },
+        "Williamson, Alixandria": {
+          "role": "Researcher",
+          "contribution": "high",
+          "signal": "10 posts, most active on team. Completed ethical/bias risks section. Caught format ambiguity early. Consistent check-ins throughout. Tracked team progress.",
+          "discussionHistory": "strong",
+          "breakoutPosts": 10,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "Consistent presence and your ethical/bias section is solid. The Amazon connection to historical bias risk is the right kind of sourcing. Keep pushing specificity -- 'medium odds' needs to become 'here's the scenario where this hits.'",
+          "flags": []
+        },
+        "Dumas, Lizann": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "4 posts, early engagement. Kicked off the deliverable by posting the template on day 1. Completed operational risks section. Provided prioritization suggestions.",
+          "discussionHistory": "weak",
+          "breakoutPosts": 4,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "Good instinct kicking off early with the template. Your operational risks section identifies real scenarios. Push the mechanism chains further in WK12 -- trace what happens AFTER the failure, not just that it occurs.",
+          "flags": ["DISCUSSION_WEAK_PROJECT_STRONG"]
+        },
+        "Bogue, Jason": {
+          "role": "Researcher",
+          "contribution": "low",
+          "signal": "2 posts, minimal engagement. Completed legal/regulatory section (content submitted Apr 2) but disengaged after posting. Did NOT sign the deliverable. Content contribution is adequate; team engagement is not.",
+          "discussionHistory": "absent",
+          "breakoutPosts": 2,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "You submitted your legal section -- the content is there. But you didn't sign the deliverable and you disengaged after posting your piece. This is a team project. Showing up to do your part and disappearing isn't enough. The sign-off matters.",
+          "flags": ["NO_SIGNOFF", "DECLINING"]
+        }
+      }
+    },
+
+    "team2": {
+      "teamName": "Team Y",
+      "submission": "on-time",
+      "leadAuthor": "Hamblin, Payton",
+
+      "tangible": {
+        "categoryCoverage": "4/4",
+        "causalChains": "partial",
+        "detectability": "yes",
+        "priorityCount": "5/5"
+      },
+
+      "heat": {
+        "mechanism_spec": 3,
+        "risk_spec": 2,
+        "category_cov": 4,
+        "detect": 3,
+        "prioritization": 2,
+        "matrix_narrative": 2,
+        "exec_comm": 2
+      },
+
+      "flags": {
+        "ai": "ai-concern",
+        "writing": "rough",
+        "continuity": "partial",
+        "epoch": []
+      },
+
+      "informational": {
+        "aiToolsDisclosed": "ChatGPT (paraphrasing, spelling, grammar, sentence formation, outline, guideline, instructions, summary, suggestions, ideas), QuillBot (paraphrasing, grammar), Grammarly (spelling, grammar)",
+        "sourcesUsed": ["NIST AI RMF 1.0", "DOJ AI/disability guidance", "EEOC adverse impact guidance", "Guardian (Demopoulos 2024)"],
+        "complicationCard": false,
+        "aiConcernDetail": "ChatGPT disclosure covers the full writing process. Narrative reads in academic register inconsistent with matrix entries. Matrix shows authentic student thinking (specific examples, coordination-attributed sections). Narrative is abstract, hedged, and structurally different from matrix. Gap between the two documents is the primary AI tell."
+      },
+
+      "notes": "The matrix and the narrative are two different documents in quality and voice. The matrix has real thinking -- employment gap/maternity leave example is concrete, operational over-reliance and misconfiguration risks show genuine analysis, each section is attributed to a named student. The narrative is abstract, hedged, academic register throughout. 'Even little adjustments to ranking logic might have a significant organizational impact' -- that's AI-generated prose. No Lakeside-specific framing in the narrative. The matrix IS the student work. The narrative IS the shell. Status report Section G only lists Lindsey and Payton with contributions -- Michael, Nathan, Mekyle left blank. That's either sloppy SR completion or honest reporting of who actually contributed to the narrative.",
+
+      "students": {
+        "Allen, Lindsey": {
+          "role": "Researcher / Coordinator",
+          "contribution": "high",
+          "signal": "7 posts, balanced. Ran Zoom meeting, wrote comprehensive action items, completed ethical/bias section (strongest matrix entries). Caught prioritization error in Payton's draft. Format review before submission. Clearest communicator on team for second consecutive week.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": 7,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "Your ethical/bias matrix entries -- especially the employment gap/maternity leave example -- are the most concrete risks in this submission. The Zoom coordination and action items show real project management instincts. You're carrying the analytical quality for this team.",
+          "flags": ["CARRYING"]
+        },
+        "Helsel, Michael": {
+          "role": "Researcher / Accountability",
+          "contribution": "high",
+          "signal": "9 posts, balanced. Completed legal/regulatory section (age-correlated bias and disability entries are well-traced). Strongest accountability voice -- repeatedly followed up with Nathan and Mekyle, caught format issues, flagged AI disclosure question.",
+          "discussionHistory": "strong",
+          "breakoutPosts": 9,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "Your legal section traces real mechanisms -- age proxy through graduation dates and tenure length is exactly right. Your accountability work is holding this team together. The AI disclosure question you flagged shows you're thinking about integrity, not just output.",
+          "flags": []
+        },
+        "Hamblin, Payton": {
+          "role": "Lead Author / Compiler",
+          "contribution": "low",
+          "signal": "10 posts but delivery delayed to Apr 5 evening. Compiled final submission with format errors (margins, matrix placement). Narrative section shows heavy AI reliance per own disclosure. Pattern: high post count masking late/thin delivery. Second consecutive week with AI concerns.",
+          "discussionHistory": "weak",
+          "breakoutPosts": 10,
+          "breakoutWords": null,
+          "filesContributed": ["Final compiled deliverable"],
+          "suggestedFeedback": "The compilation work happened, but the narrative reads differently from the matrix. The matrix has specific scenarios. The narrative generalizes. When you defend this in the oral presentation, you'll need to explain every claim in your own words. Build that capability now.",
+          "flags": ["AI_FLAG", "DECLINING"]
+        },
+        "Haygood, Nathan": {
+          "role": "Researcher",
+          "contribution": "low",
+          "signal": "3 posts, late engagement. Missed March 31 Zoom meeting. Posted reputational risk section overnight Apr 4 after Michael's direct follow-up. Reputational entries are the weakest in the matrix -- 'AI runs the risk of biased ranking against the applicants' is circular.",
+          "discussionHistory": "absent",
+          "breakoutPosts": 3,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "Your reputational risk entries need mechanism chains. 'AI runs the risk of biased ranking' restates the problem -- it doesn't trace how reputation damage actually happens. Who complains? Through what channel? What's the first visible signal? That's what the rubric is looking for.",
+          "flags": ["LATE_ENGAGEMENT"]
+        },
+        "Harris, Mekyle": {
+          "role": "Researcher",
+          "contribution": "low",
+          "signal": "3 posts, crisis-level engagement. Absent first half of week. Commitment posts rather than content posts. Completed operational risks section per matrix headers -- over-reliance and misconfiguration entries are actually the strongest operational thinking in the submission. But engagement pattern is concerning.",
+          "discussionHistory": "absent",
+          "breakoutPosts": 3,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "Your operational risk entries are solid -- recruiter over-reliance and misconfiguration are real, specific scenarios. The problem is timing and presence. Your team needed you earlier in the week. Content quality is there; engagement consistency is not.",
+          "flags": ["LATE_ENGAGEMENT"]
+        }
+      }
+    },
+
+    "team3": {
+      "teamName": "VitalHire Team",
+      "submission": "on-time",
+      "leadAuthor": "Baldwin, Sam",
+
+      "tangible": {
+        "categoryCoverage": "4/4",
+        "causalChains": "partial",
+        "detectability": "yes",
+        "priorityCount": "5/5"
+      },
+
+      "heat": {
+        "mechanism_spec": 2,
+        "risk_spec": 2,
+        "category_cov": 4,
+        "detect": 3,
+        "prioritization": 2,
+        "matrix_narrative": 3,
+        "exec_comm": 2
+      },
+
+      "flags": {
+        "ai": "uncertain",
+        "writing": "rough",
+        "continuity": "partial",
+        "epoch": ["Presence"]
+      },
+
+      "informational": {
+        "aiToolsDisclosed": "AI used to format Risk Narrative section (starting point for organization)",
+        "sourcesUsed": ["None listed beyond directed sources"],
+        "complicationCard": false,
+        "twoFileSubmission": true
+      },
+
+      "notes": "Category coverage is solid and the risk-by-number referencing in the narrative is the right structural move. Credential misinterpretation in the reputational category is genuinely healthcare-specific thinking that neither other team caught. Historical bias entry has the strongest mechanism chain in the submission (5-step trace). But the narrative stays thin throughout -- 'the system takes data from the past and learns from it' doesn't identify the organizational decision point. Legal and reputational mechanism chains are 2-step. The 'underestimated element' framework (from Klay's template) is the right analytical instinct but execution is surface-level. Two-file submission creates a reading problem -- matrix and narrative should be consolidated for WK12. Prioritization has an internal contradiction: Risk 7 is called 'ranked high' but placed 5th.",
+
+      "students": {
+        "Baldwin, Sam": {
+          "role": "Lead Author / Submitter",
+          "contribution": "adequate",
+          "signal": "4 posts, late engagement (Easter travel). Completed risk matrix and status report. Submitted all deliverables. Absent early but completed tasks on return.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": 4,
+          "breakoutWords": null,
+          "filesContributed": ["Risk matrix", "Status report"],
+          "suggestedFeedback": "Matrix is complete and your ethical/bias entries show real thinking. The EEOC violation risk connection from WK10 carries through well. Push mechanism chains deeper in WK12 -- trace the organizational decision point, not just the system behavior.",
+          "flags": ["LATE_ENGAGEMENT"]
+        },
+        "Batho, Cody": {
+          "role": "Editor / Content Driver",
+          "contribution": "high",
+          "signal": "9 posts, balanced engagement. Initiated kickoff, wrote full ~5 page risk narrative (later shortened by Allie). Primary content driver. At a Tigers game Apr 4 and still coordinating. Dramatic improvement from WK10 (22 avg words/post, thin Data Inputs).",
+          "discussionHistory": "weak",
+          "breakoutPosts": 9,
+          "breakoutWords": null,
+          "filesContributed": ["Risk narrative draft"],
+          "suggestedFeedback": "Major turnaround from WK10. You drove the narrative content and coordinated under pressure. The narrative needs deeper mechanism chains -- go beyond 'the system takes data from the past' to name what specific data patterns create what specific outcomes. But the effort and initiative are exactly right.",
+          "flags": ["IMPROVING"]
+        },
+        "Niltasuwan, Klay": {
+          "role": "Editor / Analytical Lead",
+          "contribution": "adequate",
+          "signal": "4 posts, balanced despite IT access issues (travel to Puerto Rico). Created the narrative template structure (overview, causal chain, Lakeside relevance, underestimated element) -- the right analytical framework even if execution was thin. Shared collaborative document.",
+          "discussionHistory": "strong",
+          "breakoutPosts": 4,
+          "breakoutWords": null,
+          "filesContributed": ["Narrative template/outline"],
+          "suggestedFeedback": "Your narrative template is the right structure -- overview, causal chain, Lakeside relevance, underestimated element. That's exactly how governance analysis should be organized. Now push the team to fill that structure with deeper content. The framework is there; the specificity needs to catch up.",
+          "flags": ["EXTENUATING"]
+        },
+        "Barber, Allie": {
+          "role": "Reviewer",
+          "contribution": "low",
+          "signal": "1 post on final day. Shortened Cody's 5-page narrative to ~2 pages. Useful editing role but dramatic drop from WK10 (10 posts, Lead Author, carried the team). WK10 burnout likely.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": 1,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "The editing work matters -- getting a 5-page draft down to the required length is a real contribution. But one post all week is a significant drop from your WK10 lead role. This team needs your analytical voice in the discussion, not just the final edit.",
+          "flags": ["LOW_PARTICIPATION", "DECLINING"]
+        },
+        "Minzey, Lexi": {
+          "role": "Editor",
+          "contribution": "low",
+          "signal": "2 posts, late engagement. Provided prioritization criteria input (likelihood + severity logic). Minimal but relevant contribution. Consistent pattern of low presence across WK10 and WK11.",
+          "discussionHistory": "weak",
+          "breakoutPosts": 2,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "The prioritization criteria input is relevant work -- likelihood plus severity is the right framework. But two posts across the week means your team can't build on your thinking. More presence earlier gives the team time to integrate your ideas.",
+          "flags": ["LOW_PARTICIPATION"]
+        }
+      }
+    }
+  },
+
+  "crossTeamComparison": {
+    "summary": "Team X pulls further ahead. VitalHire and Team Y are both at D-level but for different reasons -- Team Y's matrix is better than its narrative (AI shell problem), VitalHire's framework is right but execution is thin throughout. The gap between Team X and the other two is widening.",
+
+    "byCategory": {
+      "mechanism_spec": {
+        "ranking": ["Team X (3)", "Team Y (3)", "VitalHire (2)"],
+        "note": "Team X and Team Y tie on score but differ in quality. Team X's chains are grounded in IT specifics (data breach API pathway) and sourced claims (Amazon). Team Y's matrix chains are specific but narrative chains are abstract. VitalHire's historical bias chain is strong but legal/reputational are thin."
+      },
+      "risk_spec": {
+        "ranking": ["Team X (3)", "Team Y (2)", "VitalHire (2)"],
+        "note": "Team X names file formats (.pages, .rtf), statute references (Title VII, ADEA), and specific candidate profiles. Team Y and VitalHire stay at category level in several entries."
+      },
+      "category_cov": {
+        "ranking": ["Team X (4)", "Team Y (4)", "VitalHire (4)"],
+        "note": "Universal strength. All three teams covered all four categories. This is now table stakes -- differentiation is entirely in depth."
+      },
+      "detect": {
+        "ranking": ["Team X (3)", "Team Y (3)", "VitalHire (3)"],
+        "note": "Tied. All three teams include detectability with justification. VitalHire correctly uses detectability to drive prioritization ('ranked high because it has high severity and can be difficult to detect'). Team X correctly elevates low-detectability risks to priority positions."
+      },
+      "prioritization": {
+        "ranking": ["Team X (3)", "Team Y (2)", "VitalHire (2)"],
+        "note": "Team X's ordering logic is visible if not always explicit. Team Y's ordering reads sequential, not strategic. VitalHire has an internal contradiction (Risk 7 called 'ranked high' but placed 5th)."
+      },
+      "matrix_narrative": {
+        "ranking": ["Team X (4)", "VitalHire (3)", "Team Y (2)"],
+        "note": "Team X: single integrated document, narrative extends matrix depth. VitalHire: explicit risk-by-number references (correct approach), two-file submission creates reading challenge. Team Y: narrative never references matrix, analysis is more abstract than the entries it's supposed to extend."
+      },
+      "exec_comm": {
+        "ranking": ["Team X (3)", "Team Y (2)", "VitalHire (2)"],
+        "note": "Team X reads at VP level in most sections. Team Y is hedged and academic. VitalHire is functional but not polished ('they require strong authority' should be 'governance')."
+      }
+    },
+
+    "emergingPatterns": [
+      "Category coverage is no longer a differentiator -- all three teams hit 4/4. The rubric is doing its job: students learned to check the boxes. Quality differentiation is now entirely in mechanism specificity and risk specificity, which is where it should be.",
+      "Team X's no-AI-tools disclosure combined with source-grounded analysis (Amazon, NIST) and IT-specific technical detail produces the most credible deliverable. The correlation between authentic human writing and analytical depth holds.",
+      "Team Y's matrix-narrative split is the clearest AI tell in the batch. The matrix has specific, attributed, student-voice entries. The narrative is abstract, hedged, academically registered, and disconnected from the matrix. Same pattern as WK10: the work students did is better than the polished output they submitted.",
+      "VitalHire's analytical framework (Klay's template) is structurally correct but the team couldn't fill it with sufficient depth. This is a scaffolding success and an execution gap -- the right question asked with thin answers.",
+      "Individual contribution patterns are solidifying: Williamson (Team X), Allen/Helsel (Team Y), and Batho (VitalHire) are the consistent analytical drivers. Bogue's WK10 improvement reversed. Barber's WK10 carrying burned her out by WK11."
+    ],
+
+    "weeklyAlerts": {
+      "red": [
+        "Team Y AI concern: Narrative authored primarily by ChatGPT per own disclosure. Matrix shows authentic student work. Recommend direct conversation with Hamblin about what portions were human-authored. Disclosure is to their credit -- but disclosure doesn't change what was submitted.",
+        "Team Y status report Section G: only Lindsey and Payton listed with contributions. Michael, Nathan, Mekyle left blank. Either sloppy completion or honest reporting that three team members didn't contribute to the final product."
+      ],
+      "yellow": [
+        "Bogue (Team X): Content submitted but did NOT sign deliverable, then disengaged. WK10 improvement reversed. Pattern: contributes content, disappears from team process.",
+        "Barber (VitalHire): 1 post, down from 10 in WK10. Burnout from carrying WK10 is the likely explanation but needs monitoring.",
+        "Haygood (Team Y): Reputational entries are the weakest in any submission. 'AI runs the risk of biased ranking' is circular -- restates the risk as the mechanism.",
+        "VitalHire two-file submission: matrix and narrative submitted separately. Advise consolidation for WK12.",
+        "Minzey (VitalHire): 2 posts for second consecutive week. Consistent low engagement."
+      ],
+      "green": [
+        "Batho (VitalHire): IMPROVING dramatically. From 22 avg words/post in WK10 to primary narrative content driver in WK11. At a Tigers game and still coordinating.",
+        "Atton (Team X): Honest self-assessment in status report. 'My biggest weakness this week was lack of priority in terms of role assignment from the start.' That's the lead development the project is designed to produce.",
+        "Craig (Team X): IT background producing the strongest analytical sections in the class. Data breach analysis is genuinely technical and grounded.",
+        "Allen (Team Y): Carrying the analytical quality and coordination for the second straight week. Zoom meeting, action items, format review, caught errors in Payton's draft.",
+        "Klay (VitalHire): Analytical template structure is the right framework despite execution challenges and extenuating circumstances."
+      ]
+    }
+  }
+}
