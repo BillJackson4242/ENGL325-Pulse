@@ -209,8 +209,8 @@
 const WEEKS = {
     WK09: { label: "WK09", title: "Project Kickoff", status: "complete", due: "Mar 22" },
     WK10: { label: "WK10", title: "System Definition Brief", status: "complete", due: "Mar 29" },
-    WK11: { label: "WK11", title: "Risk & Harm Matrix + Narrative", status: "current", due: "Apr 5" },
-    WK12: { label: "WK12", title: "Model Limitations & Bias Disclosure", status: "upcoming", due: "Apr 12" },
+    WK11: { label: "WK11", title: "Risk & Harm Matrix + Narrative", status: "complete", due: "Apr 5" },
+    WK12: { label: "WK12", title: "Model Limitations & Bias Disclosure", status: "current", due: "Apr 12" },
     WK13: { label: "WK13", title: "Governance & Oversight Plan", status: "upcoming", due: "Apr 19" },
     WK14: { label: "WK14", title: "Executive Decision Memo", status: "upcoming", due: "Apr 26" },
     WK15: { label: "WK15", title: "Final Report + Role Reflection", status: "upcoming", due: "May 1" },
@@ -224,11 +224,13 @@ const TEAMS = {
         submissions: {
             WK09: "on-time",
             WK10: "on-time",
-            WK11: "pending"
+            WK11: "on-time",
+            WK12: "on-time"
         },
         health: {
             WK10: { level: "green", message: "Strong first submission. Exclusions section was the strongest in the class. Key area to revisit before Week 11: make sure your hiring manager classification is consistent -- they can't appear in both the Users and Affected Parties columns." },
-            WK11: { level: "green", message: "Deliverable in progress. Breakout room activity is strong." }
+            WK11: { level: "green", message: "Submission received. Risk matrix is well-structured with clear causal chains. Priority narrative is your strongest section -- the detectability analysis is specific and grounded in Lakeside's context. Carry that specificity forward into Week 12." },
+            WK12: { level: "green", message: "Submission received. Override section is the strongest piece this week -- seven specific triggers, named roles, logged chains. It's operational. Known Limitations needs more depth before Week 13: lead with the vendor opacity gap, not the soft skills observation." }
         }
     },
     team2: {
@@ -237,11 +239,13 @@ const TEAMS = {
         submissions: {
             WK09: "on-time",
             WK10: "on-time",
-            WK11: "pending"
+            WK11: "on-time",
+            WK12: "on-time"
         },
         health: {
             WK10: { level: "yellow", message: "Decision Authority section was the standout -- specific, well-reasoned, right level of detail. The System Purpose section needs a rebuild before Week 11: ground it in Lakeside's actual numbers and name the bottleneck. Every section that follows depends on having that foundation right." },
-            WK11: { level: "green", message: "Deliverable in progress." }
+            WK11: { level: "green", message: "Submission received. The harm narrative shows real analytical depth -- you're tracing mechanisms, not just listing risks. Detectability analysis is the area to push harder: some entries say a risk is detectable without naming how." },
+            WK12: { level: "green", message: "Submission received. Failure modes section is the best in class this week -- the silent failure detection chain, override log threshold, and HR analytics lead as the catch point is exactly the right kind of operational thinking. Push the Known Limitations section to match that depth in Week 13." }
         }
     },
     team3: {
@@ -250,11 +254,13 @@ const TEAMS = {
         submissions: {
             WK09: "on-time",
             WK10: "on-time",
-            WK11: "pending"
+            WK11: "on-time",
+            WK12: "on-time"
         },
         health: {
             WK10: { level: "green", message: "Best System Purpose section in the class -- opened with Lakeside's numbers, named the bottleneck, stayed independent of vendor framing throughout. The EEOC compliance gap observation in Exclusions was the strongest single analytical move across all three teams. Gap to address in Week 11: Decision Authority needs process mechanics -- how are overrides logged, and by whom?" },
-            WK11: { level: "green", message: "Deliverable in progress." }
+            WK11: { level: "green", message: "Submission received. Good use of EEOC and NIST sources throughout -- you're citing the right frameworks. The risk matrix entries are solid. For Week 12: your override and non-use case sections need operational specificity. Named triggers with thresholds, not category descriptions." },
+            WK12: { level: "yellow", message: "Submission received. You're the only team this week to cite all three directed sources -- EEOC, MIT, NIST -- and use them throughout the analysis. That's exactly right. The override and non-use case sections need tighter thresholds before Week 13: 'lower advancement rates' and 'non-traditional background' aren't enforceable without numbers or definitions." }
         }
     }
 };
@@ -358,7 +364,7 @@ const WEEK_REQUIREMENTS = {
     }
 };
 
-let currentWeek = 'WK11';
+let currentWeek = 'WK12';
 
 // ============================================================
 // RENDERING
