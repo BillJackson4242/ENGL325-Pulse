@@ -1,0 +1,392 @@
+{
+  "week": "WK12",
+  "weekTitle": "Model Limitations & Bias Disclosure",
+  "assessmentDate": "2026-04-15",
+  "dataCompleteness": {
+    "deliverables": "complete",
+    "statusReports": "complete",
+    "breakoutMetrics": "unavailable",
+    "breakoutPosts": "complete",
+    "manifestDelta": "complete",
+    "priorAssessment": "WK11",
+    "note": "No breakout CSV exports generated this week -- individual contribution data triangulated from Canvas discussion .md exports, section attributions in deliverables, and status reports. Full rubric pass from Code You."
+  },
+  "codeYouScores": {
+    "note": "Code You working grades preserved. App Claude qualitative read aligns with no major disagreements.",
+    "team1": {"raw": "19/28", "weighted": 70.0, "grade": "C"},
+    "team2": {"raw": "20/28", "weighted": 73.75, "grade": "C"},
+    "team3": {"raw": "17/28", "weighted": 61.25, "grade": "D"}
+  },
+  "teams": {
+    "team1": {
+      "teamName": "Team X",
+      "submission": "on-time",
+      "leadAuthor": "Dumas, Lizann",
+
+      "tangible": {
+        "allFiveSections": "yes",
+        "biasVectorsAllThree": "yes",
+        "overrideChainNamed": "yes",
+        "visualIntegrated": "partial"
+      },
+
+      "heat": {
+        "limit_spec": 2,
+        "bias_vectors": 3,
+        "failure_modes": 2,
+        "override_spec": 4,
+        "non_use": 3,
+        "consistency": 3,
+        "prof_quality": 2
+      },
+
+      "flags": {
+        "ai": "likely-authentic",
+        "writing": "professional",
+        "continuity": "yes",
+        "epoch": ["Creativity", "Opinion", "Presence"]
+      },
+
+      "informational": {
+        "aiToolsDisclosed": "Dumas: ChatGPT for reference formatting. Williamson: Claude used to check if override triggers were specific enough.",
+        "sourcesUsed": ["HarborRank Pitch Deck", "Lakeside Employee Roster", "Prior deliverables (WK10, WK11)"],
+        "complicationCard": false,
+        "visualFormat": "Separate PDF file (not integrated into narrative)"
+      },
+
+      "notes": "Override table is the best in class -- 7 triggers with specific thresholds (scores below 5, above 8), named roles, quarterly logging chains. Operational enough that HR could follow it. Chandler's Non-Use Cases section is the single most sophisticated student analysis in the project: he pulled the Lakeside Employee Roster, calculated licensure percentages by job family (50% Admin, 86% Allied Health, 80% Clinical, 30% Support), and named every affected role. That's genuine analytical work. Known Limitations leads with 'HarborRank can't recognize soft skills' -- that's generic, applies to any AI tool. The vendor opacity observation buried in paragraph three is the real limitation. Failure modes describe symptoms without detection process. Visual submitted as separate PDF rather than integrated. Brennan Monarch added to team this week -- delivered failure modes section.",
+
+      "students": {
+        "Dumas, Lizann": {
+          "role": "Lead Author",
+          "contribution": "high",
+          "signal": "Coordinated deliverable, wrote narrative, managed submission under post-Easter timeline. Checked in repeatedly on unclaimed sections, redistributed when Bogue's computer broke. Second consecutive week as coordinator.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": ["Narrative", "Final deliverable", "Submission"],
+          "suggestedFeedback": "Coordinating role suits you. Managed the visual gap when Bogue's computer broke and kept the timeline. Narrative integrates the team's sections cleanly. Keep building on the coordination work you're doing.",
+          "flags": ["CARRYING"]
+        },
+        "Atton, Chandler": {
+          "role": "Researcher",
+          "contribution": "high",
+          "signal": "Non-Use Cases section is the most sophisticated individual analytical work in the project. Pulled Lakeside Employee Roster, calculated licensure percentages by job family, listed affected roles by name. No AI used for analysis -- only HarborRank Pitch Deck and Lakeside data. Posted full content in discussion for team visibility.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "The Non-Use Cases section is the best single piece of student work I've seen this project. Pulling the Employee Roster and calculating licensure percentages by job family -- that's analytical work, not text generation. Keep doing that.",
+          "flags": []
+        },
+        "Williamson, Alixandria": {
+          "role": "Researcher",
+          "contribution": "high",
+          "signal": "Wrote the 7-trigger override section (best in class). Offered to cover visual when Bogue unavailable. Used Claude only to verify if override triggers were specific enough -- disclosed appropriately.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": ["Override table"],
+          "suggestedFeedback": "Your override table is the best section in any team's submission. Seven triggers, specific thresholds, named roles, logged chains. That's exactly what operational governance looks like. The Claude disclosure for verification is the right use.",
+          "flags": []
+        },
+        "Craig, Tyler": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "Late start due to five-day migraine (legitimate). Completed bias vectors section on recovery -- traced all three entry points with mechanism logic. Deployment context feedback loop is the strongest passage.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": ["Bias vectors section"],
+          "suggestedFeedback": "The migraine was real, the recovery showed. Your bias vectors section traces all three entry points and the deployment feedback loop is the strongest passage. When you're firing on all cylinders, your analytical work is among the best on the team.",
+          "flags": ["EXTENUATING"]
+        },
+        "Monarch, Brennan": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "New to team this week (or first visible contribution). Claimed failure modes early and delivered. Section is thin on detection specifics but covers the required structure.",
+          "discussionHistory": "weak",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": ["Failure modes section"],
+          "suggestedFeedback": "First week contributing and you claimed the failure modes section early. The structure is there. Push the detection layer for WK13 -- who notices, through what data, at what threshold. That's where the rubric's rewarding specificity lives.",
+          "flags": []
+        },
+        "Bogue, Jason": {
+          "role": "Researcher",
+          "contribution": "minimal",
+          "signal": "Computer broke Monday. Checked in day of submission but did not complete the visual. Williamson offered to cover. WK11 signed off incomplete, WK12 contribution unclear. Pattern of availability gaps continues.",
+          "discussionHistory": "absent",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "Computer issues happen. But this is now a pattern across WK10, WK11, and WK12 -- content uneven, sign-offs incomplete, team absorbing your work. The team needs to be able to count on you. Contact me if there are circumstances I should know about.",
+          "flags": ["DECLINING", "MINIMAL_CONTRIBUTION"]
+        }
+      }
+    },
+
+    "team2": {
+      "teamName": "Team Y",
+      "submission": "on-time",
+      "leadAuthor": "Allen, Lindsey",
+
+      "tangible": {
+        "allFiveSections": "yes",
+        "biasVectorsAllThree": "yes",
+        "overrideChainNamed": "partial",
+        "visualIntegrated": "yes"
+      },
+
+      "heat": {
+        "limit_spec": 2,
+        "bias_vectors": 3,
+        "failure_modes": 4,
+        "override_spec": 3,
+        "non_use": 4,
+        "consistency": 2,
+        "prof_quality": 2
+      },
+
+      "flags": {
+        "ai": "ai-concern",
+        "writing": "professional",
+        "continuity": "partial",
+        "epoch": ["Opinion", "Presence"]
+      },
+
+      "informational": {
+        "aiToolsDisclosed": "Disclosed (specific tools and uses not fully documented in this week's SR extraction)",
+        "sourcesUsed": ["EEOC Assessing Adverse Impact guidance"],
+        "complicationCard": false,
+        "decisionTreeIncluded": true
+      },
+
+      "notes": "Failure mode section is best in class. Silent failure + override log pattern + 20% threshold + HR analytics lead as named detection point. That's exactly the operational specificity the rubric rewards. Non-use cases are the sharpest in the project: small applicant pools (<10) and fairness-validation prohibition. These are enforceable commitments, not suggestions. Known Limitations is the gap -- one limitation where the rubric wants breadth. The 18-month gap focus is specific and well-reasoned but needs 2-3 more distinct limitations alongside it. Override roles underspecified -- 'Recruiter' and 'Human Resources' are categories, not roles. Bias vectors section still reads polished in a way that doesn't match the team's discussion voice. Harris's section didn't save (third consecutive week of completion issues); Helsel completed it.",
+
+      "students": {
+        "Allen, Lindsey": {
+          "role": "Lead Author",
+          "contribution": "high",
+          "signal": "Lead author, assembled and edited document, submitted at deadline. Coordinated teammates, flagged missing sections, pushed revisions. Consistent coordinator and analytical quality driver for third straight week.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": ["Final deliverable", "Document assembly"],
+          "suggestedFeedback": "Third week as lead and your coordination is the reason this team submits coherent work. The failure mode section you shaped is the best in any team's submission this week. The team is heavy on your shoulders -- make sure you're protecting your own workload as WK13 lands.",
+          "flags": ["CARRYING"]
+        },
+        "Helsel, Michael": {
+          "role": "Researcher / Accountability",
+          "contribution": "high",
+          "signal": "Completed own section early. Completed Harris's section when it didn't save. Direct accountability push -- 'this cannot happen every week, 50+ hours, 3 kids, coaching, full-time school.' Named the pattern publicly.",
+          "discussionHistory": "strong",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": ["Own section", "Harris's section (compensatory)"],
+          "suggestedFeedback": "Completing Harris's section shouldn't be your job. You did it to get the deliverable out, and that matters -- but the pattern is now three weeks deep. Your accountability voice is what this team needs. Keep pushing.",
+          "flags": []
+        },
+        "Haygood, Nathan": {
+          "role": "Researcher",
+          "contribution": "high",
+          "signal": "Early delivery, direct accountability call to teammates ('we cannot continue to pick up your guys slack'). Finished own section and offered to help Allen with essay. Dramatic improvement from WK11 pattern.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "Significant step up this week. Early completion and the direct message to teammates about the weekly pattern is exactly the kind of accountability voice the team needs. Keep this momentum into WK13.",
+          "flags": ["IMPROVING"]
+        },
+        "Hamblin, Payton": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "Late but delivered before deadline. Forgot assignment until Allen followed up. Completed section after direct prompting. WK11 AI concern not repeated this week but engagement is reactive, not proactive.",
+          "discussionHistory": "weak",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "You delivered before the deadline. Good. But Lindsey shouldn't have to prompt you to remember your section. Set yourself reminders. When WK13 lands, be the person who posts first, not the person reacting to the follow-up.",
+          "flags": []
+        },
+        "Harris, Mekyle": {
+          "role": "Researcher",
+          "contribution": "minimal",
+          "signal": "Section claimed complete but didn't appear in document for third consecutive week. Michael completed it. Posted status report response in discussion after deadline -- the response itself is articulate and shows real thinking about the assignment. Execution is the gap, not understanding. Works 80 hours at a prison, kids -- real circumstances, but the pattern is now three weeks deep.",
+          "discussionHistory": "weak",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "Your status report response about the limitation you almost didn't include shows you're thinking hard about this material. But for three straight weeks your section either didn't save or arrived too late. Understanding and delivery aren't the same thing. Let's talk -- what would make the submission side work better.",
+          "flags": ["PERSISTENT_PATTERN", "MINIMAL_CONTRIBUTION"]
+        }
+      }
+    },
+
+    "team3": {
+      "teamName": "VitalHire Team",
+      "submission": "on-time",
+      "leadAuthor": "Minzey, Lexi",
+
+      "tangible": {
+        "allFiveSections": "yes",
+        "biasVectorsAllThree": "yes",
+        "overrideChainNamed": "partial",
+        "visualIntegrated": "yes"
+      },
+
+      "heat": {
+        "limit_spec": 2,
+        "bias_vectors": 3,
+        "failure_modes": 3,
+        "override_spec": 2,
+        "non_use": 2,
+        "consistency": 2,
+        "prof_quality": 3
+      },
+
+      "flags": {
+        "ai": "likely-authentic",
+        "writing": "professional",
+        "continuity": "partial",
+        "epoch": ["Presence", "Opinion"]
+      },
+
+      "informational": {
+        "aiToolsDisclosed": "AI used to format Risk Narrative section only (starting point for organization)",
+        "sourcesUsed": ["EEOC (archived ACLU link)", "NIST AI RMF 1.0", "MIT AI Risk Repository"],
+        "complicationCard": false,
+        "noteWorthyAchievement": "Only team to cite all three directed sources with proper APA references"
+      },
+
+      "notes": "Only team this week to use all three directed sources with proper citations. The EEOC archived link worked -- they navigated to the ACLU backup. Bias vectors section cites EEOC language specifically in each entry point. Significant improvement from WK11 thin execution. Known Limitations focuses almost entirely on education bias (four-year vs. two-year/community college) -- real limitation, clearly traced, but one-dimensional where the rubric wants breadth. Resume formatting mentioned in narrative never developed into separate limitation. Override section has right structure (triggers, roles, post-override actions) but 'Lower advancement rates for two-year degree candidates' needs a threshold before it's operational. Non-use cases: licensure prohibition is solid, 'non-traditional background' prohibition is unenforceable (you can't check when you're in violation), and the hiring decision prohibition is too broad to be meaningful. Minzey carried the submission completely.",
+
+      "students": {
+        "Minzey, Lexi": {
+          "role": "Lead Author",
+          "contribution": "high",
+          "signal": "Carried the deliverable: worksheet, narrative, visual, coordination, submission. Emailed instructor when Canvas submission page wasn't visible. Made format changes, led revisions. Dramatic reversal from WK10/WK11 low engagement pattern.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": ["Worksheet", "Narrative", "Visual", "Status report", "Submission"],
+          "suggestedFeedback": "Major shift from WK10-11. You carried this one -- worksheet, narrative, visual, submission. That's the coordinator role executing fully. Keep this level of ownership rolling into WK13.",
+          "flags": ["IMPROVING", "CARRYING"]
+        },
+        "Batho, Cody": {
+          "role": "Editor",
+          "contribution": "adequate",
+          "signal": "Contributed to template early ('really busy week'). Checked in regularly. Reduced output from WK11 where he was primary content driver.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": ["Template content"],
+          "suggestedFeedback": "Lighter week than WK11 where you drove content. Understandable if it's real circumstances, but your team needs the primary content driver role rotating predictably. When you're on, you're the strongest voice on this team.",
+          "flags": []
+        },
+        "Niltasuwan, Klay": {
+          "role": "Editor",
+          "contribution": "adequate",
+          "signal": "Light review and presence. Worked on template portion. Less visible than WK11 where he created the narrative structure template. Steady but not driving.",
+          "discussionHistory": "adequate",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": ["Template contribution"],
+          "suggestedFeedback": "Steady presence. Your WK11 template structure was the right analytical framework. Bring more of that structural thinking into WK13 -- the governance plan needs the same kind of scaffolding.",
+          "flags": []
+        },
+        "Barber, Allie": {
+          "role": "Reviewer",
+          "contribution": "adequate",
+          "signal": "Wrote failure modes section (credited in template). More visible than WK11's single post. Helped Minzey with submission process (shared prior experience with instructor contact).",
+          "discussionHistory": "adequate",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": ["Failure modes section"],
+          "suggestedFeedback": "Step up from WK11's single post. Your failure modes section shows the right instincts -- structured around who notices and through what process. Keep this engagement level for WK13.",
+          "flags": ["IMPROVING"]
+        },
+        "Baldwin, Sam": {
+          "role": "unclear",
+          "contribution": "absent",
+          "signal": "Zero discussion posts for WK12. No visible contribution to any section. Previous weeks had extenuating circumstances (Easter travel, IT access) but this week has no explanation posted.",
+          "discussionHistory": "absent",
+          "breakoutPosts": null,
+          "breakoutWords": null,
+          "filesContributed": [],
+          "suggestedFeedback": "Zero posts this week and no visible contribution. Your WK10 EEOC compliance insight and WK11 matrix work were strong -- this team needs that voice. Contact me if something is going on.",
+          "flags": ["ABSENT", "DECLINING"]
+        }
+      }
+    }
+  },
+
+  "crossTeamComparison": {
+    "summary": "All three teams scored in C-D range. No A or B this week. The rubric's heaviest criterion (Bias Vector Analysis at 25 points) saw uniform competence (all three teams at 3/4). The differentiating criteria were Failure Mode Visibility (Team Y took this one) and Override Specificity (Team X took this one). Limitation Specificity was the universal weakness -- all three teams scored 2/4 on the breadth question.",
+
+    "byCategory": {
+      "limit_spec": {
+        "ranking": ["Team X (2)", "Team Y (2)", "VitalHire (2)"],
+        "note": "Universal weakness. Team X leads with 'soft skills' (generic). Team Y has one strong limitation (18-month gaps) but only one. VitalHire focuses on education bias one-dimensionally. No team wrote multiple distinct, specific limitations with traceable mechanisms. The harder criterion this week."
+      },
+      "bias_vectors": {
+        "ranking": ["Team X (3)", "Team Y (3)", "VitalHire (3)"],
+        "note": "Uniform competence. All three teams covered all three entry points with mechanism logic. Team X's deployment feedback loop is the strongest single passage. VitalHire is the only team with EEOC citations in each entry point. Team Y's design choices section references the 47-attribute detail from the pitch deck -- good sourcing."
+      },
+      "failure_modes": {
+        "ranking": ["Team Y (4)", "VitalHire (3)", "Team X (2)"],
+        "note": "Team Y dominates. Silent failure + 20% override threshold + HR analytics lead as detection point is exactly the operational specificity the rubric rewards. VitalHire has 4 failure modes with structural detection layer. Team X describes symptoms without detection process -- 'questioning recommendations' is a gut feeling, not a signal."
+      },
+      "override_spec": {
+        "ranking": ["Team X (4)", "Team Y (3)", "VitalHire (2)"],
+        "note": "Team X's 7-trigger table is best in class. Specific thresholds (scores below 5, above 8), named roles, quarterly logging. Team Y has triggers and chains but 'Recruiter' and 'Human Resources' are categories, not named roles. VitalHire's 'lower advancement rates' needs a threshold to be operational."
+      },
+      "non_use": {
+        "ranking": ["Team Y (4)", "Team X (3)", "VitalHire (2)"],
+        "note": "Team Y's small applicant pool (<10) and fairness-validation prohibitions are the sharpest in the project. Enforceable commitments. Team X's licensure percentage analysis is detailed but allows override condition. VitalHire's 'non-traditional background' prohibition is unenforceable."
+      },
+      "consistency": {
+        "ranking": ["Team X (3)", "Team Y (2)", "VitalHire (2)"],
+        "note": "Team X explicitly backlinks to prior weeks' risk items in override table. Team Y uses EEOC but doesn't trace to WK11 matrix. VitalHire cites directed sources but doesn't reference prior deliverables."
+      },
+      "prof_quality": {
+        "ranking": ["VitalHire (3)", "Team X (2)", "Team Y (2)"],
+        "note": "VitalHire is the only team to cite all three directed sources with proper APA. Team X mixed reference style. Team Y's Fig. 1 reference is used well but thin on sources overall."
+      }
+    },
+
+    "emergingPatterns": [
+      "The examples in the updated template worked. All three teams are writing at a higher altitude of specificity than WK11. The calibration move was successful -- students modeled the provided examples when producing their own content.",
+      "No team scored A or B this week. The harder rubric (Limit Specificity requiring breadth, Override requiring thresholds, Non-Use requiring enforceability) exposed gaps that WK11 didn't. This is the right direction -- the rubric is getting more operational as the project progresses.",
+      "Individual contribution patterns are hardening: Dumas/Allen/Minzey are carrying their teams (three consecutive weeks for Dumas and Allen). Bogue/Harris/Baldwin are the persistent contribution concerns. Batho and Niltasuwan reduced output after WK11 peaks -- suggesting uneven distribution of driving work.",
+      "Sourcing behavior divides along interesting lines: Team X sources its own prior work and primary documents (Lakeside Employee Roster). Team Y sources EEOC. VitalHire sources the full directed-source stack. Different approaches, different analytical benefits.",
+      "Harris (Team Y) status report response is articulate and demonstrates real engagement with the material. The disconnect between his analytical voice and his execution is the most interesting individual pattern in the project. This is not a student who doesn't understand. It's a student whose submission workflow is broken."
+    ],
+
+    "weeklyAlerts": {
+      "red": [
+        "Baldwin (VitalHire): Zero discussion posts, zero visible contribution. No explanation posted. New pattern this week after WK10 EEOC compliance insight and WK11 matrix completion. Direct outreach warranted.",
+        "Harris (Team Y): Third consecutive week with section completion issues. Helsel stepped in again. Status report response (posted after deadline) shows real analytical engagement -- execution is the gap, not understanding. Pattern requires intervention."
+      ],
+      "yellow": [
+        "Bogue (Team X): WK10 improved, WK11 signed but incomplete, WK12 computer issue and missed visual. Pattern of availability gaps across three weeks.",
+        "All three teams: Limitation Specificity universal weakness. Need to model breadth (multiple distinct limitations with distinct mechanisms) in WK13 template examples.",
+        "Team X visual: submitted as separate PDF rather than integrated into narrative. Process issue to address for WK13.",
+        "Team Y roster vocabulary: 'Recruiter' and 'Human Resources' used as roles in override section. Need to name specific positions (following Team Y's own example from failure modes section where 'HR analytics lead' works well).",
+        "Batho and Niltasuwan (VitalHire): Reduced engagement from WK11 peaks. Uneven distribution of driving role is a sustainability concern."
+      ],
+      "green": [
+        "Monarch (Brennan, Team X): First visible contribution this week. Claimed section early, delivered. Clean debut.",
+        "Craig (Tyler, Team X): Legitimate medical circumstances (five-day migraine), recovered and delivered bias vectors with mechanism logic. Deployment feedback loop is the strongest passage in any team's submission.",
+        "Atton (Chandler, Team X): Non-Use Cases section with Lakeside Employee Roster analysis is the single most sophisticated student analytical work in the project. No AI used.",
+        "Williamson (Alixandria, Team X): 7-trigger override table is best in class. Responsible Claude disclosure for verification use.",
+        "Haygood (Nathan, Team Y): Major improvement from WK11 late pattern. Early delivery, direct accountability push to teammates.",
+        "Helsel (Michael, Team Y): Continued accountability voice plus compensatory work (completed Harris's section). Team stability driver.",
+        "Minzey (Lexi, VitalHire): Dramatic reversal from WK10/WK11 low engagement. Carried this week's deliverable completely.",
+        "Barber (Allie, VitalHire): Step up from WK11's single post. Failure modes section shows structural thinking.",
+        "VitalHire sourcing: Only team to cite all three directed sources (EEOC via archived ACLU link, NIST, MIT) with proper APA. Significant improvement.",
+        "Team X submitted all 6 sign-offs (first time since project began)."
+      ]
+    }
+  }
+}
