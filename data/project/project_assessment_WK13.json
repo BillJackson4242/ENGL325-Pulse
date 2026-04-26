@@ -1,0 +1,342 @@
+{
+  "week": "WK13",
+  "weekTitle": "Governance & Oversight Plan",
+  "assessmentDate": "2026-04-25",
+  "dataCompleteness": {
+    "deliverables": "complete",
+    "statusReports": "partial",
+    "breakoutMetrics": "unavailable",
+    "breakoutPosts": "complete",
+    "manifestDelta": "unavailable",
+    "priorAssessment": "WK12",
+    "note": "All three deliverables read. Code You scored Team X from extracted PDFs. Team Y and VitalHire scored by App Claude from uploaded .docx files. No breakout CSV exports. Discussion .md exports used for individual contribution triangulation."
+  },
+  "codeYouScores": {
+    "note": "Code You scored Team X only (83.75/B). Team Y and VitalHire were ESTIMATED by Code You due to missing deliverables. App Claude scored all three from actual submissions.",
+    "team1": {"raw": "22/28", "weighted": 83.75, "grade": "B", "source": "Code You full read"},
+    "team2": {"raw": "22/28", "weighted": 85.0, "grade": "B", "source": "App Claude full read"},
+    "team3": {"raw": "22/28", "weighted": 85.0, "grade": "B", "source": "App Claude full read"}
+  },
+  "teams": {
+    "team1": {
+      "teamName": "Team X",
+      "submission": "on-time",
+      "leadAuthor": "Bogue, Jason",
+
+      "tangible": {
+        "namedOwners": "yes",
+        "triggerTiers": "3/3",
+        "budgetRealism": "acknowledged",
+        "sunsetClause": "yes"
+      },
+
+      "heat": {
+        "ownership": 3,
+        "monitoring": 4,
+        "triggers": 3,
+        "vendor_req": 4,
+        "sunset": 4,
+        "budget": 2,
+        "prof_format": 2
+      },
+
+      "flags": {
+        "ai": "likely-authentic",
+        "writing": "mixed",
+        "continuity": "yes",
+        "epoch": ["Opinion", "Presence", "Creativity"]
+      },
+
+      "informational": {
+        "aiToolsDisclosed": "AI used for Sunset Provisions (per worksheet sign-off)",
+        "sourcesUsed": ["Prior deliverables (WK11 risks, WK12 bias triggers)", "EEOC four-fifths rule", "HarborRank pitch deck"],
+        "complicationCard": false,
+        "threeFilesSubmitted": true
+      },
+
+      "notes": "Monitoring plan is the strongest submission of the semester. Tyler Craig produced six metrics -- adverse impact ratio, score distribution, override rate, time-to-fill, recruiter feedback, applicant complaints -- all with frequency, responsible role, and defined normal with upper/lower bounds. Vendor section has specific SLAs (15-day post-quarter, 10-day audit, 3-day complaints, 24-hour incidents). Sunset cross-references WK11 and WK12 explicitly. Ownership table covers five functions but has internal contradiction (worksheet: shutdown = HR Compliance Officer; narrative: HR Director reserves right to terminate). 'Lakeside Director' in vendor row is undefined. Triggers mostly operational but Review Trigger 1 ('unable to identify additional attributes') is a system limitation, not an observable threshold. 'I think' in paragraph 2. Visual as separate PDF. Brennan Monarch claimed a section Liz Ann had already taken -- she absorbed double work and flagged it publicly. Bogue managed submission but timeline was tight.",
+
+      "students": {
+        "Craig, Tyler": {
+          "role": "Researcher",
+          "contribution": "high",
+          "signal": "Wrote the monitoring plan -- the strongest single section of the semester. Six metrics with full operational detail. Posted full content in discussion for team visibility. Consistent analytical quality across WK10-WK13.",
+          "trajectory": "WK10: high (852w, 6 posts, Users/Affected). WK11: high (data breach analysis, best section). WK12: adequate (migraine recovery, bias vectors). WK13: high (monitoring plan, best section of semester). Consistent analytical driver with one legitimate medical dip.",
+          "suggestedFeedback": "Your monitoring plan is the strongest single section any student has produced this semester. Six metrics, all operational, defined normals with bounds. Your IT background is an asset and you're using it. Consistent quality across four weeks.",
+          "flags": []
+        },
+        "Atton, Chandler": {
+          "role": "Researcher",
+          "contribution": "high",
+          "signal": "Wrote Ownership & Authority. Posted full analysis in discussion, revised and resubmitted same evening. Named Lakeside HR roles with clear escalation chain.",
+          "trajectory": "WK10: high (System Purpose, 6 posts). WK11: high (Lead Author). WK12: high (Non-Use Cases, Employee Roster analysis). WK13: high (Ownership). Four straight weeks of strong contribution.",
+          "suggestedFeedback": "Four weeks of consistently strong work. Your Ownership section names roles with clear escalation. One fix: your worksheet says shutdown authority is HR Compliance Officer but your narrative says HR Director. Pick one and commit.",
+          "flags": []
+        },
+        "Williamson, Alixandria": {
+          "role": "Researcher / Coordinator",
+          "contribution": "adequate",
+          "signal": "Sunset Provisions. Organized shared document link. Coordinated with Bogue on submission logistics. Consistent presence throughout week.",
+          "trajectory": "WK10: high (23 posts, team leader). WK11: high (ethical/bias). WK12: high (7-trigger override table). WK13: adequate (sunset + coordination). Slight step back from carrying role but still reliable.",
+          "suggestedFeedback": "Steady contributor across all four weeks. Your WK12 override table is still the benchmark. This week's sunset provisions are solid. The coordination work you do -- organizing the shared doc, checking submission status -- holds the team together even when it's not the flashiest role.",
+          "flags": []
+        },
+        "Dumas, Lizann": {
+          "role": "Researcher",
+          "contribution": "high",
+          "signal": "Claimed Vendor Management on April 13 (first post of the week). Nearly complete when Brennan claimed same section without reading. Absorbed Trigger Conditions as double duty. Called out coordination failure publicly and professionally. Heavy load.",
+          "trajectory": "WK10: high (Exclusions, 10 posts). WK11: adequate (operational risks, 4 posts). WK12: high (CARRYING -- narrative, coordination, submission). WK13: high (double sections, accountability voice). Strong and getting stronger.",
+          "suggestedFeedback": "You absorbed double work because a teammate didn't read the discussion before claiming your section. Your response was direct and professional -- that's exactly how you handle it in a workplace. The trigger conditions section is solid. You shouldn't have had to write it.",
+          "flags": ["CARRYING"]
+        },
+        "Bogue, Jason": {
+          "role": "Lead Author",
+          "contribution": "adequate",
+          "signal": "Lead Author and submitter this week. Created visual. Managed final assembly. Submission timing tight (waiting on Chandler) but delivered. First week as lead -- showed up, managed the process, got it submitted.",
+          "trajectory": "WK10: adequate (IMPROVING, 4 posts, 687w). WK11: low (NO_SIGNOFF, 2 posts). WK12: minimal (computer broke, visual uncertain). WK13: adequate (Lead Author, submitted, created visual). Uneven but this week was a step up.",
+          "suggestedFeedback": "First week as lead and you managed the submission. The visual is done and the assembly happened. That's a step up from WK11-12. Keep this level of engagement -- the team needs you consistently, not just on your lead week.",
+          "flags": ["IMPROVING"]
+        },
+        "Monarch, Brennan": {
+          "role": "Researcher",
+          "contribution": "minimal",
+          "signal": "Claimed Vendor Management on April 15 without reading that Liz Ann had claimed it on April 13 and was nearly complete. Posted his version. Did not respond to Liz Ann's public correction. Did not resolve or check back in. Unknown whether his content appears in final deliverable or if Liz Ann's version was used.",
+          "trajectory": "WK10: low (3 posts, 195w). WK11: n/a (not on team). WK12: adequate (claimed + delivered failure modes). WK13: minimal (coordination failure, effectively absent from resolution). Inconsistent.",
+          "suggestedFeedback": "You claimed a section that was already taken and didn't check back in when a teammate flagged it. That cost Liz Ann double work. Read every discussion post before claiming sections. When a conflict comes up, respond and resolve it -- don't disappear.",
+          "flags": ["COORDINATION_FAILURE"]
+        }
+      }
+    },
+
+    "team2": {
+      "teamName": "Team Y",
+      "submission": "on-time",
+      "leadAuthor": "Helsel, Michael",
+
+      "tangible": {
+        "namedOwners": "yes",
+        "triggerTiers": "3/3",
+        "budgetRealism": "acknowledged",
+        "sunsetClause": "partial"
+      },
+
+      "heat": {
+        "ownership": 4,
+        "monitoring": 3,
+        "triggers": 4,
+        "vendor_req": 4,
+        "sunset": 1,
+        "budget": 3,
+        "prof_format": 3
+      },
+
+      "flags": {
+        "ai": "ai-concern",
+        "writing": "professional",
+        "continuity": "yes",
+        "epoch": ["Presence", "Opinion"]
+      },
+
+      "informational": {
+        "aiToolsDisclosed": "Used for executive language and idea creation",
+        "sourcesUsed": ["NIST AI RMF 1.0"],
+        "complicationCard": false,
+        "googleDocsConvertedToWord": true
+      },
+
+      "notes": "Ownership uses actual Lakeside HR roster roles -- Lindsey caught that the original roles were invented and forced a correction. That's the strongest ownership decision any team made this project. Trigger conditions are excellent: graduated adverse impact thresholds (2 months → formal review, 3 months → pause), EEOC complaint → shutdown within 1 business day, vendor non-compliance triggers. All with named roles and timelines. Vendor management has termination obligations (data access, transition support, three-breach termination clause). Monitoring has five metrics with roles and normals but some normals are qualitative not quantitative ('no consistent skews'). Sunset provisions are the critical miss: 'Some conditions of HarborRank moving to Phase 2' followed by vague bullets with zero thresholds. 'Low override rates' -- what number? 'No issues with bias' -- measured how? The narrative mentions 'controlled system lifecycle management' without defining it. Budget explicitly addressed with role mapping. Harris's section completed by Helsel for the fourth consecutive week.",
+
+      "students": {
+        "Helsel, Michael": {
+          "role": "Lead Author",
+          "contribution": "high",
+          "signal": "Lead Author. Completed own section. Completed Harris's section for the fourth time. Pushed accountability deadlines ('I will be taking the executive decision to complete your section'). Created Google Doc for collaboration. Managed assembly and submission. Direct confrontation with Harris pattern.",
+          "trajectory": "WK10: high (12 posts, 1333w, most questions). WK11: high (accountability voice). WK12: high (completed Harris's section, own section). WK13: high (Lead, completed Harris's section again). Consistent leader, unsustainably compensating.",
+          "suggestedFeedback": "Four weeks of leadership, four weeks of compensating for Harris. Your decision to set Saturday deadlines and follow through is the right management call. But you can't keep completing someone else's section every week. That conversation needs to happen with your instructor, not just your team.",
+          "flags": []
+        },
+        "Allen, Lindsey": {
+          "role": "Researcher / Quality Lead",
+          "contribution": "high",
+          "signal": "Vendor Management SLA clauses. Created visual (color table with figure captions). Converted Google Doc to Word with professional formatting. CRITICAL: caught that ownership roles didn't match Lakeside's actual HR roster and forced correction before submission. That's the single best governance instinct any student has shown.",
+          "trajectory": "WK10: high (Decision Authority, visual). WK11: high (CARRYING, Zoom coordination). WK12: high (CARRYING, lead author). WK13: high (vendor SLAs, visual, role correction). Four straight weeks of high contribution driving quality.",
+          "suggestedFeedback": "Catching that the ownership roles weren't real Lakeside positions is the best governance instinct any student has shown this project. You forced a correction that made the entire section credible. Your formatting and visual work consistently elevates the deliverable. Four weeks of high-quality work.",
+          "flags": []
+        },
+        "Haygood, Nathan": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "Sunset Provisions section. Early completion. The section is the weakest in the deliverable: 'Some conditions' with vague bullets, no thresholds. But the work was done on time.",
+          "trajectory": "WK10: low (6 posts, 144w, generic Purpose section). WK11: low (3 posts, late). WK12: high (early, direct accountability push). WK13: adequate (early, but sunset is vague). Improving on engagement, still weak on analytical depth.",
+          "suggestedFeedback": "Early delivery matters and the team depends on it. But the sunset provisions need thresholds. 'Low override rates' -- what rate? 'No issues with bias' -- measured how? Compare your triggers section (which has specific numbers) against your sunset section (which doesn't). Match that standard for WK15.",
+          "flags": []
+        },
+        "Hamblin, Payton": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "Trigger Conditions section. Delivered before deadline. Some formatting issues from phone editing. Content is the strongest section he's produced -- graduated thresholds, named roles, timelines.",
+          "trajectory": "WK10: low (4 posts, 275w). WK11: low (AI_FLAG, late delivery). WK12: adequate (late but delivered). WK13: adequate (trigger conditions, strongest personal output). Upward trend.",
+          "suggestedFeedback": "Your trigger conditions section is the strongest work you've produced this project. Graduated thresholds with named roles and timelines -- that's operational governance. Keep building on this. The phone formatting issues are fixable; the analytical quality is not, and you've got it.",
+          "flags": ["IMPROVING"]
+        },
+        "Harris, Mekyle": {
+          "role": "Researcher",
+          "contribution": "absent",
+          "signal": "Fourth consecutive week of non-delivery on deliverable section. Helsel completed his section. Harris posted once about completing it; Helsel stepped in by Saturday with explicit documentation ('this cannot happen every week'). Status report lists contribution as 'Week 13 Reflection' -- that's the SR question, not a deliverable section. Works 80+ hours at a prison with children -- real circumstances, documented pattern, instructor intervention needed.",
+          "trajectory": "WK10: high (2610w, deliverable drafts -- too late for integration). WK11: low (3 posts, late engagement). WK12: minimal (section didn't save, Helsel completed). WK13: absent (Helsel completed section, SR-only contribution). Clear declining trajectory from WK10 high to WK13 absent.",
+          "suggestedFeedback": "Four weeks of this pattern. Your WK10 discussion drafts showed you can do this work. Something is preventing the execution side from landing. I need to talk to you directly -- not about capability, about what would make the submission workflow actually work for your schedule.",
+          "flags": ["PERSISTENT_ABSENT", "REQUIRES_INTERVENTION"]
+        }
+      }
+    },
+
+    "team3": {
+      "teamName": "VitalHire Team",
+      "submission": "on-time",
+      "leadAuthor": "Niltasuwan, Klay",
+
+      "tangible": {
+        "namedOwners": "yes",
+        "triggerTiers": "3/3",
+        "budgetRealism": "acknowledged",
+        "sunsetClause": "yes"
+      },
+
+      "heat": {
+        "ownership": 4,
+        "monitoring": 3,
+        "triggers": 4,
+        "vendor_req": 3,
+        "sunset": 3,
+        "budget": 3,
+        "prof_format": 2
+      },
+
+      "flags": {
+        "ai": "ai-concern",
+        "writing": "authentic",
+        "continuity": "partial",
+        "epoch": ["Presence", "Opinion"]
+      },
+
+      "informational": {
+        "aiToolsDisclosed": "Used for template/outline framing, compiling research sources, and verifying rubric requirements",
+        "sourcesUsed": [],
+        "complicationCard": false,
+        "worksheetOnlySubmission": true
+      },
+
+      "notes": "Best ownership section in the project. CHRO as shutdown authority with non-delegable final decision matches the template example's caliber. Org chart excerpt included. Director of Talent Acquisition for day-to-day, HR Compliance Coordinator for monitoring, Procurement for vendor -- all real Lakeside-scale roles. Trigger conditions are the cleanest in class: graduated adverse impact (1 month → review, 2 → pause, 3 → shutdown) plus parsing error rate >10% and EEOC complaint within 24 hours. Six clearly separated triggers across three tiers with named roles and timelines at every level. Monitoring has 9 metrics (some duplicated in table) covering both quantitative and qualitative with defined normals. Override rate at <15% with noted pattern concern is the right threshold. Vendor section has consequences and budget note. Sunset has actual thresholds (0.80, 15%, 6 months) for Phase 2 and specific forced termination conditions. Format weak: worksheet only (no separate narrative), duplicate rows, section attribution names visible in headers. This is VitalHire's best week by a significant margin.",
+
+      "students": {
+        "Niltasuwan, Klay": {
+          "role": "Lead Author",
+          "contribution": "high",
+          "signal": "Lead Author and submitter. Organized files early (April 13). Likely authored ownership section and trigger conditions based on analytical quality matching his prior template work. Submitted deliverable and SR.",
+          "trajectory": "WK10: adequate (4 posts, Users/Affected mapping). WK11: adequate (narrative template structure). WK12: adequate (light review). WK13: high (Lead, ownership + triggers likely his). Steady contributor who peaks when leading.",
+          "suggestedFeedback": "Your strongest week. The ownership section with CHRO as shutdown authority and the org chart is the best ownership structure any team produced. The trigger conditions are the cleanest in class. Your analytical framework instinct from WK11 is now producing real operational content.",
+          "flags": []
+        },
+        "Barber, Allie": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "Monitoring Plan section (per discussion: 'Just filled out the Monitoring Plan section!'). Content has right structure -- selection rates, override rate, time-to-fill with defined normals.",
+          "trajectory": "WK10: high (10 posts, CARRYING, led team). WK11: low (1 post, burnout). WK12: adequate (failure modes). WK13: adequate (monitoring plan). Recovered from WK11 burnout, stabilized.",
+          "suggestedFeedback": "Your monitoring plan covers the right metrics with defined normals. Selection rates, override rate, time-to-fill -- that's the quantitative core. Push the qualitative checks to be more specific for WK15. Steady recovery from WK11.",
+          "flags": []
+        },
+        "Batho, Cody": {
+          "role": "Editor",
+          "contribution": "adequate",
+          "signal": "MIA April 13-15 (two tests). Returned and completed 'missing parts of worksheet' April 15. Acknowledged gap. Likely sunset provisions (section attributed to him in worksheet header).",
+          "trajectory": "WK10: low (22 avg words, thin Data Inputs). WK11: high (IMPROVING, primary narrative driver). WK12: adequate (template). WK13: adequate (returned after gap, completed sections). Capable when present, inconsistent availability.",
+          "suggestedFeedback": "You acknowledged the gap, came back, and filled in the missing pieces. The sunset provisions have actual thresholds -- 0.80, 15%, 6 months. That's operational. Your WK11 content drive showed what you can do when you're fully engaged. Bring that energy to WK14.",
+          "flags": []
+        },
+        "Minzey, Lexi": {
+          "role": "Coordinator",
+          "contribution": "adequate",
+          "signal": "Caught the narrative requirement the day after the week started -- attentive and proactive. Otherwise logistical coordination. Dramatic shift from WK12 CARRYING to lighter role this week.",
+          "trajectory": "WK10: low (3 posts, 44w). WK11: low (2 posts). WK12: high (CARRYING -- worksheet, narrative, visual, submission). WK13: adequate (coordination, caught narrative req). Capable of carrying but engagement is inconsistent.",
+          "suggestedFeedback": "Good catch on the narrative requirement -- the team might have missed it without you. Your WK12 carry showed what you can produce at full engagement. Keep that awareness active for WK14.",
+          "flags": []
+        },
+        "Baldwin, Sam": {
+          "role": "Reviewer",
+          "contribution": "minimal",
+          "signal": "One post: 'everything looks really good, I'm going to keep looking for changes.' No section claimed, no content contributed. Second consecutive week of minimal/absent presence after two weeks of solid contributions.",
+          "trajectory": "WK10: adequate (2 posts, 257w, EEOC compliance insight). WK11: adequate (risk matrix completion). WK12: absent (zero posts). WK13: minimal (one post, no content). Clear declining trajectory.",
+          "suggestedFeedback": "Two weeks of showing up to say it looks good without contributing content. Your WK10 EEOC insight was the best analytical move in the class. Your WK11 matrix work was solid. Something changed in WK12. I need to hear from you directly about what's going on.",
+          "flags": ["CONSECUTIVE_DECLINING", "REQUIRES_INTERVENTION"]
+        }
+      }
+    }
+  },
+
+  "crossTeamComparison": {
+    "summary": "Major shift this week. All three teams scored in B range (83.75-85). VitalHire and Team Y both produced their strongest submissions of the project. Team X remains strong but format issues (three separate PDFs, 'I think' in narrative) cost them. Trigger conditions and ownership clarity are the differentiating strengths this week. Sunset provisions are the universal weak point -- Team X excepted.",
+
+    "byCategory": {
+      "ownership": {
+        "ranking": ["VitalHire (4)", "Team Y (4)", "Team X (3)"],
+        "note": "VitalHire's CHRO shutdown authority with org chart is the best ownership structure produced. Team Y used actual Lakeside HR roster roles (Lindsey's catch). Team X has clear chain but internal contradiction between worksheet and narrative on shutdown authority."
+      },
+      "monitoring": {
+        "ranking": ["Team X (4)", "Team Y (3)", "VitalHire (3)"],
+        "note": "Team X's Tyler Craig produced the strongest monitoring section of the semester. Six metrics with frequency, role, and defined normal with bounds. VitalHire has breadth (9 metrics, some duplicated). Team Y has five metrics with mixed specificity."
+      },
+      "triggers": {
+        "ranking": ["VitalHire (4)", "Team Y (4)", "Team X (3)"],
+        "note": "VitalHire's graduated adverse impact response (1 month → review, 2 → pause, 3 → shutdown) is the cleanest trigger architecture. Team Y matches with slightly different thresholds. Both include EEOC complaint as immediate shutdown. Team X has strong specifics (four-fifths, 14:1 ratio) but one non-threshold trigger."
+      },
+      "vendor_req": {
+        "ranking": ["Team X (4)", "Team Y (4)", "VitalHire (3)"],
+        "note": "Team X and Team Y both have specific SLAs with graduated consequences. Team Y adds termination obligations (data access, transition support, three-breach clause). VitalHire's 10-day incident reporting is slower than the others."
+      },
+      "sunset": {
+        "ranking": ["Team X (4)", "VitalHire (3)", "Team Y (1)"],
+        "note": "Team X cross-references WK11 and WK12 with numbered conditions and thresholds. VitalHire has 6-month timeline with specific metrics (0.80, 15%). Team Y wrote 'Some conditions' with vague bullets and zero thresholds -- the only major failure in an otherwise strong submission."
+      },
+      "budget": {
+        "ranking": ["Team Y (3)", "VitalHire (3)", "Team X (2)"],
+        "note": "Team Y and VitalHire both explicitly address budget with role mapping. Team X mentions staying within budget but doesn't map costs and left the budget checkbox unchecked."
+      },
+      "prof_format": {
+        "ranking": ["Team Y (3)", "Team X (2)", "VitalHire (2)"],
+        "note": "Team Y's Lindsey converted Google Doc to Word with headers, color, figure captions. Team X submitted three separate PDFs with 'I think' in paragraph 2. VitalHire has duplicate rows and section attribution visible in headers."
+      }
+    },
+
+    "emergingPatterns": [
+      "All three teams scored B this week -- first time no team is below C. The template examples are working. The calibration from WK12 carried forward and deepened. Teams are producing operational governance content.",
+      "Ownership clarity improved dramatically across all teams. Two teams used actual Lakeside HR roster roles. One team included an org chart. The 'named role, not department' instruction from the template landed.",
+      "Trigger conditions are becoming the teams' strongest section collectively. Graduated response architecture (review → pause → shutdown) appeared in all three submissions with specific thresholds. The template example (interview-to-offer ratio at 40% vs 55% baseline) calibrated the altitude.",
+      "Tyler Craig (Team X) produced the strongest individual section of the semester in monitoring. Lindsey Allen (Team Y) made the strongest governance decision of the project in correcting ownership roles. Klay Niltasuwan (VitalHire) produced the cleanest trigger architecture. Different teams, different strengths.",
+      "Harris (Team Y) and Baldwin (VitalHire) both require instructor intervention. Harris is four weeks into a non-delivery pattern. Baldwin is two weeks into declining/absent. Both have demonstrated capability in earlier weeks -- the issue is execution and engagement, not understanding.",
+      "Team dynamics: Dumas (Team X) absorbed double work due to Monarch's coordination failure. Helsel (Team Y) completed Harris's section for the fourth time. Both situations are unsustainable and documented."
+    ],
+
+    "weeklyAlerts": {
+      "red": [
+        "Harris (Team Y): Fourth consecutive week of non-delivery on deliverable section. Helsel completed his section again. Status report lists 'Week 13 Reflection' only. This requires direct instructor conversation -- not about capability (his WK10 drafts were the best on the team), about workflow.",
+        "Baldwin (VitalHire): Second consecutive week of minimal/absent contribution. WK12: zero posts. WK13: one review comment, no section claimed. WK10-11 showed real analytical capability. Direct outreach required."
+      ],
+      "yellow": [
+        "Monarch (Team X): Claimed a section already taken without reading the discussion. Did not respond to Liz Ann's correction. Liz Ann absorbed double work. Needs direct conversation about discussion participation expectations.",
+        "Team Y sunset provisions: 'Some conditions' with vague bullets is the only 1/4 score in any B-range submission. Critical gap for WK15 final report.",
+        "Team X format: 'I think' in narrative, three separate PDFs, visual not integrated. Professional quality is the easiest criterion to fix and the most avoidable loss.",
+        "VitalHire monitoring table has duplicate rows (Recruiter Feedback and Candidate Complaint Log each appear twice). Formatting artifact that suggests copy-paste assembly."
+      ],
+      "green": [
+        "All three teams scored B this week. First time no team is below C. The template examples and directed sources are producing measurable improvement.",
+        "Craig (Tyler, Team X): Monitoring plan is the strongest single section of the semester. Six operational metrics with bounds.",
+        "Allen (Lindsey, Team Y): Caught that ownership roles weren't real Lakeside positions and forced correction. Best governance instinct in the project.",
+        "Niltasuwan (Klay, VitalHire): Best ownership section (CHRO + org chart) and cleanest trigger architecture. Strongest personal week.",
+        "Hamblin (Payton, Team Y): IMPROVING. Trigger conditions section is his strongest work in the project. Graduated thresholds with named roles.",
+        "Bogue (Jason, Team X): IMPROVING. First week as Lead Author. Managed assembly, created visual, submitted. Step up from WK11-12.",
+        "Haygood (Nathan, Team Y): IMPROVING on engagement. Early completion. Sunset content weak but delivery was on time.",
+        "VitalHire overall: Best week of the project by a significant margin. Ownership, triggers, and sunset all show operational thinking that was absent in WK10-12."
+      ]
+    }
+  }
+}
