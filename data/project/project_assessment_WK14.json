@@ -1,0 +1,278 @@
+{
+  "week": "WK14",
+  "weekTitle": "Executive Decision Memo",
+  "assessmentDate": "2026-04-28",
+  "dataCompleteness": {
+    "deliverables": "complete",
+    "statusReports": "complete",
+    "breakoutMetrics": "complete",
+    "breakoutPosts": "complete",
+    "note": "All three teams submitted on time. Discussion exports parsed from Code You MD files. Memo content read directly from docx uploads. Three distinct recommendations across teams: Team X = Cancel Phase 1, Team Y = Proceed with Conditions, VitalHire = Delay."
+  },
+  "teams": {
+    "team1": {
+      "teamName": "Team X",
+      "submission": "on-time",
+      "leadAuthor": "Craig, Tyler",
+      "recommendation": "Cancel Phase 1",
+      "directedSourceUsed": false,
+      "tangible": {
+        "recommendationStated": "yes",
+        "priorWeeksCited": "yes",
+        "tradeoffBothDirections": "partial",
+        "riskQuantified": "no",
+        "conditionsActionable": "partial",
+        "visualSubmitted": true
+      },
+      "heat": {
+        "recommendation_clarity": 4,
+        "rationale_quality": 3,
+        "tradeoff_honesty": 3,
+        "risk_if_ignored": 2,
+        "conditions_next_steps": 3,
+        "source_use": 1,
+        "exec_comm": 3
+      },
+      "flags": {
+        "ai": "canva_disclosed",
+        "writing": "uneven",
+        "continuity": "strong",
+        "epoch": ["Opinion", "Presence"]
+      },
+      "informational": {
+        "aiToolsDisclosed": "Canva AI (visuals only -- Alixandria)",
+        "sourcesUsed": ["None -- no directed source, no additional APA sources listed"],
+        "visualsSubmitted": 2,
+        "visualFormat": "pdf",
+        "reflectionConfidence": "8/10"
+      },
+      "notes": "Strongest recommendation section in the class -- Chandler opened the deliberation correctly by calling for team consensus before anyone wrote a word, and the 30%-exemption / 2801-to-830 roster math is the clearest quantitative anchor any team used. Tyler Craig assembled the final document, edited Jason's section twice for tone, wrote conditions/next steps, coordinated the Google Doc link, and managed the submission timeline. That's a complete lead-author performance. Decision Rationale cross-references the Risk Matrix and Oversight Plan explicitly -- the document is building on its own prior work, which is exactly the assignment design intent. Significant process failure also on display: Jason Bogue required two coaching rounds (from Chandler and Tyler) to remove casual language from his section, and Brennan Monarch's first draft misread the entire prompt -- he wrote the risk of rejecting HarborRank rather than the risk of rejecting the team's recommendation to cancel. Brennan's corrected draft still hedges ('could,' 'might,' 'possibly') in a section that demands declarative language. The Risk if Not Acted Upon section is the weakest in the deliverable and the weakest across all three teams this week. No directed source used -- only team this week that didn't engage with additional sourcing.",
+      "students": {
+        "Craig, Tyler": {
+          "role": "Lead Author",
+          "contribution": "high",
+          "signal": "Assembled and edited the entire document from Google Doc. Coordinated sections via discussion, explicitly edited Jason's Decision Rationale twice to remove hedging, wrote Conditions/Next Steps, submitted all documents. Comprehensive lead-author performance.",
+          "discussionHistory": "strong",
+          "flags": [],
+          "suggestedFeedback": "Best lead-author week of the project. You built the document, managed the section assignments, edited for consistency, and submitted on time. The roster math in the Recommendation (30%, 2801 to 830) is the clearest quantitative anchor any team used this week."
+        },
+        "Atton, Chandler": {
+          "role": "Researcher",
+          "contribution": "high",
+          "signal": "Opened the recommendation deliberation by calling for team consensus before work began -- the right call. Recommendation section is clean and decisive. Caught Brennan's misread of the prompt and redirected him. Actively coached Jason on tone.",
+          "discussionHistory": "strong",
+          "flags": [],
+          "suggestedFeedback": "Opening the consensus discussion before anyone wrote a section was smart governance. Your Recommendation section is decisive and grounded. You and Tyler functioned as co-anchors this week -- that's what the team needed."
+        },
+        "Williamson, Alixandria": {
+          "role": "Visual Designer",
+          "contribution": "adequate",
+          "signal": "Delivered two PDFs (decision matrix + tradeoff analysis). Worked on visuals during a car ride to/from daughter's soccer game. Proactively flagged the prior-week feedback idea for group revision -- good forward thinking even if no action taken on it.",
+          "discussionHistory": "adequate",
+          "flags": [],
+          "suggestedFeedback": "Two visuals submitted, both usable. Working from a car on a hotspot to meet a team deadline is exactly the kind of commitment that holds a team together. Your suggestion to revisit prior feedback before the final report is the right instinct -- carry it into WK15."
+        },
+        "Dumas, Lizann": {
+          "role": "Researcher",
+          "contribution": "high",
+          "signal": "Claimed Tradeoff Analysis early, completed and posted to template before deadline. Direct with Brennan at top of discussion re: section claiming -- professional and firm. Consistent across five weeks.",
+          "discussionHistory": "adequate",
+          "flags": [],
+          "suggestedFeedback": "Tradeoff section is complete and functional. You've been one of the most consistently reliable contributors across the entire project. The direct message to Brennan at the top of the thread was appropriate -- that's how you manage it."
+        },
+        "Bogue, Jason": {
+          "role": "Researcher",
+          "contribution": "low",
+          "signal": "Decision Rationale section required two feedback rounds from Chandler and Tyler to reach acceptable quality. First version used casual language throughout ('pretty big,' 'kinda tough,' 'a bit of a stretch'). Second version improved tone but Tyler still noted he'd edit further. Delivered late (April 26 evening after Tyler's callout the day before).",
+          "discussionHistory": "weak",
+          "flags": ["COACHING_DEPENDENT", "LATE_ENGAGEMENT"],
+          "suggestedFeedback": "You got there but it took two rounds of feedback and a direct callout. The content reasoning is correct -- bias risk, vendor opacity, governance gaps, timeline -- but this is an executive memo. 'Pretty big,' 'kinda tough,' and 'a bit of a stretch' don't belong in a document addressed to a CHRO. WK16 oral defense: that same standard applies out loud."
+        },
+        "Monarch, Brennan": {
+          "role": "Researcher",
+          "contribution": "low",
+          "signal": "First draft of Risk if Not Acted Upon was written from a pro-HarborRank standpoint -- a complete misread of the prompt. Chandler corrected him. Second draft improved but retained hedging language ('could,' 'might,' 'possibly') throughout. Section is the weakest in the deliverable. No discussion of the section-claiming conflict from WK13.",
+          "discussionHistory": "adequate",
+          "flags": ["PROMPT_MISREAD", "HEDGING"],
+          "suggestedFeedback": "The first draft misread the assignment entirely -- you wrote the risk of rejecting HarborRank, not the risk of rejecting your team's recommendation to cancel it. After Chandler's correction, the content improved but the hedging stayed: 'could,' 'might,' 'possibly.' An executive risk assessment is declarative. Name the risk. State the consequence. No softeners."
+        }
+      }
+    },
+    "team2": {
+      "teamName": "Team Y",
+      "submission": "on-time",
+      "leadAuthor": "Haygood, Nathan",
+      "recommendation": "Proceed with Conditions",
+      "directedSourceUsed": false,
+      "tangible": {
+        "recommendationStated": "yes",
+        "priorWeeksCited": "yes",
+        "tradeoffBothDirections": "yes",
+        "riskQuantified": "partial",
+        "conditionsActionable": "partial",
+        "visualSubmitted": true
+      },
+      "heat": {
+        "recommendation_clarity": 2,
+        "rationale_quality": 4,
+        "tradeoff_honesty": 3,
+        "risk_if_ignored": 2,
+        "conditions_next_steps": 3,
+        "source_use": 1,
+        "exec_comm": 2
+      },
+      "flags": {
+        "ai": "chatgpt_disclosed",
+        "writing": "uneven",
+        "continuity": "adequate",
+        "epoch": ["Opinion"]
+      },
+      "informational": {
+        "aiToolsDisclosed": "ChatGPT (sentence clarity, grammar, idea development -- Lindsey added this to SR after submission)",
+        "sourcesUsed": ["None -- no directed source, no additional APA sources listed (NA)"],
+        "visualsSubmitted": 1,
+        "visualFormat": "unknown",
+        "reflectionConfidence": "8/10"
+      },
+      "notes": "The best section and the worst section of Team Y's WK14 are in the same document. Lindsey Allen's Decision Rationale is the strongest rationale section across all three teams -- specific guardrails named, EEOC liability stated precisely, cross-reference to governance plan SLAs, adverse impact monitoring required. If the rest of the memo matched that quality, this would be the top submission. It doesn't. Nathan's Recommendation opening paragraph is the weakest opening of any team: 'if the system manually screens high-volume applicate pools' reads as a conditional restatement, not a clear executive position. The 'five conditions' are referenced but not named in the opening paragraph. Risk if Not Acted Upon is thin -- connects to hiring targets and budget in general terms but doesn't quantify specific consequences. Harris: fifth consecutive week of non-participation. Nathan documented it in the status report ('Mekyle did not participate at all this week so I did his section'). Nathan's confidence rating of 8/10 with a specific evidence-based explanation for what would move it up or down is the most sophisticated reflection response of any team this week.",
+      "students": {
+        "Haygood, Nathan": {
+          "role": "Lead Author",
+          "contribution": "high",
+          "signal": "Organized the week from day one (April 21), followed up on April 22 when no one responded, assembled final document, wrote Recommendation and Risk if Not Acted Upon sections, did Harris's section for the fifth consecutive week, submitted on time. SR confidence reflection (8/10 with specific evidence thresholds) is the most analytically sophisticated reflection response of any team.",
+          "discussionHistory": "strong",
+          "flags": ["CARRYING"],
+          "suggestedFeedback": "You ran this week clean -- organized, followed up, assembled, submitted. Your confidence reflection in the SR (8/10, with specific evidence for moving it up or down) is the most analytically honest response any team wrote. The Recommendation opening needs work: 'if the system manually screens' reads as a condition, not a position. State it declaratively in the first sentence."
+        },
+        "Allen, Lindsey": {
+          "role": "Researcher",
+          "contribution": "high",
+          "signal": "Delivered Decision Rationale early (April 23). Did visual (tradeoff analysis). Proactively reviewed final document. Decision Rationale is the strongest rationale section across all three teams this week -- specific guardrails, EEOC liability, governance plan cross-reference, adverse impact monitoring required.",
+          "discussionHistory": "strong",
+          "flags": [],
+          "suggestedFeedback": "Your Decision Rationale is the strongest rationale section across all three teams this week. EEOC liability stated precisely, SLA cross-reference, adverse impact monitoring -- that's the governance instinct you've shown all project. Five weeks of high-quality output."
+        },
+        "Helsel, Michael": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "Hectic week -- work trip out of state at week start, Senior Capstone due mid-week, Final Paper/Presentation due next day. Still delivered Conditions/Next Steps section by April 23. Caught 'Chief' spelling error in final review. Reduced but real contribution under genuine load.",
+          "discussionHistory": "adequate",
+          "flags": ["EXTENUATING"],
+          "suggestedFeedback": "Rough week externally and you still delivered. Catching the spelling error in final review -- that's the kind of detail that matters in a document going to a CHRO. WK15 and WK16 are the final events; full engagement there counts most."
+        },
+        "Hamblin, Payton": {
+          "role": "Researcher",
+          "contribution": "high",
+          "signal": "Delivered Tradeoff Analysis before deadline without prompting. Solid structure -- 200-position/18-month timeline connected, cost of being wrong addressed in both directions. Lindsey built the visual off his section. Steady for the second consecutive week.",
+          "discussionHistory": "adequate",
+          "flags": ["IMPROVING"],
+          "suggestedFeedback": "Two strong weeks back-to-back. Tradeoff section connects the 200-position timeline specifically and addresses cost-of-being-wrong in both directions. That's the assignment done right. WK13 trigger conditions + WK14 tradeoff is a pattern -- own it for the final report."
+        },
+        "Harris, Mekyle": {
+          "role": "Researcher",
+          "contribution": "absent",
+          "signal": "Fifth consecutive week of non-delivery on deliverable section. One post on April 26 referencing a regraded assignment ('for the assignment that bill just regraded I will complete the job') -- appears to be a separate prior assignment, not WK14. Nathan did his section again.",
+          "discussionHistory": "absent",
+          "flags": ["PERSISTENT_ABSENT", "FIVE_WEEK_PATTERN", "REQUIRES_INTERVENTION"],
+          "suggestedFeedback": "Five weeks. Nathan has completed your section every week. The April 26 post referenced a regraded assignment from Bill, not this week's deliverable. We need to talk before WK15 -- this is not about capability, it's about what has to change for you to finish this course."
+        }
+      }
+    },
+    "team3": {
+      "teamName": "VitalHire Team",
+      "submission": "on-time",
+      "leadAuthor": "Batho, Cody",
+      "recommendation": "Delay",
+      "directedSourceUsed": true,
+      "tangible": {
+        "recommendationStated": "yes",
+        "priorWeeksCited": "yes",
+        "tradeoffBothDirections": "yes",
+        "riskQuantified": "partial",
+        "conditionsActionable": "yes",
+        "visualSubmitted": false
+      },
+      "heat": {
+        "recommendation_clarity": 4,
+        "rationale_quality": 3,
+        "tradeoff_honesty": 3,
+        "risk_if_ignored": 3,
+        "conditions_next_steps": 3,
+        "source_use": 4,
+        "exec_comm": 2
+      },
+      "flags": {
+        "ai": "chatgpt_disclosed",
+        "writing": "adequate",
+        "continuity": "strong",
+        "epoch": ["Opinion", "Presence"]
+      },
+      "informational": {
+        "aiToolsDisclosed": "ChatGPT (organization and clarity in executive memo; source-finding assist -- noted that all final decisions came from WK10-13 submissions)",
+        "sourcesUsed": [
+          "EEOC Employment Discrimination and AI for Workers (2024)",
+          "ABA -- Navigating the AI Employment Bias Maze (Kempe, 2024)",
+          "NIST AI Risk Management Framework (2023)",
+          "DOL AI Promising Practices (Tyman, 2024)",
+          "VitalHire Team self-citations WK10-13 (a-d)"
+        ],
+        "visualsSubmitted": 0,
+        "visualFormat": "none",
+        "reflectionConfidence": "8.5/10 -- most specific threshold articulation of any team"
+      },
+      "notes": "Only team this week to use the directed source and the only team with robust external sourcing (four external sources + four self-citations to prior deliverables -- the self-citation practice is exactly right for a document that synthesizes prior work). The executive memo document is the cleanest written version VitalHire has produced; the template document has some informal language that didn't make it into the final. Cody Batho drove the entire week -- initiated the recommendation deliberation, organized assignments, wrote the full executive memo, submitted everything. Sam Baldwin returned with substantive content after two weeks of near-absence: three specific findings in the Decision Rationale with reasoning. That's a recovery. Lexi Minzey in reviewer role -- minimal contribution but present. Klay Niltasuwan drafted and refined the Recommendation section. No visual submitted this week -- the only team not to include one. SR next-week plan (preparing for WK16 oral defense by reviewing sections and anticipating challenge questions) is the most forward-looking of the three teams and reflects genuine engagement with the defense format.",
+      "students": {
+        "Batho, Cody": {
+          "role": "Lead Author",
+          "contribution": "high",
+          "signal": "Initiated the recommendation deliberation on April 21 (laid out all four options, asked for input). Wrote the full executive memo. Organized assignments, coordinated discussion, submitted all deliverables. Primary content driver for the second time in four weeks. WK11 energy returning.",
+          "discussionHistory": "strong",
+          "flags": [],
+          "suggestedFeedback": "Strongest individual output of the week across all three teams, arguably. You opened the deliberation correctly, organized the assignments, wrote the executive memo, and submitted. The sourcing -- four external sources plus four self-citations to your own prior deliverables -- is the right approach to a synthesis document. WK16 oral defense: you'll be defending this. Know it."
+        },
+        "Niltasuwan, Klay": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "Drafted and refined the Recommendation section. Periodic review of the memo throughout the week. Lighter visible presence than WK13 lead week but delivered his section. Confirmed he'll lead WK15 discussion setup.",
+          "discussionHistory": "adequate",
+          "flags": [],
+          "suggestedFeedback": "Recommendation section is clean -- governance readiness framing, Phase 1 scale constraint. Lighter week than WK13 but you committed to leading WK15 setup. Follow through on that and bring your WK13 analytical precision to the final report."
+        },
+        "Barber, Allie": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "Risk if Not Acted Upon section submitted April 21 -- one of the first sections completed across any team this week. Specific risks defined per SR. Steady at WK12-13 recovery level.",
+          "discussionHistory": "adequate",
+          "flags": [],
+          "suggestedFeedback": "Early delivery on the risk section -- that's the third consecutive week of on-time, adequate contribution. WK15 is the final report. Your WK10 carry level is what the final report needs from you; you've been building back to it."
+        },
+        "Baldwin, Sam": {
+          "role": "Researcher",
+          "contribution": "adequate",
+          "signal": "Returned after two weeks of near-absence. Submitted Decision Rationale on April 27 with three specific findings: bias/pattern risk, networking favoritism/override risk, EEOC legal consequences. Posted one discussion message (April 27). Recovery is real but limited -- one post, one section, late in the week.",
+          "discussionHistory": "weak",
+          "flags": ["RETURNING", "RECOVERING"],
+          "suggestedFeedback": "You showed up and delivered something substantive -- three specific findings with actual reasoning. That's the WK10/11 version of you. One post and one section isn't full engagement, but it's real. WK15 and WK16 are the grade events that matter most. Stay in it."
+        },
+        "Minzey, Lexi": {
+          "role": "Reviewer",
+          "contribution": "low",
+          "signal": "Reviewer role -- looked over executive memo and WK14 deliverable per SR. One visible discussion post (April 20, 'Thank you Cody!'). Minimal contribution this week after WK12 carry and WK13 attentiveness.",
+          "discussionHistory": "weak",
+          "flags": ["LOW_PARTICIPATION"],
+          "suggestedFeedback": "Reviewer role is real work but it's the minimum. WK12 you carried the entire team. WK13 you caught the narrative requirement. This week you thanked Cody and reviewed. The final report and oral defense are where the semester ends -- you've shown you can operate at a much higher level than this week."
+        }
+      }
+    }
+  },
+  "crossTeamNotes": {
+    "recommendationSpread": "Three different recommendations across three teams: Cancel (Team X), Proceed with Conditions (Team Y), Delay (VitalHire). This is pedagogically ideal -- the oral defense will have genuine disagreement to navigate.",
+    "sourceUse": "VitalHire is the only team to use the directed source and the only team with external sourcing. Team X and Team Y both reported no additional sources. This is a rubric gap for both.",
+    "strongestSection": "Lindsey Allen's Decision Rationale (Team Y) -- strongest rationale section in the class, grounded in EEOC liability, SLA cross-reference, adverse impact monitoring.",
+    "weakestSection": "Brennan Monarch's Risk if Not Acted Upon (Team X) -- first draft misread the prompt entirely, second draft retained hedging language throughout.",
+    "harrisStatus": "Fifth consecutive week of non-delivery. Requires direct conversation before WK15. Non-participation affects team oral defense preparation.",
+    "baldwinReturn": "Sam Baldwin returned with substantive content after WK12-13 near-absence. Midpoint message appears to have had effect. Monitor for WK15 continuity.",
+    "bogueTrend": "Jason Bogue required coaching this week but delivered. WK13 lead week + WK14 adequate = modest positive trend. WK16 oral defense is the test.",
+    "orlaDefenseImplication": "Three teams will defend three different recommendations. That's a genuine deliberation -- not performance. Panel should be prepared for disagreement between teams, not just within."
+  }
+}
